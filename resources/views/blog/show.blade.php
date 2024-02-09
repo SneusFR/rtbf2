@@ -7,5 +7,7 @@
                 {{$post->content}}
             </p>
 
+            <img src="/img/{{$post->slug}}{{$post->id}}.jpg" alt="{{$post->title}}">
+
         </article>
 @endsection

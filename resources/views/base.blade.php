@@ -20,7 +20,7 @@
 
             <section class="nav-top d-flex align-items-center justify-content-between flex-wrap">
                 <div class=" nav-top-left d-flex justify-content-center col-lg-10 col-12 flex-wrap">
-                    <a href="index.html"><img class="logo" src="/img/RTBF.svg" alt="Logo" ></a>
+                    <a href={{route('blog.index')}}><img class="logo" src="/img/RTBF.svg" alt="Logo" ></a>
                         @foreach($menus as $menu)
                             @if($menu->firstNav)
                             <a class="nav-title" href="#">{{$menu->title}}</a>
@@ -77,10 +77,6 @@
                 <a href="#">{{$menu->title}}</a>
                 @endif
             @endforeach
-            <a href="#">🔴Guerre en Ukraine</a>
-            <a href="#">Prix de l'énergie</a>
-            <a href="#">Le fil info</a>
-            <a href="#">Décrypte</a>
 
         </div>
     </section>

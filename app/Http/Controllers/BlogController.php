@@ -13,15 +13,11 @@ class BlogController extends Controller
     }
 
     public function show(String $slug, Post $post) {
-
-        if ($post->slug != $slug) {
-            return redirect()->route('blog.show', ['slug' => $post->slug, 'id' => $post->id ]);
-        }
         return view('blog.show', ['post' =>$post, 'menus' => menu::all()]);
     }
 
     public function create() {
-        return view('blog.create');
+        return view('blog.create', ['menus' => menu::all()]);
 
     }
 
