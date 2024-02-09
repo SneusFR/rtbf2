@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Models\Post;
+use App\Models\menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +18,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return \App\Models\Post::all();
+
+//    $menu = new menu();
+//    $menu->title = "à PROPOS";
+//    $menu->firstNav = true;
+//    $menu->save();
+//
+//    return menu::all();
+
+    return Post::all();
         view('welcome');
 });
 
@@ -32,6 +42,7 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
             'post' => '[0-9]+',
             'slug' => '[a-z0-9\-]+'
         ])->name('show');
-
+    Route::get('/{post}/{edit}', 'edit')->name('edit');
+    Route::post('/{post}/{update}', 'edit')->name('edit');
 });
 

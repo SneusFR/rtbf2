@@ -1,17 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\menu;
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Nette\Utils\Paginator;
+use App\Http\Requests\CreatePostRequest;
 
 class BlogController extends Controller
 {
     public function index() {
-        return View('blog.index', [
-            'posts' => Post::all()
-        ]);
+        $menus = Menu::all();
+        return view('blog.index')->with('menus', $menus)->with('posts', Post::all());
     }
 
     public function show(String $slug, Post $post) {
@@ -19,8 +17,7 @@ class BlogController extends Controller
         if ($post->slug != $slug) {
             return redirect()->route('blog.show', ['slug' => $post->slug, 'id' => $post->id ]);
         }
-
-        return view('blog.show', ['post' =>$post]);
+        return view('blog.show', ['post' =>$post, 'menus' => menu::all()]);
     }
 
     public function create() {
