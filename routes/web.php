@@ -24,7 +24,7 @@ Route::get('/', function () {
 //    $menu->firstNav = true;
 //    $menu->save();
 //
-//    return menu::all();
+    return menu::all();
 
     return Post::all();
         view('welcome');

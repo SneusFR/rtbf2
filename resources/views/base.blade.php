@@ -22,8 +22,10 @@
                 <div class=" nav-top-left d-flex justify-content-center col-lg-10 col-12 flex-wrap">
                     <a href="index.html"><img class="logo" src="/img/RTBF.svg" alt="Logo" ></a>
                         @foreach($menus as $menu)
+                            @if($menu->firstNav)
                             <a class="nav-title" href="#">{{$menu->title}}</a>
-                        @endforeach
+                        @endif
+                    @endforeach
                 </div>
                 <div class="nav-top-right d-flex justify-content-center col-lg-2 col-12">
                     <input id="search-bar" name="search-bar" type="text">
@@ -35,14 +37,13 @@
 
             <section class="nav-bot">
                 <a class="menu" href="#">menu</a>
-                <a class="nav-title" href="index.html">Accueil</a>
-                <a class="nav-title" href="#">fil actu</a>
-                <a class="nav-title" href="#">info</a>
-                <a class="nav-title" href="#">sport</a>
-                <a class="nav-title" href="#">actualités locales</a>
-                <a class="nav-title" href="#">culture et musique</a>
-                <a class="nav-title" href="#">environnement et nature</a>
-                <a class="nav-title" href="#">santé et bien-être</a>
+                @foreach($menus as $menu)
+                    @if($menu->secondNav)
+                    <a class="nav-title" href="index.html">{{$menu->title}}</a>
+                    @endif
+                @endforeach
+
+
             </section>
 
         </div>
@@ -57,16 +58,11 @@
         <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start"> <!-- wrapper -->
 
             <h1>Info</h1>
-            <a class="nav-title" href="#">regions</a>
-            <a class="nav-title" href="#">Belgique</a>
-            <a class="nav-title" href="#">Europe</a>
-            <a class="nav-title" href="#">monde</a>
-            <a class="nav-title" href="#">economie</a>
-            <a class="nav-title" href="#">politique</a>
-            <a class="nav-title" href="#">justice</a>
-            <a class="nav-title" href="#">faky</a>
-            <a class="nav-title" href="#">questions-réponses</a>
-            <a class="nav-title" href="#">chroniques</a>
+            @foreach($menus as $menu)
+                @if($menu->thirdNav)
+                <a class="nav-title" href="#">{{$menu->title}}</a>
+                @endif
+            @endforeach
 
         </div>
     </section>
@@ -76,7 +72,11 @@
         <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start"> <!-- wrapper -->
 
             <h2>EN CE MOMENT</h2>
-            <a href="#">Questions-Réponses</a>
+            @foreach($menus as $menu)
+                @if($menu->fourthNav)
+                <a href="#">{{$menu->title}}</a>
+                @endif
+            @endforeach
             <a href="#">🔴Guerre en Ukraine</a>
             <a href="#">Prix de l'énergie</a>
             <a href="#">Le fil info</a>
