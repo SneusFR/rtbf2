@@ -1,0 +1,743 @@
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #CADFEB;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* Navigation */
+.header-rtbf {
+    width: 100%;
+}
+
+.navigation {
+    background-color: #003D60 ;
+    color: white;
+    font-size: 14px ;
+    text-transform: uppercase;
+}
+
+.navigation a:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 3px;
+    width: 35px;
+    transform: translateX(-50%);
+    background-color: rgb(253, 195, 0);
+
+}
+
+a.nav-title {
+    position: relative;
+}
+
+/* Nav-top */
+
+.logo {
+    width: 90px;
+}
+
+.nav-top-left a {
+    padding: 20px 18px 12px;
+}
+
+.nav-top-right img {
+    width: 24px;
+    margin: 11px;
+}
+
+
+/* Nav-bot */
+
+.nav-bot a {
+    display: inline-block;
+    padding: 17px 12px;
+}
+
+a.menu {
+    padding-right: 30px;
+    display: inline-flex;
+    align-items: center;
+
+}
+
+.menu::after {
+    content: "";
+    background-image: url("media/menu.svg");
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    margin-left: 10px;
+}
+
+
+/* Wrapper : centre tout le contenu de la page index.html*/
+
+.wrapper {
+    max-width: 1080px;
+    margin: auto;
+}
+
+
+/* Barre "Info" */
+
+.barre-info {
+    background-color: #00507D;
+    color: white;
+    font-size: 13px ;
+    text-transform: uppercase;
+    align-content: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.barre-info h1 {
+    font-size: 23px;
+    border-right: white solid 2px;
+    padding-right: 17px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-right: 10px;
+    margin-bottom: 0%;
+    font-weight: bold;
+}
+
+.barre-info a {
+    padding: 11px;
+}
+
+.barre-info a:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 3px;
+    width: 35px;
+    transform: translateX(-50%);
+    background-color: rgb(253, 195, 0);
+}
+
+
+/* Barre "En ce moment" (ecm) */
+
+.barre-ecm {
+    background-color: #F7F8FB;
+    padding: 15px;
+}
+
+.barre-ecm h2 {
+    font-size: 11px;
+    margin-bottom: 0%;
+    font-weight: bold;
+    color: #003D60;
+}
+
+.barre-ecm a {
+    padding: 10px;
+    font-size: 9px;
+    border: #00507D 2px solid;
+    border-radius: 25px;
+    padding: 4px 19px;
+    margin-left: 12px;
+    color: black;
+    background-color: #F7F8FB;
+}
+
+.barre-ecm a:hover {
+    background-color: #E3ECF3;
+}
+
+/* ----------------------------- Home (index.html) -------------------------------*/
+
+.home-index {
+    background-color: #F7F8FB;
+}
+
+
+/* Articles À la une ( articles 1, 2 et 3) */
+
+.articles-une {
+    padding-bottom: 30px;
+    border-bottom: #DDE5F3 solid 2px;
+}
+/* article 1 */
+
+h3 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 36px;
+    padding-top: 20px;
+    padding-bottom: 16px;
+    margin: 0;
+    color: #203442;
+}
+
+.article-1 {
+    max-width: 774px;
+}
+
+.home-index h5 {
+    font-size: 12px;
+    padding-top: 16px;
+    color: #0045AB;
+    text-transform: uppercase;
+}
+
+.article-1 h4 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 39px;
+    margin-bottom: 0;
+    color: #203442;
+}
+
+.article-1 .point {
+    color: #FDC300;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.time {
+    font-size: 12px;
+    font-weight: 400;
+    color: #203442;
+}
+
+.home-index .point::after {
+    content: "";
+    background-image: url("media/clock.svg");
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-bottom: -3px;
+    margin-right: 4px;
+}
+
+
+/* Article 2 et 3 */
+
+.article-2-3 {
+    margin-right: 0;
+    margin-top: 72px;
+
+}
+
+.article-2-3 img {
+    width: 258px;
+    height: 145px;
+
+}
+
+.article-2-3 h4 {
+    font-size: 16px;
+    line-height: 18px;
+    color: #203442;
+    font-weight: 700;
+}
+
+.point {
+    color: #FDC300;
+    font-size: 35px;
+    line-height: 25px;
+}
+
+.article-2 {
+    padding-bottom: 40px;
+}
+
+
+/* Articles secondaires */
+
+.articles-sec article  {
+    margin-top: 24px;
+    margin-right: 24px;
+    width: 246px;
+}
+
+.articles-sec h4 {
+    font-size: 16px;
+    line-height: 18px;
+    color: #203442;
+    font-weight: 700;
+}
+
+.articles-sec img {
+    width: 246px;
+}
+
+
+/* ------------------------ Footer/Pied de page du site ----------------------------- */
+
+.footer-rtbf {
+    padding-top: 15px;
+    background-color: #F7F8FB;
+}
+
+
+/* partie supérieur du footer */
+
+.footer-top {
+    background-color: #003D60;
+    border-radius: 8px;
+    max-width: 1270px;
+    font-size: 14px;
+    padding: 16px 32px;
+    margin: 16px;
+}
+
+.chaines {
+    width: 396px;
+    margin-right: 128px;
+}
+
+.chaines img {
+    padding-right: 24px;
+    box-sizing: content-box;
+}
+
+.auvio {
+    width: 86px;
+}
+
+.app {
+    width: 396px;
+    margin-right: 128px;
+}
+
+.app a {
+    width: 133px;
+}
+
+.app img {
+    width: 133px;
+    margin-right: 130px;
+}
+
+.r-s img {
+    width: 24px;
+    height: 24px;
+}
+
+.suivez-nous {
+    padding-bottom: 6px;
+    margin-right: 59px;
+    margin-bottom: 0;
+    color: #beccda;
+}
+
+.r-s-logos {
+    width: 136px;
+}
+
+
+/* Récapitulatif du site sous forme de listes */
+
+.footer-box {
+    border-bottom: #DDE5F3 solid 2px;
+    margin-left: 15px;
+}
+
+.footer-list {
+    margin-bottom: 12px;
+    padding: 0 4px;
+    width: 206px;
+}
+
+.footer-list h5 {
+    color: #174290;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 700;
+    margin: 2px 0px;
+    padding: 10px 8px 5px;
+}
+
+.footer-list a {
+    display: block;
+    margin: 2px 0px;
+    padding: 10px 8px;
+    font-size: 13px;
+    color: #174290;
+    height: 36px;
+}
+
+
+/* Copyright et mentions légales ... */
+
+.copyright {
+    padding: 10px 0px 0px;
+    font-size: 14px;
+    margin-bottom: 0;
+    margin-left: 15px;
+    color: #3E5463;
+    font-weight: 700;
+}
+
+.mentions a {
+    font-size: 14px;
+    width: 939px;
+    padding: 0px 8px 0 0;
+    color: #003D60;
+}
+
+.mentions {
+    padding-bottom: 36px;
+    margin-left: 15px;
+}
+
+
+/* ------------------------ Article (article.html) ----------------------------- */
+.home-art {
+    background-color:#F7F8FB ;
+}
+
+
+
+/* Wrapper : centre tout le contenu de la page article.html*/
+.wrapper-art {
+    background-color: #F7F8FB;
+    max-width: 720px;
+    margin: auto;
+}
+
+.container-art {
+    background-color: #F7F8FB;
+}
+
+.titre-art {
+    padding: 24px 12px 24px;
+}
+
+.titre-art h5 {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #0045AB;
+    text-transform: uppercase;
+}
+
+.titre-art h4 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 44px;
+    margin-bottom: 0;
+    color: #203442;
+}
+
+#img-article-1 {
+    width: 100%;
+}
+
+.publier .point {
+    color: #FDC300;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.publier .point::after {
+    content: "";
+    background-image: url("media/clock.svg");
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-bottom: -3px;
+    margin-right: 4px;
+}
+
+.credit {
+    font-size: 12px;
+    margin : 10px 0 0;
+}
+
+.publier {
+    margin-bottom: 4px;
+    color: #2E3238;
+}
+
+.auteur {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0057AA;
+    margin-bottom: 12px;
+}
+
+.infos-art {
+    padding-bottom: 8px;
+    border-bottom: #e5e7eb solid 2px;
+}
+
+
+/* Partager via les différents réseaux-sociaux */
+
+.partager img {
+    width: 20px;
+    height: 20px;
+}
+
+.partager a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partager p {
+    font-size: 12px;
+    margin: 0;
+    color: #0057A2;
+}
+
+.partager {
+    padding: 24px 0 48px;
+}
+
+/* Contenu de l'article */
+
+.texte p {
+    font-size: 16px;
+    line-height: 32px;
+    margin: 22px 0 0;
+}
+
+.texte {
+    padding-top: 12px;
+}
+
+.para-2 {
+    margin-top: 0px !important;
+}
+
+.texte h3 {
+    font-size: 28px;
+    font-weight: 800;
+    padding: 56px 0;
+}
+
+/* début de l'article avec grosse 1ere lettre */
+.para-1::first-letter {
+    font-size: 62px;
+    font-weight: 800;
+    float: left;
+    margin-right: 10px;
+    line-height: 1;
+}
+
+
+/* ------------------------ Profile (user.html) ----------------------------- */
+
+.home-user {
+    background-color:#F7F8FB ;
+}
+
+
+/* En tete de la page */
+
+.mon-profil img {
+    width: 70px;
+    text-align: start;
+    margin-right: 5px;
+}
+
+.mon-profil {
+    padding: 60px 0 0 ;
+    color: #00507D;
+}
+
+.mon-profil h1 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.mon-profil h2 {
+    font-size: 19px;
+    margin: 0;
+    color: #FDC300;
+}
+
+
+/* Le formulaire */
+
+.formulaire {
+    background-color:#003D60;
+    padding: 30px 15px;
+    margin: 30px 0;
+    color: white;
+    border-radius: 10px;
+}
+
+.formulaire label {
+    color: white;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.formulaire input {
+    width: 100%;
+    border-radius: 6px;
+    height: 38px;
+}
+
+.formulaire select {
+    height: 38px;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.formulaire div {
+    margin: 10px 0;
+}
+
+.genre {
+    width: auto !important;
+    margin-right: 5px;
+}
+
+#homme {
+    padding-right: 10px;
+    font-weight: 500;
+}
+
+#femme {
+    font-weight: 500;
+}
+
+.etoile {
+    color: #FDC300;
+}
+
+.home-user button {
+    height: 30px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.j-m-a label{
+    font-weight: 500;
+    margin: 0;
+}
+
+.j-m-a input {
+    width: auto;
+}
+
+.modif {
+    color: #0057AA;
+    border-style: none;
+    background-color: white;
+    margin-left: 15px;
+}
+
+.modif img {
+    width: 15px;
+    margin-bottom: 2px;
+}
+
+.modif:hover {
+    background-color: #FDC300;
+    color: white;
+}
+
+/* Boutons "Valider" et "Supprimer mon compte" */
+
+
+
+.valider {
+    color: black;
+    background-color: #FDC300;
+    border-style: none;
+    padding: 0 23px;
+}
+
+.supp {
+    color: #0057AA;
+    border-color: #0057AA;
+    border-width: 3px;
+    border-style: solid;
+    background-color: white;
+    padding: 0 23px;
+}
+
+.boutons-form {
+    padding: 0 0 20px;
+}
+
+.valider:hover {
+    background-color: black;
+    color: #FDC300;
+}
+
+.supp:hover {
+    background-color: #0057AA;
+    color: white;
+}
+
+
+/* ---------------- 1er LIVRABLE - IPDW ----------------------- */
+
+.star {
+    height: 18px !important;
+    width: 18px !important;
+    margin-bottom: 3px;
+}
+
+.bouton-circulaire {
+    margin: 5px 5px;
+    position: absolute;
+    width: 30px; /* Ajustez la taille du bouton circulaire */
+    height: 30px; /* Ajustez la taille du bouton circulaire */
+    border-radius: 50%; /* Forme le bouton en cercle */
+    border: none; /* Supprime les bordures */
+    background-color: #fff; /* Couleur de fond du bouton */
+    cursor: pointer; /* Curseur indiquant l'interactivité */
+}
+
+.bouton-circulaire:hover {
+    background-color: #FDC300;
+}
+
+.bouton-circulaire:active {
+    background-color: #003D60;
+}
+
+.list-favs {
+    padding: 10px 0;
+}
+
+.art-fav {
+    width: 100% !important;
+    height: auto !important;
+    margin: 3px 0 0 0 !important;
+    padding: 15px 15px 0 15px !important;
+    border-radius: 5px !important;
+    background-color: white !important;
+    color: #003D60 !important;
+}
+
+.art-fav p {
+    text-align: justify;
+}
+
+.arrow {
+    width: 50px;
+    margin: 10px 0 0 15px
+}
+
+.art-fav:hover {
+    background-color: #c9e7f9 !important;
+}
+
+#search-bar {
+    height: 28px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
