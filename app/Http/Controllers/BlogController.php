@@ -7,12 +7,11 @@ use App\Http\Requests\CreatePostRequest;
 
 class BlogController extends Controller
 {
-    public function index() {
-        $menus = Menu::all();
-        return view('blog.index')->with('menus', $menus)->with('posts', Post::all());
+    public function index(menu $menu, Post $post) {
+        return view('blog.index', ['post' => $post, 'menus' => $menu]);
     }
 
-    public function show(String $slug, Post $post) {
+    public function show(Post $post) {
         return view('blog.show', ['post' =>$post, 'menus' => menu::all()]);
     }
 
