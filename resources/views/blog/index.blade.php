@@ -18,9 +18,9 @@
 
                             <h3>À LA UNE</h3>
 
-                            <button class="bouton-circulaire"> <img src="/img/star-empty.png" alt="favorite" class="star"></button>
+                            <button @click="toggleFavorite(Post.id)" class="bouton-circulaire"> <img src="/img/star-empty.png" alt="favorite" class="star"></button>
 
-                            <a href="{{route('blog.show', ['slug' => $featuredPost->slug, 'post' => $featuredPost->id]) }}"><img src="/img/{{$featuredPost->slug}}{{$featuredPost->id}}.jpg" width="100%" alt={{$featuredPost->title}}></a>
+                            <a href="{{route('blog.show', ['slug' => $featuredPost->slug, 'post' => $featuredPost->id]) }}"><img src="/img/{{$featuredPost->slug}}{{$featuredPost->id}}.{{$featuredPost->extension}}" width="100%" alt={{$featuredPost->title}}></a>
 
                             <footer class="under-une container"> <!-- ajoute la légère marge à gauche pour ressembler au site officiel-->
                                 <h5>{{$featuredPost->categorie}}</h5>
@@ -40,7 +40,7 @@
                                 <button class="bouton-circulaire"><img src="/img/star-empty.png" alt="favorite" class="star"></button>
 
                                 <a class="text-lg-start text-center d-flex flex-column align-items-center align-items-lg-start" href="#">
-                                    <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}"><img src="/img/{{$post->slug}}{{$post->id}}.jpeg" width="100%" alt={{$post->title}}></a>
+                                    <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}"><img src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" width="100%" alt={{$post->title}}></a>
                                     <h5>{{$post->categorie}}</h5>
                                     <h4>{{$post->titleArt}}</h4>
                                     <span class="time">il y a 60 minutes<span class="point"> . </span>2 min</span>
@@ -60,8 +60,8 @@
 
                             <button class="bouton-circulaire"> <img src="/img/star-empty.png" alt="favorite" class="star"></button>
 
-                            <a href="#">
-                                <img src="/img/{{$post->slug}}{{$post->id}}.jpg" alt="{{$post->title}}">
+                            <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}">
+                                <img src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt="{{$post->title}}">
                                 <h5>{{$post->categorie}}</h5>
                                 <h4>{{$post->titleArt}}</h4>
                                 <span class="time">il y a 2 heures<span class="point"> . </span>3 min</span>

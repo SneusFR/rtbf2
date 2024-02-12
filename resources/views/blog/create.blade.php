@@ -16,6 +16,12 @@
             @enderror
         </div>
         <div>
+            <input type="text" name="titleArt" value={{old('titleArt',"Titre article")}}>
+            @error("titleArt")
+            {{$message}}
+            @enderror
+        </div>
+        <div>
             <textarea name="content"> {{old('content', 'mon contenue')}}</textarea>
             @error("content")
             {{$message}}

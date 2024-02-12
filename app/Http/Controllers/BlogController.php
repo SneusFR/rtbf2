@@ -53,6 +53,8 @@ class BlogController extends Controller
 
     public function store(CreatePostRequest $request) {
         // Créer un nouvel enregistrement de modèle Post avec les données validées
+
+
         $post = Post::create($request->validated());
 
 // Vérifier si un fichier image a été téléchargé
@@ -65,6 +67,14 @@ class BlogController extends Controller
 
             // Stocker l'image avec le nom de fichier spécifié
             $path = $image->storeAs('', $filename, 'custom');
+
+            $extension = $image->getClientOriginalExtension();
+
+            // Stocker l'extension dans le modèle Post
+            $post->extension = $extension;
+
+            // Sauvegarder le modèle Post avec l'extension mise à jour
+            $post->save();
 
         }
 

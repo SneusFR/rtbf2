@@ -27,6 +27,7 @@ class CreatePostRequest extends FormRequest
         return [
             'title' => ['required', 'min:8'],
             'image' => ['image', 'required'],
+            'titleArt' => ['required'],
             'slug' => ['required', 'min:8', 'regex:/^[0-9a-z\-]+$/', Rule::unique('posts')->ignore($this->post)],
             'content' => ['required']
 

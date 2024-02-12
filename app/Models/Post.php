@@ -12,6 +12,13 @@ class Post extends Model
     protected $fillable = [
         'title',
         'slug',
+        'titleArt',
         'content'
     ];
+
+    public function favoritedBy()
+    {
+        return $this->belongsToMany(User::class, 'favorite_post_user', 'post_id', 'user_id')->withTimestamps();
+    }
+
 }
