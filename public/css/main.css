@@ -212,7 +212,7 @@ h3 {
 
 .home-index .point::after {
     content: "";
-    background-image: url("media/clock.svg");
+    background-image: url("/img/clock.svg");
     display: inline-block;
     width: 16px;
     height: 16px;
@@ -443,7 +443,7 @@ h3 {
 
 .publier .point::after {
     content: "";
-    background-image: url("media/clock.svg");
+    background-image: url("/img/clock.svg");
     display: inline-block;
     width: 16px;
     height: 16px;

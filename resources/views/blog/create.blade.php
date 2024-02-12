@@ -1,12 +1,18 @@
 @extends('base')
 
 @section('content')
-    <form action="" method="post">
+    <form action="" method="post" class="vstack gap-2" enctype="multipart/form-data">
         @csrf
+        <div>
+            <input type="file" name="image">
+            @error("image")
+                {{$message}}
+            @enderror
+        </div>
         <div>
             <input type="text" name="title" value={{old('title',"Titre")}}>
             @error("title")
-                {{$message}}
+            {{$message}}
             @enderror
         </div>
         <div>

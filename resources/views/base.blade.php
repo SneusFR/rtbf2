@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RTBF.be - La référence de l'actualité belge et internationale - Accueil</title>
+    <title>RTBF.be - La référence de l'actualité belge et internationale - @yield('title')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,10 +28,22 @@
                     @endforeach
                 </div>
                 <div class="nav-top-right d-flex justify-content-center col-lg-2 col-12">
-                    <input id="search-bar" name="search-bar" type="text">
-                    <a href="#"><img src="/img/search.svg" alt="recherche"></a>
+                    <form method="GET" action="{{ route('blog.index') }}">
+                        @csrf <!-- Ajoutez ceci pour protéger contre les attaques CSRF -->
+                        <input id="search-bar" name="search" type="text" placeholder="Rechercher...">
+                        <button type="submit">
+                            <img src="/img/search.svg" alt="recherche">
+                        </button>
+                    </form>
                     <a href="#"><img src="/img/sun.svg" alt="météo"></a>
-                    <a href="user.html"><img src="/img/user.svg" alt="user"></a>
+
+                    @guest()
+                    <a href={{route('auth.login')}}><img src="/img/user.svg" alt="user"></a>
+                    @endguest
+                    @auth()
+                        <a href={{route('profile.profile')}}><img src="/img/user.svg" alt="user"></a>
+                    @endauth
+
                 </div>
             </section>
 
@@ -73,8 +85,10 @@
 
             <h2>EN CE MOMENT</h2>
             @foreach($menus as $menu)
-                @if($menu->fourthNav)
-                <a href="#">{{$menu->title}}</a>
+                @if($menu->fourthNav && $menu->red==null)
+                    <a href="#">{{$menu->title}}</a>
+                @elseif($menu->red)
+                    <a href="#">🔴{{$menu->title}}</a>
                 @endif
             @endforeach
 
@@ -94,4 +108,93 @@
 </div>
 
 </body>
+
+
+<footer class="footer-rtbf">
+    <div class="container">
+        <section class="footer-top d-flex flex-column flex-lg-row align-items-center">
+            <div class="chaines d-flex align-items-center justify-content-end justify-content-lg-start p-lg-0 p-3">
+                <a href="#"><img class="logo" src="/img/RTBF.svg" alt="rtbf"></a>
+                <a href="#"><img class="auvio" src="/img/Auvio.svg" alt="auvio"></a>
+            </div>
+
+            <div class="app d-flex align-items-center justify-content-lg-between justify-content-end p-lg-0 p-3">
+                <a href="#"><img src="/img/disponible-google-play.svg" alt="google play"></a>
+                <a href="#"><img src="/img/disponible-app-store.svg" alt="app store"></a>
+            </div>
+
+            <div class="r-s ">
+                <p class="suivez-nous">Suivez-nous</p>
+                <ul class="r-s-logos d-flex justify-content-between m-0 p-0">
+                    <a href="#"><img src="/img/facebook.svg" alt="facebook"></a>
+                    <a href="#"><img src="/img/twitter.svg" alt="twitter"></a>
+                    <a href="#"><img src="/img/linkedin.svg" alt="linkedin"></a>
+                </ul>
+            </div>
+        </section>
+
+        <nav class="footer-box d-flex flex-column flex-lg-row align-items-center align-items-lg-start w-100">
+            <div class="footer-list">
+                <h5>Thématiques</h5>
+                @foreach($footers as $footer)
+                    @if($footer->col == 1)
+                        <a href="#">{{$footer->title}}</a>
+                    @endif
+                @endforeach
+            </div>
+            <div class="footer-list">
+                <h5>Services</h5>
+                @foreach($footers as $footer)
+                    @if($footer->col == 2)
+                        <a href="#">{{$footer->title}}</a>
+                    @endif
+                @endforeach
+            </div>
+            <div class="footer-list">
+                <h5>L'Actu décryptée</h5>
+                @foreach($footers as $footer)
+                    @if($footer->col == 3)
+                        <a href="#">{{$footer->title}}</a>
+                    @endif
+                @endforeach
+            </div>
+            <div class="footer-list">
+                <h5>Radios</h5>
+                @foreach($footers as $footer)
+                    @if($footer->col == 4)
+                        <a href="#">{{$footer->title}}</a>
+                    @endif
+                @endforeach
+            </div>
+            <div class="footer-list">
+                <h5>Émissions</h5>
+                @foreach($footers as $footer)
+                    @if($footer->col == 5)
+                        <a href="#">{{$footer->title}}</a>
+                    @endif
+                @endforeach
+            </div>
+            <div class="footer-list">
+                <h5>Nous contacter</h5>
+                @foreach($footers as $footer)
+                    @if($footer->col == 6)
+                        <a href="#">{{$footer->title}}</a>
+                    @endif
+                @endforeach
+            </div>
+        </nav>
+
+        <p class="copyright">Copyright © 2023 RTBF</p>
+
+        <div class="mentions">
+            @foreach($footers as $footer)
+                @if($footer->col == 7)
+                    <a href="#">{{$footer->title}}</a>
+                    <span class="point"> . </span>
+                @endif
+            @endforeach
+        </div>
+    </div>
+</footer>
+
 </html>

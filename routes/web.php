@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Post;
 use App\Models\menu;
 use Illuminate\Http\Request;
@@ -30,13 +32,32 @@ Route::get('/', function () {
         view('welcome');
 });
 
+
+
+
 #RouteRacine
+Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function() {
+
+    Route::get('/login', 'login')->name('login');
+    Route::delete('/logout', 'logout')->name('logout');
+    Route::post('/login', 'doLogin');
+    Route::get('/register','register')->name('register');
+    Route::post('/register','doRegister');
+});
+
+
+Route::prefix('/blog')->name('profile.')->controller(ProfileController::class)->group(function() {
+
+    Route::get('/profile', 'mainProfile')->name('profile');
+});
+
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function() {
 
     Route::get('/', 'index')
         ->name('index');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
+
     Route::get('/{slug}-{post}', 'show')
         ->where([
             'post' => '[0-9]+',
