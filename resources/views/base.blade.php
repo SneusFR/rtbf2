@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/main.js"></script>
+
+
 </head>
 <body>
 
@@ -102,7 +105,14 @@
         <div class="alert alert-success">
             {{session('success')}}
         </div>
-    @endif
+
+
+    @elseif(session('fail'))
+            <div class="alert alert-danger">
+                {{session('fail')}}
+            </div>
+        @endif
+
 
     @yield('content')
 </div>

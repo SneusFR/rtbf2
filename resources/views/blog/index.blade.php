@@ -17,8 +17,13 @@
                         <article class="article-1 col-lg-9 col-12">
 
                             <h3>À LA UNE</h3>
-
-                            <button @click="toggleFavorite(Post.id)" class="bouton-circulaire"> <img src="/img/star-empty.png" alt="favorite" class="star"></button>
+                            <form id="favoriteForm" action="" method="POST">
+                                @csrf
+                                <input type="hidden" name="post_id" value="{{$featuredPost->id}}">
+                                <button type="submit" class="bouton-circulaire">
+                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                                </button>
+                            </form>
 
                             <a href="{{route('blog.show', ['slug' => $featuredPost->slug, 'post' => $featuredPost->id]) }}"><img src="/img/{{$featuredPost->slug}}{{$featuredPost->id}}.{{$featuredPost->extension}}" width="100%" alt={{$featuredPost->title}}></a>
 
@@ -29,15 +34,19 @@
                             </footer>
                         </article>
 
-
-
                         <div class="article-2-3 col-lg-3 col-12">
 
                             @foreach($rightSidePosts as $post)
 
                             <article class="article-2">
 
-                                <button class="bouton-circulaire"><img src="/img/star-empty.png" alt="favorite" class="star"></button>
+                                <form id="favoriteForm" action="" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                                    <button type="submit" class="bouton-circulaire">
+                                        <img src="/img/star-empty.png" alt="favorite" class="star">
+                                    </button>
+                                </form>
 
                                 <a class="text-lg-start text-center d-flex flex-column align-items-center align-items-lg-start" href="#">
                                     <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}"><img src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" width="100%" alt={{$post->title}}></a>
@@ -58,7 +67,13 @@
 
                         <article class="article-4">
 
-                            <button class="bouton-circulaire"> <img src="/img/star-empty.png" alt="favorite" class="star"></button>
+                            <form id="favoriteForm" action="" method="POST">
+                                @csrf
+                                <input type="hidden" name="post_id" value="{{$post->id}}">
+                                <button type="submit" class="bouton-circulaire">
+                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                                </button>
+                            </form>
 
                             <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}">
                                 <img src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt="{{$post->title}}">

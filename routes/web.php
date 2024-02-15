@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\FavController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Post;
 use App\Models\menu;
@@ -36,6 +37,11 @@ Route::get('/', function () {
 
 
 #RouteRacine
+Route::prefix('/blog')->name('blog')->controller(FavController::class)->group(function() {
+    Route::post('/', 'toggleFavorite') ;
+    Route::get('/favorite', 'main_favorite') ;
+});
+
 Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function() {
 
     Route::get('/login', 'login')->name('login');
