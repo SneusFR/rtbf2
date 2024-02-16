@@ -45,7 +45,6 @@ class BlogController extends Controller
 
     public function create() {
         return view('blog.create', ['menus' => menu::all(), 'footers' => footer::all()]);
-
     }
 
     public function store(CreatePostRequest $request) {
@@ -78,4 +77,15 @@ class BlogController extends Controller
             return redirect()->route('blog.show', ['slug' => $post->slug, 'post' => $post->id])->with('success',
         "l'article a bien été sauvegardé");
     }
+
+    public function about()
+    {
+        return view('blog.about', ['menus' => menu::all(), 'footers' => footer::all()]);
+    }
+
+    public function search()
+    {
+        return view('blog.search', ['menus' => menu::all(), 'footers' => footer::all()]);
+    }
+
 }

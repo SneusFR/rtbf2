@@ -19,15 +19,17 @@ class AuthController extends Controller
 
     public function logout() {
         Auth::logout();
-       return redirect()->route('auth.login');
+       return redirect()->route('auth.login')->with('fail', "Vous êtes bien déconnecté");
     }
 
    public function doLogin(loginRequest $request) {
 
         $loginInfo = $request->validated();
         if(Auth::attempt($loginInfo)) {
+            $user = Auth::user(); // Obtenir l'utilisateur authentifié
+            $userName = $user->name.' '.$user->firstname; // Récupérer le nom de l'utilisateur
             $request->session()->regenerate();
-            return redirect()->route('blog.index');
+            return redirect()->route('blog.index')->with('success', "Vous êtes connecté en tant que $userName");
         }
 
         return redirect()->route('auth.login')->withErrors([

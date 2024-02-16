@@ -736,8 +736,28 @@ h3 {
     background-color: #c9e7f9 !important;
 }
 
+/* Page Recherche*/
+
+.h1rec {
+    font-size: 36px;
+    color: #203442;
+    font-weight: 800;
+    line-height: 36px;
+    padding-top: 30px;
+}
+
+.h4rec {
+    font-size: 21px;
+    line-height: 24px;
+    color: #203442;
+    font-weight: 600;
+}
+
 #search-bar {
-    height: 28px;
+    height: 40px;
     border-radius: 5px;
+    border-width: 1px;
     margin-top: 10px;
+    width: 100%;
+    background-color: #F8F8F7;
 }

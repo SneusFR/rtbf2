@@ -1,5 +1,3 @@
-@php use App\Models\favorite; @endphp
-
 @extends('base')
 
 @section('title')
@@ -9,6 +7,20 @@
 @section('content')
 
     <main class="home-index container">
+
+        <div class="container">
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+
+
+            @elseif(session('fail'))
+                <div class="alert alert-danger">
+                    {{session('fail')}}
+                </div>
+            @endif
+        </div>
 
         <div class="wrapper "> <!-- wrapper -->
 

@@ -59,6 +59,10 @@ Route::prefix('/blog')->name('profile.')->controller(ProfileController::class)->
 
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function() {
 
+
+    Route::get('/about', 'about')
+        ->name('about');
+    Route::get('/search','search')->name('search');
     Route::get('/', 'index')
         ->name('index');
     Route::get('/new', 'create')->name('create');

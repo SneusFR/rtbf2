@@ -1,4 +1,5 @@
-<!doctype html>
+@php use Illuminate\Support\Facades\Auth; @endphp
+    <!doctype html>
 <html lang="fr">
 <!DOCTYPE html>
 <html lang="fr">
@@ -6,7 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RTBF.be - La référence de l'actualité belge et internationale - @yield('title')</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
@@ -22,23 +24,30 @@
         <div class="container">
 
             <section class="nav-top d-flex align-items-center justify-content-between flex-wrap">
-                <div class=" nav-top-left d-flex justify-content-center col-lg-10 col-12 flex-wrap">
-                    <a href={{route('blog.index')}}><img class="logo" src="/img/RTBF.svg" alt="Logo" ></a>
-                        @foreach($menus as $menu)
-                            @if($menu->firstNav)
-                            <a class="nav-title" href="{{ ($menu->title == "MON CHOIX") ? route('blog.fav') : '#' }}">{{$menu->title}}</a>
+
+                <select id="mode" name="mode">
+                    <option>Dark mode</option>
+                    <option>Light mode</option>
+                </select>
+
+                <div class=" nav-top-left d-flex justify-content-center col-lg-8 col-12 flex-wrap">
+                    <a href={{route('blog.index')}}><img class="logo" src="/img/RTBF.svg" alt="Logo"></a>
+                    @foreach($menus as $menu)
+                        @if($menu->firstNav)
+                            <a class="nav-title" href="{{route($menu->routes)}}">{{$menu->title}}</a>
                         @endif
                     @endforeach
                 </div>
                 <div class="nav-top-right d-flex justify-content-center col-lg-2 col-12">
-                    <a href="#"><img src="/img/search.svg" alt="recherche"></a>
+                    <a href={{route('blog.search')}}><img src="/img/search.svg" alt="recherche"></a>
                     <a href="#"><img src="/img/sun.svg" alt="météo"></a>
 
                     @guest()
-                    <a href={{route('auth.login')}}><img src="/img/user.svg" alt="user"></a>
+                        <a href={{route('auth.login')}}><img src="/img/user.svg" alt="user"></a>
                     @endguest
                     @auth()
                         <a href={{route('profile.profile')}}><img src="/img/user.svg" alt="user"></a>
+                        <div class="test"> {{Auth::user()->name.' '.Auth::user()->firstname}}</div>
                     @endauth
 
                 </div>
@@ -48,7 +57,7 @@
                 <a class="menu" href="#">menu</a>
                 @foreach($menus as $menu)
                     @if($menu->secondNav)
-                    <a class="nav-title" href="index.html">{{$menu->title}}</a>
+                        <a class="nav-title" href="index.html">{{$menu->title}}</a>
                     @endif
                 @endforeach
 
@@ -64,12 +73,13 @@
 
     <!-- Barre de nav "INFO"-->
     <section class="barre-info ">
-        <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start"> <!-- wrapper -->
+        <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start">
+            <!-- wrapper -->
 
             <h1>Info</h1>
             @foreach($menus as $menu)
                 @if($menu->thirdNav)
-                <a class="nav-title" href="#">{{$menu->title}}</a>
+                    <a class="nav-title" href="#">{{$menu->title}}</a>
                 @endif
             @endforeach
 
@@ -78,7 +88,8 @@
 
     <!-- barre "En ce moment" (ecm)"-->
     <section class="barre-ecm">
-        <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start"> <!-- wrapper -->
+        <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start">
+            <!-- wrapper -->
 
             <h2>EN CE MOMENT</h2>
             @foreach($menus as $menu)
@@ -94,22 +105,7 @@
 
 </div>
 
-<div class="container">
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{session('success')}}
-        </div>
-
-
-    @elseif(session('fail'))
-            <div class="alert alert-danger">
-                {{session('fail')}}
-            </div>
-        @endif
-
-
-    @yield('content')
-</div>
+@yield('content')
 
 </body>
 
