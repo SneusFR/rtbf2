@@ -37,9 +37,9 @@ Route::get('/', function () {
 
 
 #RouteRacine
-Route::prefix('/blog')->name('blog')->controller(FavController::class)->group(function() {
+Route::prefix('/blog')->name('blog.')->controller(FavController::class)->group(function() {
     Route::post('/', 'toggleFavorite') ;
-    Route::get('/favorite', 'main_favorite') ;
+    Route::get('/favorite', 'main_favorite')->name('fav');
 });
 
 Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function() {

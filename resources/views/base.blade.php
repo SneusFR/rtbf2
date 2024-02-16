@@ -26,18 +26,12 @@
                     <a href={{route('blog.index')}}><img class="logo" src="/img/RTBF.svg" alt="Logo" ></a>
                         @foreach($menus as $menu)
                             @if($menu->firstNav)
-                            <a class="nav-title" href="#">{{$menu->title}}</a>
+                            <a class="nav-title" href="{{ ($menu->title == "MON CHOIX") ? route('blog.fav') : '#' }}">{{$menu->title}}</a>
                         @endif
                     @endforeach
                 </div>
                 <div class="nav-top-right d-flex justify-content-center col-lg-2 col-12">
-                    <form method="GET" action="{{ route('blog.index') }}">
-                        @csrf <!-- Ajoutez ceci pour protéger contre les attaques CSRF -->
-                        <input id="search-bar" name="search" type="text" placeholder="Rechercher...">
-                        <button type="submit">
-                            <img src="/img/search.svg" alt="recherche">
-                        </button>
-                    </form>
+                    <a href="#"><img src="/img/search.svg" alt="recherche"></a>
                     <a href="#"><img src="/img/sun.svg" alt="météo"></a>
 
                     @guest()

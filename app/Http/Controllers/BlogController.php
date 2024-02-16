@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\favorite;
 use App\Models\footer;
 use App\Models\menu;
 use App\Models\Post;
@@ -10,14 +11,12 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
     public function index(Request $request) {
+
         $menus = Menu::all();
         $footers = Footer::all();
         $posts = Post::query();
+        $favorite = favorite::all();
 
-        if ($search = $request->search) {
-            $posts->where('title', 'LIKE', '%' . $search . '%')
-                ->orWhere('content', 'LIKE', '%' . $search . '%');
-        }
 
         $posts = $posts->latest()->get();
 
@@ -35,7 +34,8 @@ class BlogController extends Controller
             ->with('featuredPost', $featuredPost)
             ->with('rightSidePosts', $rightSidePosts)
             ->with('bottomPosts', $bottomPosts)
-            ->with('footers', $footers);
+            ->with('footers', $footers)
+            ->with('favorite', $favorite);
     }
 
 
