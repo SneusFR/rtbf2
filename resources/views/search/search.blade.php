@@ -14,7 +14,10 @@
 
             <h4 class="h4rec">Recherchez parmi nos articles et publications</h4>
 
-            <input id="search-bar" placeholder="Rechercher un article, un sujet..." name="search-bar" type="text">
+            <form action="{{ route('blog.search') }}" method="POST">
+                @csrf
+                <input id="search-bar" placeholder="Rechercher un article, un sujet..." name="query" type="text" value="{{ old('query') }}">
+            </form>
 
             <div class="d-flex justify-content-center py-5">
 

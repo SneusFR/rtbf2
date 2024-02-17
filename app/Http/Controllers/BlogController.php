@@ -83,9 +83,4 @@ class BlogController extends Controller
         return view('blog.about', ['menus' => menu::all(), 'footers' => footer::all()]);
     }
 
-    public function search()
-    {
-        return view('blog.search', ['menus' => menu::all(), 'footers' => footer::all()]);
-    }
-
 }

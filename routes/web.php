@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\FavController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SearchController;
 use App\Models\Post;
 use App\Models\menu;
 use Illuminate\Http\Request;
@@ -42,6 +43,13 @@ Route::prefix('/blog')->name('blog.')->controller(FavController::class)->group(f
     Route::get('/favorite', 'main_favorite')->name('fav');
 });
 
+
+Route::prefix('/blog')->name('blog.')->controller(SearchController::class)->group(function() {
+    Route::get('/search','search')->name('search');
+    Route::post('/search','doSearch');
+    Route::post('/dosearch','doSearch');
+});
+
 Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function() {
 
     Route::get('/login', 'login')->name('login');
@@ -62,7 +70,6 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
 
     Route::get('/about', 'about')
         ->name('about');
-    Route::get('/search','search')->name('search');
     Route::get('/', 'index')
         ->name('index');
     Route::get('/new', 'create')->name('create');
