@@ -761,3 +761,54 @@ h3 {
     width: 100%;
     background-color: #F8F8F7;
 }
+
+/* ---------------- 2eme LIVRABLE - IPDW ----------------------- */
+
+/* Page de LOGIN*/
+
+.h1log {
+    font-size: 36px;
+    color: #203442;
+    font-weight: 800;
+    line-height: 36px;
+    padding: 15px 0px 10px;
+}
+
+.btn-reg {
+    background-color: #0D6EFD;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 7px 0;
+    margin-bottom: 33px;
+    margin-top: 3px;
+}
+
+.btn-reg:hover {
+    background-color: #0B5ED7;
+}
+
+
+/* Page de Profil */
+
+.h1prof {
+    font-size: 20px;
+    color: #203442;
+    font-weight: 800;
+    line-height: 36px;
+    padding: 15px 0px 10px;
+}
+
+.btn-deco {
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 20px;
+    text-align: center;
+    padding-bottom: 15px;
+    margin-bottom: 33px;
+    margin-top: 3px;
+}

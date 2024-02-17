@@ -25,7 +25,7 @@
 
         <div class="wrapper">
 
-           <h1>Se connecter</h1>
+           <h1 class="h1log">Se connecter</h1>
             <div class="card-body">
                <form action="" method="post" class="vstack gap-3">
 
@@ -40,16 +40,16 @@
                    </div>
 
                    <div class="form-group">
-                       <label for="password">password</label>
+                       <label for="password">Mot de passe</label>
                        <input type="password" class="form-control" id="password" name="password">
                        @error("password")
                        {{$message}}
                        @enderror
                    </div>
 
-                   <button class="btn btn-primary"> Se connecter </button>
+                   <button class="btn btn-primary mt-1" style="padding-bottom:27px"> Se connecter </button>
 
-                   <a href={{route('auth.register')}}>S'inscrire</a>
+                   <a class="btn-reg" href={{route('auth.register')}}>S'inscrire</a>
 
 
                </form>

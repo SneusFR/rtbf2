@@ -24,7 +24,6 @@
             <div class="d-flex justify-content-center py-5">
                 @foreach($posts as $post)
 
-
                 <article class="article-4">
 
                     <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}">

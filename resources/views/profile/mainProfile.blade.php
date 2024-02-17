@@ -10,12 +10,12 @@
 
         <div class="wrapper">
             @auth()
-                <h1>Vous êtes connecté en tant que {{ Auth::user()->firstname }} {{ Auth::user()->name }} comme {{ Auth::user()->rôle }}</h1>
+                <h1 class="h1prof">Vous êtes connecté en tant que {{ Auth::user()->firstname }} {{ Auth::user()->name }} comme {{ Auth::user()->rôle }}</h1>
 
                 <form class="nav-item" action="{{route('auth.logout')}}" method="post">
             @method('delete')
                 @csrf
-                <button class="nav-link">Se déconnecter</button>
+                <button class="btn-deco col-12">Se déconnecter</button>
             </form>
 
                 <div class="container mt-5">
