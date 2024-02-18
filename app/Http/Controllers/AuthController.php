@@ -60,6 +60,8 @@ class AuthController extends Controller
             // Ajoutez les autres champs de votre modèle User ici
         ]);
 
+        return redirect()->route('auth.login')->with('success', "Vous vous êtes bien inscris {$registerInfo['prénom']} !");
+
     }
 
 
