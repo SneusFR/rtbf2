@@ -37,6 +37,11 @@
                             <a class="nav-title" href="{{route($menu->routes)}}">{{$menu->title}}</a>
                         @endif
                     @endforeach
+                    @Auth
+                    @if (Auth::user()->rôle == "Admin")
+                        <a class="nav-title" href="{{route('blog.create')}}">Publier</a>
+                    @endif
+                    @endauth
                 </div>
                 <div class="nav-top-right d-flex justify-content-center col-lg-2 col-12">
                     <a href={{route('blog.search')}}><img src="/img/search.svg" alt="recherche"></a>

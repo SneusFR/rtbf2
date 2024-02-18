@@ -431,10 +431,6 @@ h3 {
     color: #203442;
 }
 
-#img-article-1 {
-    width: 100%;
-}
-
 .publier .point {
     color: #FDC300;
     font-size: 20px;
@@ -821,4 +817,22 @@ h3 {
     font-weight: 800;
     line-height: 36px;
     padding: 15px 0 10px;
+}
+
+/*Page de Création d'article*/
+
+.crea-titre {
+    width: 100%;
+    font-size: 25px;
+}
+
+.crea-hook {
+    width: 100%;
+    font-size: 20px;
+    height: 150px;
+}
+
+.crea-content{
+    width: 100%;
+    height: 362px;
 }

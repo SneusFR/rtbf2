@@ -7,6 +7,7 @@ use App\Models\menu;
 use App\Models\Post;
 use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -50,7 +51,14 @@ class BlogController extends Controller
     public function store(CreatePostRequest $request) {
         // Créer un nouvel enregistrement de modèle Post avec les données validées
 
+        $auteur = Auth::user();
+
+        $alias = $auteur->name.' '.$auteur->firstname;
+
         $post = Post::create($request->validated());
+
+        // Stocker l'ateur dans le modèle Post
+        $post->auteur = $alias;
 
 // Vérifier si un fichier image a été téléchargé
         if ($request->hasFile('image')) {

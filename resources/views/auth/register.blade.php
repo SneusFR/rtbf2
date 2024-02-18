@@ -157,10 +157,10 @@
                     <label for="genre"> Genre <span class="etoile">*</span></label>
                     <br>
                     <div class="d-flex align-items-center m-0">
-                        <input class="genre" name="genre" id="homme" type="radio">
+                        <input class="genre" name="genre" value="homme" type="radio">
                         <label class=" m-0" id="homme" for="homme"> Homme </label>
 
-                        <input class="genre" name="genre" id="femme" type="radio">
+                        <input class="genre" name="genre"  value="femme" type="radio">
                         <label class="m-0" id="femme" for="femme"> Femme</label>
                     </div>
 

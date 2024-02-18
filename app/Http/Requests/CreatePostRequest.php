@@ -30,7 +30,8 @@ class CreatePostRequest extends FormRequest
             'titleArt' => ['required'],
             'hook' => ['required'],
             'slug' => ['required', 'min:8', 'regex:/^[0-9a-z\-]+$/', Rule::unique('posts')->ignore($this->post)],
-            'content' => ['required']
+            'content' => ['required'],
+            'auteur'=> ['required']
 
         ];
     }

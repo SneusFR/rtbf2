@@ -18,7 +18,7 @@
             <section>
                 <button class="bouton-circulaire"> <img src="/img/star-empty.png" alt="favorite" class="star"></button>
 
-                <img id={{$post->slug}} src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt={{$post->title}}>
+                <img class="w-100" id={{$post->slug}} src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt={{$post->title}}>
             </section>
 
 

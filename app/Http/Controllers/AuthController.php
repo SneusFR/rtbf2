@@ -43,7 +43,6 @@ class AuthController extends Controller
 
     public function doRegister(RegisterRequest $request)
     {
-
         $registerInfo = $request->validated();
 
         // Créer un nouvel utilisateur avec les données postées
@@ -52,11 +51,14 @@ class AuthController extends Controller
             'password' => bcrypt($registerInfo['password']), // Assurez-vous de hasher le mot de passe
             'name' => $registerInfo['nom'],
             'firstname' =>$registerInfo['prénom'],
-            'Adresse' => $registerInfo['adresse'],
-            'CP' => $registerInfo['cp'],
-            'rôle' => $registerInfo['rôle'],
-            'Ville' => $registerInfo['ville'],
-            'numTel' => $registerInfo['tel'],
+            'adresse' => $registerInfo['adresse'],
+            'cp' => $registerInfo['cp'],
+            'rôle' => $registerInfo['rôle'] ?? 'Guest',
+            'ville' => $registerInfo['ville'],
+            'tel' => $registerInfo['tel'],
+            'pref' => $registerInfo['pref'],
+            'genre' => $registerInfo['genre'],
+
             // Ajoutez les autres champs de votre modèle User ici
         ]);
 

@@ -32,6 +32,7 @@ class RegisterRequest extends FormRequest
             'cp' => 'nullable|numeric|min:1000',
             'ville' => 'nullable|string',
             'pays' => 'nullable|string',
+            'pref'=> 'nullable',
             'tel' => 'nullable|string',
             'rôle' => 'nullable|string',
             'genre' => 'nullable|string'
