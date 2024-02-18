@@ -22,14 +22,15 @@
                     <h2 class="h2prof">Panel {{Auth::user()->rôle}}</h2>
                     <ul class="list-group">
 
-                        <li class="list-group-item">Changer vos informations personnelles</li>
-                        <li class="list-group-item">Choisir des articles à mettre dans votre panier de favoris</li>
-                        <li class="list-group-item">Effectuer une recherche à l'aide de la barre de recherche sur l'icône loupe</li>
+                        <li class="list-group-item li-prof"> <a href="{{route('auth.register')}}">Changer vos informations personnelles </a> </li>
+                        <li class="list-group-item li-prof"> <a href="{{route('blog.index')}}"> Choisir des articles à mettre dans votre panier de favoris</a> </li>
+                        <li class="list-group-item li-prof"> <a href="{{route('blog.search')}}"> Effectuer une recherche à l'aide de la barre de recherche sur l'icône loupe </a> </li>
                         @if (Auth::user()->rôle == "Admin")
-                            <li class="list-group-item">Vous balader sur votre profil administrateur</li>
-                            <li class="list-group-item">Créer de nouveaux articles</li>
-                            <li class="list-group-item">Updater un article déjà existant</li>
+                            <li class="list-group-item li-prof"> <a href="{{route('profile.profile')}}"> Vous balader sur votre profil administrateur </a> </li>
+                            <li class="list-group-item li-prof"> <a href="{{route('blog.create')}}"> Créer de nouveaux articles </a> </li>
+                            <li class="list-group-item li-prof"> <a href="{{route('blog.create')}}"> Updater un article déjà existant </a> </li>
                         @endif
+
                     </ul>
                 </div>
 

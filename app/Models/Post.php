@@ -15,7 +15,8 @@ class Post extends Model
         'titleArt',
         'hook',
         'content',
-        'auteur'
+        'auteur',
+        'categorie'
     ];
 
     public function favoritedBy()

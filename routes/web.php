@@ -40,6 +40,10 @@ Route::get('/', function () {
 #RouteRacine
 Route::prefix('/blog')->name('blog.')->controller(FavController::class)->group(function() {
     Route::post('/', 'toggleFavorite') ;
+    Route::post('/{slug}-{post}', 'toggleFavorite')->where([
+        'post' => '[0-9]+',
+        'slug' => '[a-z0-9\-]+']
+    );
     Route::get('/favorite', 'main_favorite')->name('fav');
 });
 
@@ -80,6 +84,8 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
             'post' => '[0-9]+',
             'slug' => '[a-z0-9\-]+'
         ])->name('show');
+
+
     Route::get('/{post}/{edit}', 'edit')->name('edit');
     Route::post('/{post}/{update}', 'edit')->name('edit');
 });

@@ -23,6 +23,7 @@ class SearchController extends Controller
         // Effectuer la recherche dans les titres et le contenu des articles
         $posts = Post::where('titleArt', 'like', '%' . $query . '%')
             ->orWhere('content', 'like', '%' . $query . '%')
+            ->orWhere('categorie', 'like', '%' . $query . '%')
             ->get();
 
         // Passer les résultats de recherche à la vue

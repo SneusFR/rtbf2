@@ -33,13 +33,21 @@
                     <form id="favoriteForm" action="" method="POST">
                         @csrf
                         <input type="hidden" name="post_id" value="{{$featuredPost->id}}">
-                        <button type="submit" class="bouton-circulaire">
                             @auth
-                                <img src="/img/{{ $featuredPost->isFavoritedByUser(Auth::id()) ? 'star-filled.svg' : 'star-empty.png' }}" alt="favorite" class="star">
-                            @else
-                                <img src="/img/star-empty.png" alt="favorite" class="star">
+                                @if($featuredPost->isFavoritedByUser(Auth::id()))
+                                    <button type="submit" class="bouton-circulaire-fav">
+                                        <img src="/img/star-filled.svg" alt="favorite" class="star">
+                                    </button>
+                                @else
+                                <button type="submit" class="bouton-circulaire-nofav">
+                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                                </button>
+                                @endif
                             @endauth
-                        </button>
+                            @guest
+                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                            @endguest
+
                     </form>
 
                     <a href="{{route('blog.show', ['slug' => $featuredPost->slug, 'post' => $featuredPost->id]) }}"><img
@@ -65,13 +73,20 @@
                             <form id="favoriteForm" action="" method="POST">
                                 @csrf
                                 <input type="hidden" name="post_id" value="{{$post->id}}">
-                                <button type="submit" class="bouton-circulaire">
-                                    @auth
-                                        <img src="/img/{{ $post->isFavoritedByUser(Auth::id()) ? 'star-filled.svg' : 'star-empty.png' }}" alt="favorite" class="star">
+                                @auth
+                                    @if($post->isFavoritedByUser(Auth::id()))
+                                        <button type="submit" class="bouton-circulaire-fav">
+                                            <img src="/img/star-filled.svg" alt="favorite" class="star">
+                                        </button>
                                     @else
-                                        <img src="/img/star-empty.png" alt="favorite" class="star">
-                                    @endauth
-                                </button>
+                                        <button type="submit" class="bouton-circulaire-nofav">
+                                            <img src="/img/star-empty.png" alt="favorite" class="star">
+                                        </button>
+                                    @endif
+                                @endauth
+                                @guest
+                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                                @endguest
                             </form>
 
                             <a class="text-lg-start text-center d-flex flex-column align-items-center align-items-lg-start"
@@ -99,13 +114,20 @@
                         <form id="favoriteForm" action="" method="POST">
                             @csrf
                             <input type="hidden" name="post_id" value="{{$post->id}}">
-                            <button type="submit" class="bouton-circulaire">
-                                @auth
-                                    <img src="/img/{{ $post->isFavoritedByUser(Auth::id()) ? 'star-filled.svg' : 'star-empty.png' }}" alt="favorite" class="star">
+                            @auth
+                                @if($post->isFavoritedByUser(Auth::id()))
+                                    <button type="submit" class="bouton-circulaire-fav">
+                                        <img src="/img/star-filled.svg" alt="favorite" class="star">
+                                    </button>
                                 @else
-                                    <img src="/img/star-empty.png" alt="favorite" class="star">
-                                @endauth
-                            </button>
+                                    <button type="submit" class="bouton-circulaire-nofav">
+                                        <img src="/img/star-empty.png" alt="favorite" class="star">
+                                    </button>
+                                @endif
+                            @endauth
+                            @guest
+                                <img src="/img/star-empty.png" alt="favorite" class="star">
+                            @endguest
                         </form>
 
                         <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}">

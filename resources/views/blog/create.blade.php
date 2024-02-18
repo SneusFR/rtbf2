@@ -20,6 +20,19 @@
                     {{$message}}
                     @enderror
                 </div>
+                <div class="crea-cate">
+                    <select name="categorie" class="crea-cate">
+                        <option>MONDE</option>
+                        <option>POLITIQUE</option>
+                        <option>SPORT</option>
+                        <option>DIVERTISSEMENT</option>
+                        <option>IXPÉ</option>
+                        <option>HISTOIRE</option>
+                        <option>FOOTBALL</option>
+                        <option>NBA</option>
+                        <option>DIVERS</option>
+                    </select>
+                </div>
                 <div>
                     <input class="crea-titre" type="text" name="titleArt" value={{old('titleArt',"titreArt")}}>
                     @error("titleArt")

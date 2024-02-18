@@ -16,7 +16,25 @@
             </div>
 
             <section>
-                <button class="bouton-circulaire"> <img src="/img/star-empty.png" alt="favorite" class="star"></button>
+                <form id="favoriteForm" action="" method="POST">
+                    @csrf
+                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                    @auth
+                        @if($post->isFavoritedByUser(Auth::id()))
+                            <button type="submit" class="bouton-circulaire-fav">
+                                <img src="/img/star-filled.svg" alt="favorite" class="star">
+                            </button>
+                        @else
+                            <button type="submit" class="bouton-circulaire-nofav">
+                                <img src="/img/star-empty.png" alt="favorite" class="star">
+                            </button>
+                        @endif
+                    @endauth
+                    @guest
+                        <img src="/img/star-empty.png" alt="favorite" class="star">
+                    @endguest
+                </form>
+
 
                 <img class="w-100" id={{$post->slug}} src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt={{$post->title}}>
             </section>

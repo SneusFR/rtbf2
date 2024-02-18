@@ -270,6 +270,7 @@ h3 {
 
 .articles-sec img {
     width: 246px;
+    height: 138.32px;
 }
 
 
@@ -686,7 +687,7 @@ h3 {
     margin-bottom: 3px;
 }
 
-.bouton-circulaire {
+.bouton-circulaire-nofav {
     margin: 5px 5px;
     position: absolute;
     width: 30px; /* Ajustez la taille du bouton circulaire */
@@ -697,12 +698,23 @@ h3 {
     cursor: pointer; /* Curseur indiquant l'interactivité */
 }
 
-.bouton-circulaire:hover {
+.bouton-circulaire-fav {
+    margin: 5px 5px;
+    position: absolute;
+    width: 30px; /* Ajustez la taille du bouton circulaire */
+    height: 30px; /* Ajustez la taille du bouton circulaire */
+    border-radius: 50%; /* Forme le bouton en cercle */
+    border: none; /* Supprime les bordures */
+    background-color: #FDC300; /* Couleur de fond du bouton */
+    cursor: pointer; /* Curseur indiquant l'interactivité */
+}
+
+.bouton-circulaire-nofav:hover {
     background-color: #FDC300;
 }
 
-.bouton-circulaire:active {
-    background-color: #003D60;
+.bouton-circulaire-fav:hover {
+    background-color: #FFFFFF;
 }
 
 .list-favs {
@@ -819,6 +831,10 @@ h3 {
     padding: 15px 0 10px;
 }
 
+.li-prof:hover{
+    color: #0057AA;
+}
+
 /*Page de Création d'article*/
 
 .crea-titre {
@@ -835,4 +851,8 @@ h3 {
 .crea-content{
     width: 100%;
     height: 362px;
+}
+
+.crea-cate {
+    width: 100%;
 }
