@@ -835,6 +835,11 @@ h3 {
     color: #0057AA;
 }
 
+.li-prof img{
+    height: 20px;
+    width: 20px;
+}
+
 /*Page de Création d'article*/
 
 .crea-titre {
