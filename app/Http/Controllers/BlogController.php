@@ -18,6 +18,8 @@ class BlogController extends Controller
         $posts = Post::query();
         $favorite = favorite::all();
 
+        $theme = $request->cookie('theme', 'light');
+
 
         $posts = $posts->latest()->get();
 
@@ -36,7 +38,8 @@ class BlogController extends Controller
             ->with('rightSidePosts', $rightSidePosts)
             ->with('bottomPosts', $bottomPosts)
             ->with('footers', $footers)
-            ->with('favorite', $favorite);
+            ->with('favorite', $favorite)
+            ->with('theme', $theme);
     }
 
 
@@ -88,6 +91,20 @@ class BlogController extends Controller
     public function about()
     {
         return view('blog.about', ['menus' => menu::all(), 'footers' => footer::all()]);
+    }
+
+    public function createAndUpdate(Request $request) {
+
+        $theme = $request->input('theme');
+
+
+        if($theme && in_array($theme, ['light', 'Dark'])) {
+
+            $cookie = cookie('theme', $theme, 60*24*365);
+
+            return back()->withCookie($cookie);
+
+        }
     }
 
 }

@@ -17,7 +17,7 @@
 
 
 </head>
-<body>
+<body class="{{$theme == 'Dark' ? 'bg-dark' : 'bg-light', 'bg-dark'}}">
 
 <header class="header-rtbf">
     <nav class="navigation">
@@ -26,10 +26,15 @@
 
             <section class="nav-top d-flex align-items-center justify-content-between flex-wrap">
 
-                <select class="mode" id="mode" name="mode">
-                    <option name="dark-mode">Dark mode</option>
-                    <option name="light-mode">Light mode</option>
-                </select>
+                <span class="navbar-text">
+                    <form action = "{{route ('blog.create-update')}}" method="post" class="d-flex">
+                        @csrf
+                        <input type="radio" name="theme" id="theme" value={{$theme == 'Dark' ? 'light' : 'Dark'}} class="btn-check" onchange="this.form.submit()">;
+                        <label for="theme" class="btn btn-secondary">
+                            <i class="">Mode</i>
+                        </label>
+                    </form>
+                </span>
 
                 <div class=" nav-top-left d-flex justify-content-center col-lg-8 col-12 flex-wrap">
                     <a href={{route('blog.index')}}><img class="logo" src="/img/RTBF.svg" alt="Logo"></a>
@@ -190,7 +195,7 @@
             </div>
         </nav>
 
-        <p class="copyright">Copyright © 2023 RTBF</p>
+        <p class="copyright"> {{$theme == 'Dark' ? 'bg-dark' : 'bg-light'}}</p>
 
         <div class="mentions">
             @foreach($footers as $footer)

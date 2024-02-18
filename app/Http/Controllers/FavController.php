@@ -31,6 +31,7 @@ class FavController extends Controller
 
     public function toggleFavorite(Request $request)
     {
+
         $user = auth()->user();
 
         if ($user) {

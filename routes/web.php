@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
@@ -77,6 +77,8 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
         ->name('about');
     Route::get('/', 'index')
         ->name('index');
+
+    Route::post('/cookie/create/update', 'createAndUpdate')->name('create-update');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
 
