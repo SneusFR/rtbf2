@@ -29,7 +29,7 @@
                     <span class="time">aujourd’hui à 02:00 - mise à jour il y a 11 minutes<span class="point"> . </span>5 min</span>
                 </section>
                 <section class="auteur">
-                    <p>Par Mehdi Chihi</p>
+                    <p>Par {{$post->auteur}}</p>
                 </section>
             </div>
 
