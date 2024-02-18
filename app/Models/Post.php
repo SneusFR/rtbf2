@@ -13,6 +13,7 @@ class Post extends Model
         'title',
         'slug',
         'titleArt',
+        'hook',
         'content'
     ];
 

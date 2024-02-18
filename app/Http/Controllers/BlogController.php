@@ -50,7 +50,6 @@ class BlogController extends Controller
     public function store(CreatePostRequest $request) {
         // Créer un nouvel enregistrement de modèle Post avec les données validées
 
-
         $post = Post::create($request->validated());
 
 // Vérifier si un fichier image a été téléchargé
