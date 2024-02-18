@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CustomController;
 use App\Http\Controllers\FavController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
@@ -39,7 +40,7 @@ Route::get('/', function () {
 
 #RouteRacine
 Route::prefix('/blog')->name('blog.')->controller(FavController::class)->group(function() {
-    Route::post('/', 'toggleFavorite') ;
+    Route::post('/', 'toggleFavorite');
     Route::post('/{slug}-{post}', 'toggleFavorite')->where([
         'post' => '[0-9]+',
         'slug' => '[a-z0-9\-]+']
@@ -89,4 +90,5 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
     Route::get('/{post}/{edit}', 'edit')->name('edit');
     Route::post('/{post}/{update}', 'edit')->name('edit');
 });
+
 

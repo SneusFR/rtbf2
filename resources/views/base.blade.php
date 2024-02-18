@@ -21,13 +21,14 @@
 
 <header class="header-rtbf">
     <nav class="navigation">
+
         <div class="container">
 
             <section class="nav-top d-flex align-items-center justify-content-between flex-wrap">
 
-                <select id="mode" name="mode">
-                    <option>Dark mode</option>
-                    <option>Light mode</option>
+                <select class="mode" id="mode" name="mode">
+                    <option name="dark-mode">Dark mode</option>
+                    <option name="light-mode">Light mode</option>
                 </select>
 
                 <div class=" nav-top-left d-flex justify-content-center col-lg-8 col-12 flex-wrap">
@@ -77,7 +78,7 @@
 <div class="container p-0">
 
     <!-- Barre de nav "INFO"-->
-    <section class="barre-info ">
+    <section class="barre-info">
         <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start">
             <!-- wrapper -->
 

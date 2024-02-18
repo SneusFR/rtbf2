@@ -861,3 +861,25 @@ h3 {
 .crea-cate {
     width: 100%;
 }
+
+/* Customisation*/
+
+.dark-navigation {
+    background-color: #000;
+}
+
+.dark-barre-info {
+    background-color: #0900003F;
+}
+
+.dark-footer-rtbf {
+    background-color: #0900003F;
+}
+
+.dark-footer-top {
+    background-color: #000;
+}
+
+.dark-footer-box {
+    color: white;
+}
