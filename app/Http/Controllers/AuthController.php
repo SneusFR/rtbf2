@@ -13,8 +13,11 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    public function login() {
-        return view('auth.login',['menus' => menu::all(), 'footers' => footer::all()]);
+    public function login(Request $request) {
+        $theme = $request->cookie('theme', 'light');
+
+
+        return view('auth.login',['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function logout() {

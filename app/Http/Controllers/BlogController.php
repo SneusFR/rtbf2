@@ -43,12 +43,14 @@ class BlogController extends Controller
     }
 
 
-    public function show(String $slug, Post $post) {
-        return view('blog.show', ['post' =>$post, 'menus' => menu::all(), 'footers' => footer::all()]);
+    public function show(String $slug, Post $post, Request $request) {
+        $theme = $request->cookie('theme', 'light');
+        return view('blog.show', ['post' =>$post, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
-    public function create() {
-        return view('blog.create', ['menus' => menu::all(), 'footers' => footer::all()]);
+    public function create(Request $request) {
+        $theme = $request->cookie('theme', 'light');
+        return view('blog.create', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function store(CreatePostRequest $request) {
@@ -88,9 +90,10 @@ class BlogController extends Controller
         "l'article a bien été sauvegardé");
     }
 
-    public function about()
+    public function about(Request $request)
     {
-        return view('blog.about', ['menus' => menu::all(), 'footers' => footer::all()]);
+        $theme = $request->cookie('theme', 'light');
+        return view('blog.about', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function createAndUpdate(Request $request) {

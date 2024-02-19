@@ -12,13 +12,15 @@ class FavController extends Controller
 {
 
 
-    public function main_favorite() {
+    public function main_favorite(Request $request) {
         $user = auth()->user();
+
+        $theme = $request->cookie('theme', 'light');
 
         if ($user) {
             $favoritePosts = $user->favoritePosts()->get();
             // Maintenant, $favoritePosts contient une collection de tous les articles favorisés par l'utilisateur
-            return view('fav.mainFavorite', ['favoritePosts' => $favoritePosts, 'menus' => menu::all(), 'footers' => footer::all()]);
+            return view('fav.mainFavorite', ['favoritePosts' => $favoritePosts, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
         }
 
         else {

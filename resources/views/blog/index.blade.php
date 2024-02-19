@@ -45,7 +45,10 @@
                                 @endif
                             @endauth
                             @guest
+                            <button type="submit" class="bouton-circulaire-nofav">
                                     <img src="/img/star-empty.png" alt="favorite" class="star">
+                            </button>
+
                             @endguest
 
                     </form>
@@ -85,7 +88,9 @@
                                     @endif
                                 @endauth
                                 @guest
-                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                                    <button type="submit" class="bouton-circulaire-nofav">
+                                        <img src="/img/star-empty.png" alt="favorite" class="star">
+                                    </button>
                                 @endguest
                             </form>
 
@@ -125,8 +130,11 @@
                                     </button>
                                 @endif
                             @endauth
+
                             @guest
-                                <img src="/img/star-empty.png" alt="favorite" class="star">
+                                <button type="submit" class="bouton-circulaire-nofav">
+                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                                </button>
                             @endguest
                         </form>
 

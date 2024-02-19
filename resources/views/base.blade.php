@@ -17,10 +17,10 @@
 
 
 </head>
-<body class="{{$theme == 'Dark' ? 'bg-dark' : 'bg-light', 'bg-dark'}}">
+<body>
 
 <header class="header-rtbf">
-    <nav class="navigation">
+    <nav class="{{$theme == 'Dark' ? 'dark_navigation' : 'navigation'}}">
 
         <div class="container">
 
@@ -83,7 +83,7 @@
 <div class="container p-0">
 
     <!-- Barre de nav "INFO"-->
-    <section class="barre-info">
+    <section class={{$theme == 'Dark' ? 'dark_barre-info' : 'barre-info'}}>
         <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start">
             <!-- wrapper -->
 

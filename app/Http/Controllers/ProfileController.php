@@ -13,8 +13,10 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function mainProfile() {
-        return view('profile.mainProfile', ['menus' => menu::all(), 'footers' => footer::all()]);
+    public function mainProfile(Request $request) {
+
+        $theme = $request->cookie('theme', 'light');
+        return view('profile.mainProfile', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
 }
