@@ -1156,6 +1156,14 @@ h3 {
     margin-right: 4px;
 }
 
+.dark-h1rec {
+    font-size: 36px;
+    color: #fff;
+    font-weight: 800;
+    line-height: 36px;
+    padding-top: 30px;
+}
+
 /*FOOTER DARK MODE*/
 
 .dark-footer-rtbf {

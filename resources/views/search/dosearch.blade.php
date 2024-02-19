@@ -10,7 +10,7 @@
 
         <div class="wrapper">
 
-            <H1 class="h1rec">RECHERCHE</H1>
+            <H1 class="{{$theme == 'Dark' ? 'dark-h1rec' : 'h1rec'}}">RECHERCHE</H1>
 
             <h4 class="h4rec">Recherchez parmi nos articles et publications</h4>
 
