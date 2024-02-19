@@ -9,6 +9,10 @@
 
         <div class="wrapper">
             <div class="list-favs row">
+                @if($favoritePosts->isEmpty())
+                    <h3 class="text-center pt-5 ">Aucun article en favori pour le moment.</h3>
+                @else
+                    <h3 class="pb-4">Vos articles préférés :</h3>
                 @foreach ($favoritePosts as $post)
                     <section class="col-lg-6 col-12">
                         <a class="art-fav d-flex" href="{{ route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}">
@@ -21,6 +25,7 @@
                         </a>
                     </section>
                 @endforeach
+                @endif
             </div>
         </div>
     </main>
