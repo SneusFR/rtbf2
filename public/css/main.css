@@ -1146,7 +1146,7 @@ h3 {
     color: #000;
 }
 
-.dark-home-index .point::after {
+.dark-article-search .point::after {
     content: "";
     background-image: url("/img/clock.svg");
     display: inline-block;
