@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <main class="home-index container">
+    <main class="{{$theme == 'Dark' ? 'dark-home-index' : 'home-index'}} container">
 
         <div class="container">
             @if(session('success'))

@@ -17,7 +17,7 @@
 
 
 </head>
-<body>
+<body class="{{$theme == 'Dark' ? 'dark-body' : 'body'}}">
 
 <header class="header-rtbf">
     <nav class="{{$theme == 'Dark' ? 'dark_navigation' : 'navigation'}}">
@@ -29,9 +29,14 @@
                 <span class="navbar-text">
                     <form action = "{{route ('blog.create-update')}}" method="post" class="d-flex">
                         @csrf
-                        <input type="radio" name="theme" id="theme" value={{$theme == 'Dark' ? 'light' : 'Dark'}} class="btn-check" onchange="this.form.submit()">;
-                        <label for="theme" class="btn btn-secondary">
-                            <i class="">Mode</i>
+                        <input class="btn-check" type="radio" name="theme" id="theme" value="{{$theme == 'Dark' ? 'light' : 'Dark'}}" onchange="this.form.submit()">
+                            @if($theme == 'Dark')
+                            <label for="theme" class="btn btn-secondary toggle-btn-dark">
+                                <i><img id="light" src="/img/light.svg"></i>
+                            @else
+                            <label for="theme" class="btn btn-secondary toggle-btn-light">
+                                <i><img id="dark" src="/img/moon.png"></i>
+                            @endif
                         </label>
                     </form>
                 </span>
@@ -98,7 +103,7 @@
     </section>
 
     <!-- barre "En ce moment" (ecm)"-->
-    <section class="barre-ecm">
+    <section class={{$theme == 'Dark' ? 'dark-barre-ecm' : 'barre-ecm'}}>
         <div class="wrapper d-flex align-items-center flex-wrap justify-content-center justify-content-lg-start">
             <!-- wrapper -->
 
@@ -121,9 +126,9 @@
 </body>
 
 
-<footer class="footer-rtbf">
+<footer class="{{$theme == 'Dark' ? 'dark-footer-rtbf' : 'footer-rtbf'}}">
     <div class="container">
-        <section class="footer-top d-flex flex-column flex-lg-row align-items-center">
+        <section class="{{$theme == 'Dark' ? 'dark-footer-top' : 'footer-top'}} d-flex flex-column flex-lg-row align-items-center">
             <div class="chaines d-flex align-items-center justify-content-end justify-content-lg-start p-lg-0 p-3">
                 <a href="#"><img class="logo" src="/img/RTBF.svg" alt="rtbf"></a>
                 <a href="#"><img class="auvio" src="/img/Auvio.svg" alt="auvio"></a>
@@ -145,7 +150,7 @@
         </section>
 
         <nav class="footer-box d-flex flex-column flex-lg-row align-items-center align-items-lg-start w-100">
-            <div class="footer-list">
+            <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Thématiques</h5>
                 @foreach($footers as $footer)
                     @if($footer->col == 1)
@@ -153,7 +158,7 @@
                     @endif
                 @endforeach
             </div>
-            <div class="footer-list">
+            <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Services</h5>
                 @foreach($footers as $footer)
                     @if($footer->col == 2)
@@ -161,7 +166,7 @@
                     @endif
                 @endforeach
             </div>
-            <div class="footer-list">
+            <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>L'Actu décryptée</h5>
                 @foreach($footers as $footer)
                     @if($footer->col == 3)
@@ -169,7 +174,7 @@
                     @endif
                 @endforeach
             </div>
-            <div class="footer-list">
+            <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Radios</h5>
                 @foreach($footers as $footer)
                     @if($footer->col == 4)
@@ -177,7 +182,7 @@
                     @endif
                 @endforeach
             </div>
-            <div class="footer-list">
+            <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Émissions</h5>
                 @foreach($footers as $footer)
                     @if($footer->col == 5)
@@ -185,7 +190,7 @@
                     @endif
                 @endforeach
             </div>
-            <div class="footer-list">
+            <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Nous contacter</h5>
                 @foreach($footers as $footer)
                     @if($footer->col == 6)
@@ -195,9 +200,9 @@
             </div>
         </nav>
 
-        <p class="copyright"> {{$theme == 'Dark' ? 'bg-dark' : 'bg-light'}}</p>
+        <p class="{{$theme == 'Dark' ? 'dark-copyright' : 'copyright'}}"> {{$theme == 'Dark' ? 'bg-dark' : 'bg-light'}} thème</p>
 
-        <div class="mentions">
+        <div class="{{$theme == 'Dark' ? 'dark-mentions' : 'mentions'}}">
             @foreach($footers as $footer)
                 @if($footer->col == 7)
                     <a href="#">{{$footer->title}}</a>
