@@ -1103,6 +1103,59 @@ h3 {
 .dark-home-user h2 {
     color: #FFFFFF;
 }
+
+/*PAGE SEARCH DARK MODE*/
+.dark-home-user h4 {
+    color: #FFFFFF;
+}
+
+.dark-home-user span {
+    color: #FFFFFF;
+}
+
+.dark-home-user .point::after {
+    content: "";
+    background-image: url("/img/clock-white.svg");
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-bottom: -3px;
+    margin-right: 4px;
+}
+
+/*PAGE DOSEARCH DARK MODE*/
+
+.dark-article-search {
+    background-color: #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.dark-article-search:hover {
+    background-color: #CADFEB;
+}
+
+.dark-article-search h4 {
+    color: #000;
+}
+
+.dark-article-search span.time {
+    color: #000;
+}
+
+.dark-home-index .point::after {
+    content: "";
+    background-image: url("/img/clock.svg");
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-bottom: -3px;
+    margin-right: 4px;
+}
+
 /*FOOTER DARK MODE*/
 
 .dark-footer-rtbf {
@@ -1202,3 +1255,16 @@ h3 {
     padding-left: 30px;
 }
 
+/*PAGE DOSEARCH*/
+
+.article-search {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+}
+
+.article-search:hover {
+    background-color: #CADFEB;
+}
