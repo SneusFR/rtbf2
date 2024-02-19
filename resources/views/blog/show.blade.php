@@ -6,16 +6,16 @@
 
 @section('content')
 
-    <main class="home-art container">
+    <main class="{{$theme == 'Dark' ? 'dark-home-art' : 'home-art'}} container">
 
-        <div class="wrapper-art">
+        <div class="{{$theme == 'Dark' ? 'dark-wrapper-art' : 'wrapper-art'}}">
 
             <div class="titre-art text-center">
                 <h5>{{$post->categorie}}</h5>
                 <h4><a href="article.html">{{$post->titleArt}}</a></h4>
             </div>
 
-            <section>
+            <section class="">
                 <form id="favoriteForm" action="" method="POST">
                     @csrf
                     <input type="hidden" name="post_id" value="{{$post->id}}">
@@ -34,7 +34,6 @@
                         <img src="/img/star-empty.png" alt="favorite" class="star">
                     @endguest
                 </form>
-
 
                 <img class="w-100" id={{$post->slug}} src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt={{$post->title}}>
             </section>

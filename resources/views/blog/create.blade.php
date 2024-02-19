@@ -2,14 +2,14 @@
 
 @section('content')
 
-    <main class="home-art container">
+    <main class="{{$theme == 'Dark' ? 'dark-home-art' : 'home-art'}} container">
 
         <div class="wrapper-art">
 
-            <form action="" method="post" class="form-crea vstack gap-2" enctype="multipart/form-data">
+            <form action="" method="post" class="{{$theme == 'Dark' ? 'dark-form-crea' : 'form-crea'}} vstack gap-2" enctype="multipart/form-data">
                 @csrf
                 <div class="crea-img">
-                    <input type="file" name="image">
+                    <input id="file-upload-button" type="file" name="image">
                     @error("image")
                         {{$message}}
                     @enderror
@@ -53,7 +53,9 @@
                     {{$message}}
                     @enderror
                 </div>
-                {{Auth::user()->name.' '.Auth::user()->firstname}}
+                <div>
+                    {{Auth::user()->name.' '.Auth::user()->firstname}}
+                </div>
                 <button class="btn btn-reg">Publier article</button>
             </form>
         </div>

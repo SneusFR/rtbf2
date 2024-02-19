@@ -158,6 +158,7 @@ a.menu {
 
 .home-index {
     background-color: #F7F8FB;
+    padding-bottom: 50px;
 }
 
 
@@ -401,6 +402,7 @@ h3 {
 /* ------------------------ Article (article.html) ----------------------------- */
 .home-art {
     background-color:#F7F8FB ;
+    padding-bottom: 50px;
 }
 
 
@@ -410,6 +412,10 @@ h3 {
     background-color: #F7F8FB;
     max-width: 720px;
     margin: auto;
+}
+
+.wrapper-art img {
+    max-height: 550px;
 }
 
 .container-art {
@@ -536,6 +542,7 @@ h3 {
 
 .home-user {
     background-color:#F7F8FB ;
+    padding-bottom: 50px;
 }
 
 
@@ -570,7 +577,7 @@ h3 {
 .formulaire {
     background-color:#003D60;
     padding: 30px 15px;
-    margin: 30px 0;
+    margin: 30px 0 0;
     color: white;
     border-radius: 10px;
 }
@@ -731,6 +738,7 @@ h3 {
     align-items: center;
     min-height: 75px;
     margin: 5px 0;
+    background-color: #F7F8FBB5;
 }
 
 .art-fav:hover {
@@ -741,8 +749,6 @@ h3 {
     width: 40px;
     height: 30px;
 }
-
-
 
 /* Page Recherche*/
 
@@ -842,6 +848,10 @@ h3 {
 
 /*Page de Création d'article*/
 
+#file-upload-button {
+    border: none;
+}
+
 .crea-titre {
     width: 100%;
     font-size: 25px;
@@ -856,18 +866,21 @@ h3 {
 .crea-content{
     width: 100%;
     height: 362px;
+    max-height: 362px;
 }
 
 .crea-cate {
     width: 100%;
 }
 
-/* Customisation Dark mode/ Light Mode*/
+/* Customisation Dark mode/ Light Mode-------------------------------------------------*/
 
 .dark-body {
     font-family: 'Montserrat', sans-serif;
     background-color: rgba(0, 0, 0, 0.49);
 }
+
+/*HEADER DARK MODE*/
 
 .dark_navigation {
     background-color: #000000;
@@ -951,8 +964,11 @@ h3 {
     color: #1C1919F4;
 }
 
+/*INDEX DARK MODE */
+
 .dark-home-index {
     background-color: #1C1919F4;
+    padding-bottom: 50px;
 }
 
 .dark-home-index h5 {
@@ -983,6 +999,111 @@ h3 {
     margin-bottom: -3px;
     margin-right: 4px;
 }
+
+.dark-home-art {
+    background-color:#1C1919F4 ;
+    padding-bottom: 50px;
+}
+
+.dark-home-user {
+    background-color:#1C1919F4 ;
+    color: #FFFFFF;
+    padding-bottom: 50px;
+}
+
+.dark-home-user h1 {
+    color: #FFFFFF;
+}
+
+.dark-home-user button {
+    height: 30px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/*PUBLIER DARK MODE*/
+
+.dark-form-crea {
+    background-color:#211E1E;
+}
+
+.dark-form-crea div {
+    background-color:#211E1E;
+    color: #FFFFFF;
+}
+
+.dark-form-crea input {
+    background-color:#211E1E;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.dark-form-crea select {
+    background-color:#211E1E;
+    color: white;
+}
+
+.dark-form-crea textarea {
+    background-color:#211E1E;
+    color: white;
+}
+
+/*ARTICLE DARK MODE*/
+
+.dark-wrapper-art {
+    background-color: #211E1E;
+    max-width: 720px;
+    margin: auto;
+}
+
+.dark-wrapper-art img {
+    max-height: 550px;
+}
+
+.dark-wrapper-art h4 {
+    color: #FFFFFF;
+}
+
+.dark-wrapper-art p {
+    color: #FFFFFF;
+}
+
+.dark-wrapper-art span {
+    color: #FFFFFF;
+}
+
+.dark-wrapper-art .point::after {
+    content: "";
+    background-image: url("/img/clock-white.svg");
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-bottom: -3px;
+    margin-right: 4px;
+}
+
+/*PAGE DE PROFIL DARK MODE*/
+
+.btn-deco {
+    background-color: white;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.btn-deco:hover{
+    background-color: grey;
+    border-color: #0057AA ;
+}
+
+.dark-home-user h2 {
+    color: #FFFFFF;
+}
+/*FOOTER DARK MODE*/
 
 .dark-footer-rtbf {
     padding-top: 15px;

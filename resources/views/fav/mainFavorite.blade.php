@@ -5,10 +5,9 @@
 @endsection
 
 @section('content')
-    <main class="home-user container">
+    <main class="{{$theme == 'Dark' ? 'dark-home-user' : 'home-user'}} container">
 
         <div class="wrapper">
-
             <div class="list-favs row">
                 @foreach ($favoritePosts as $post)
                     <section class="col-lg-6 col-12">

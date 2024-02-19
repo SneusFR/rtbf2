@@ -16,7 +16,6 @@ class AuthController extends Controller
     public function login(Request $request) {
         $theme = $request->cookie('theme', 'light');
 
-
         return view('auth.login',['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
@@ -40,8 +39,10 @@ class AuthController extends Controller
         ])->onlyInput('email');
    }
 
-   public function register () {
-        return view('auth.register', ['menus' => menu::all(), 'footers' => footer::all()]);
+   public function register (Request $request) {
+       $theme = $request->cookie('theme', 'light');
+
+        return view('auth.register', ['menus' => menu::all(), 'footers' => footer::all(),'theme' => $theme]);
 }
 
     public function doRegister(RegisterRequest $request)
