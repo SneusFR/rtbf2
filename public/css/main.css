@@ -721,32 +721,28 @@ h3 {
     background-color: #FFFFFF;
 }
 
-.list-favs {
-    padding: 10px 0;
-}
-
 .art-fav {
-    width: 100% !important;
-    height: auto !important;
-    margin: 3px 0 0 0 !important;
-    padding: 15px 15px 0 15px !important;
-    border-radius: 5px !important;
-    background-color: white !important;
-    color: #003D60 !important;
-}
-
-.art-fav p {
-    text-align: justify;
-}
-
-.arrow {
-    width: 50px;
-    margin: 10px 0 0 15px
+    text-align: center;
+    border-style: solid;
+    border-radius: 20px;
+    border-color: #0057AA;
+    font-weight: 600 ;
+    color: #003D60;
+    align-items: center;
+    min-height: 75px;
+    margin: 5px 0;
 }
 
 .art-fav:hover {
-    background-color: #c9e7f9 !important;
+    background-color: #c9e7f9;
 }
+
+#arrow {
+    width: 40px;
+    height: 30px;
+}
+
+
 
 /* Page Recherche*/
 
@@ -1077,3 +1073,11 @@ h3 {
 .toggle-btn-dark:hover {
     background-color: #003D60!important;
 }
+
+
+/* Affichage nom user connecté*/
+
+.id-user {
+    padding-left: 30px;
+}
+

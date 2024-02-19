@@ -11,7 +11,7 @@
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
     <script src="/js/main.js"></script>
 
@@ -33,11 +33,12 @@
                             @if($theme == 'Dark')
                             <label for="theme" class="btn btn-secondary toggle-btn-dark">
                                 <i><img id="light" src="/img/light.svg"></i>
+                            </label>
                             @else
                             <label for="theme" class="btn btn-secondary toggle-btn-light">
                                 <i><img id="dark" src="/img/moon.png"></i>
+                            </label>
                             @endif
-                        </label>
                     </form>
                 </span>
 
@@ -63,7 +64,7 @@
                     @endguest
                     @auth()
                         <a href={{route('profile.profile')}}><img src="/img/user.svg" alt="user"></a>
-                        <div class="test"> {{Auth::user()->name.' '.Auth::user()->firstname}}</div>
+                        <div class="id-user"> {{Auth::user()->name.' '.Auth::user()->firstname}}</div>
                     @endauth
 
                 </div>
@@ -73,11 +74,9 @@
                 <a class="menu" href="#">menu</a>
                 @foreach($menus as $menu)
                     @if($menu->secondNav)
-                        <a class="nav-title" href="index.html">{{$menu->title}}</a>
+                        <a class="nav-title" href="{{route($menu->routes)}}">{{$menu->title}}</a>
                     @endif
                 @endforeach
-
-
             </section>
 
         </div>
