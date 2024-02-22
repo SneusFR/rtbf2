@@ -21,31 +21,4 @@ class ProfileController extends Controller
         return view('profile.mainProfile', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
-    public function editProfile(Request $request) {
-        $theme = $request->cookie('theme', 'light');
-        return view('profile.edit', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
-    }
-
-    public function updateProfile(UpdatingRequest $request) {
-
-        $updateInfo = $request->validated();
-
-        // Créer un nouvel utilisateur avec les données postées
-        $user = Auth::user();
-
-            $user->name = $updateInfo['nom'];
-            $user->firstname = $updateInfo['prénom'];
-            $user->adresse = $updateInfo['adresse'];
-            $user->cp = $updateInfo['cp'];
-            $user->ville = $updateInfo['ville'];
-            $user->tel = $updateInfo['tel'];
-            $user->pref = $updateInfo['pref'];
-            $user->genre = $updateInfo['genre'];
-
-            $user->save();
-
-        return redirect()->route('profile.profile')->with('success', "Vous avez bien mis vos données à jour {$updateInfo['prénom']} !");
-
-    }
-
 }

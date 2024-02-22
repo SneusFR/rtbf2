@@ -642,7 +642,6 @@ h3 {
     color: #0057AA;
     border-style: none;
     background-color: white;
-    margin-left: 15px;
 }
 
 .modif img {
@@ -656,8 +655,6 @@ h3 {
 }
 
 /* Boutons "Valider" et "Supprimer mon compte" */
-
-
 
 .valider {
     color: black;
@@ -1279,4 +1276,15 @@ h3 {
 
 .article-search:hover {
     background-color: #CADFEB;
+}
+
+
+/*PAGE EDIT*/
+
+#edit-email:hover {
+    cursor:not-allowed;
+}
+
+#edit-role:hover {
+    cursor:not-allowed;
 }

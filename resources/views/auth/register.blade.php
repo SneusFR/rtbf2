@@ -34,14 +34,12 @@
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <label for="mdp">
+                    <label>
                         Mot de passe <span class="etoile">*</span>
                     </label>
 
                     <section class="mdp col-12 m-0 d-flex align-items-center">
                         <input placeholder="***********" id="password" name="password" type="password">
-
-                        <button class="modif col-3"> <img src="/img//modif bleu.svg"> Modifier</button>
                     </section>
                 </div>
 

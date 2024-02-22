@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -52,7 +53,7 @@ class AuthController extends Controller
         // Créer un nouvel utilisateur avec les données postées
         $user = User::create([
             'email' => $registerInfo['email'],
-            'password' => bcrypt($registerInfo['password']), // Assurez-vous de hasher le mot de passe
+            'password' => Hash::make($registerInfo['password']), // Assurez-vous de hasher le mot de passe
             'name' => $registerInfo['nom'],
             'firstname' =>$registerInfo['prénom'],
             'adresse' => $registerInfo['adresse'],

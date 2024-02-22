@@ -3,7 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CustomController;
-use App\Http\Controllers\FavController;
+ use App\Http\Controllers\EditController;
+ use App\Http\Controllers\FavController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Models\Post;
@@ -70,20 +71,28 @@ Route::prefix('/blog')->name('profile.')->controller(ProfileController::class)->
     Route::get('/profile', 'mainProfile')->name('profile');
     Route::get('/edit', 'editProfile')->name('edit');
     Route::post('/edit', 'updateProfile');
-    Route::get('/edit/password', 'editPassword')->name('edit.password');
-    Route::post('/edit/password', 'updatePassword');
+    Route::get('/password', 'editPassword')->name('password');
+    Route::post('/password', 'updatePassword');
 
 
 });
 
+
+ Route::prefix('/blog')->name('edit.')->controller(EditController::class)->group(function() {
+
+     Route::get('/edit', 'editProfile')->name('edit');
+     Route::post('/edit', 'updateProfile');
+     Route::get('/password', 'editPassword')->name('password');
+     Route::post('/password', 'updatePassword');
+
+ });
+
+
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function() {
 
 
-    Route::get('/about', 'about')
-        ->name('about');
-    Route::get('/', 'index')
-        ->name('index');
-
+    Route::get('/about', 'about')->name('about');
+    Route::get('/', 'index')->name('index');
     Route::post('/cookie/create/update', 'createAndUpdate')->name('create-update');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');

@@ -36,7 +36,7 @@
                     <h2 class="h2prof">Panel {{Auth::user()->role}}</h2>
                     <ul class="list-group">
 
-                        <li class="list-group-item li-prof"> <a href="{{route('profile.edit')}}">Changer vos informations personnelles <img src="/img/user_black.svg"> </a> </li>
+                        <li class="list-group-item li-prof"> <a href="{{route('edit.edit')}}">Changer vos informations personnelles <img src="/img/user_black.svg"> </a> </li>
                         <li class="list-group-item li-prof"> <a href="{{route('blog.index')}}"> Choisir des articles à mettre dans votre panier de favoris <img src="/img/star-filled.svg"></a> </li>
                         <li class="list-group-item li-prof"> <a href="{{route('blog.search')}}"> Effectuer une recherche à l'aide de la barre de recherche sur l'icône <img src="/img/search_black.svg"> </a> </li>
                         @if (Auth::user()->role == "Admin")

@@ -1,13 +1,27 @@
 @extends('base')
 
 @section('title')
-    Modifier vos informations personnelles
+    Modifiez vos informations personnelles
 @endsection
 
 @section('content')
 
 @auth()
     <main class="{{$theme == 'Dark' ? 'dark-home-user' : 'home-user'}} container">
+
+        <div class="container">
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+
+
+            @elseif(session('fail'))
+                <div class="alert alert-danger">
+                    {{session('fail')}}
+                </div>
+            @endif
+        </div>
 
         <div class="wrapper">
 
@@ -31,7 +45,7 @@
                         Email <span class="etoile">*</span>
                     </label>
                     <br>
-                    <input value="{{Auth::user()->email}}" readonly id="email" name="email" type="email">
+                    <input value="{{Auth::user()->email}}" readonly id="edit-email" name="email" type="email">
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -39,11 +53,12 @@
                         Mot de passe <span class="etoile">*</span>
                     </label>
 
-                    <section class="mdp col-12 m-0 d-flex align-items-center">
-                        <input placeholder="***********" id="password" name="password" type="password">
-
-                        <button class="modif col-3"> <img src="/img//modif bleu.svg"> Modifier</button>
+                    <section class="mdp col-12 m-0">
+                        <a href="{{ route('edit.password') }}">
+                            <button type="button" class="modif col-12"><img src="/img//modif bleu.svg"> Modifier</button>
+                        </a>
                     </section>
+
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -91,7 +106,7 @@
                         rôle
                     </label>
                     <br>
-                    <input value="{{Auth::user()->role}}" readonly id="rôle" name="rôle" type="rôle">
+                    <input value="{{Auth::user()->role}}" readonly id="edit-role" name="rôle" type="rôle">
                 </div>
 
 
