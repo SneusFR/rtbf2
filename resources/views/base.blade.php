@@ -50,7 +50,7 @@
                         @endif
                     @endforeach
                     @Auth
-                    @if (Auth::user()->rôle == "Admin")
+                    @if (Auth::user()->role == "Admin")
                         <a class="nav-title" href="{{route('blog.create')}}">Publier</a>
                     @endif
                     @endauth

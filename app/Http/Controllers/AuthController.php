@@ -57,7 +57,7 @@ class AuthController extends Controller
             'firstname' =>$registerInfo['prénom'],
             'adresse' => $registerInfo['adresse'],
             'cp' => $registerInfo['cp'],
-            'rôle' => $registerInfo['rôle'] ?? 'Guest',
+            'role' => $registerInfo['rôle'] ?? 'Guest',
             'ville' => $registerInfo['ville'],
             'tel' => $registerInfo['tel'],
             'pref' => $registerInfo['pref'],

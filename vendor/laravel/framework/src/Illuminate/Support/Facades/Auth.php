@@ -36,6 +36,8 @@ use RuntimeException;
  */
 class Auth extends Facade
 {
+    const user = 0 ;
+
     /**
      * Get the registered name of the component.
      *

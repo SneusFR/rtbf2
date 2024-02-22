@@ -68,6 +68,12 @@ Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(
 Route::prefix('/blog')->name('profile.')->controller(ProfileController::class)->group(function() {
 
     Route::get('/profile', 'mainProfile')->name('profile');
+    Route::get('/edit', 'editProfile')->name('edit');
+    Route::post('/edit', 'updateProfile');
+    Route::get('/edit/password', 'editPassword')->name('edit.password');
+    Route::post('/edit/password', 'updatePassword');
+
+
 });
 
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function() {
