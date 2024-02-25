@@ -93,7 +93,7 @@ class BlogController extends Controller
     public function about(Request $request)
     {
         $theme = $request->cookie('theme', 'light');
-        return view('blog.about', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+        return view('static.about', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function createAndUpdate(Request $request) {

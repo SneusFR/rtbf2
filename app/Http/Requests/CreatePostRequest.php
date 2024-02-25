@@ -25,11 +25,10 @@ class CreatePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'min:8'],
             'image' => ['image', 'required'],
             'titleArt' => ['required'],
             'hook' => ['required'],
-            'slug' => ['required', 'min:8', 'regex:/^[0-9a-z\-]+$/', Rule::unique('posts')->ignore($this->post)],
+            'slug' => ['required', 'min:8', 'regex:/^[0-9a-z\-,:]+$/', Rule::unique('posts')->ignore($this->post)],
             'content' => ['required'],
             'categorie'=>['required']
         ];
@@ -38,7 +37,7 @@ class CreatePostRequest extends FormRequest
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug'=> $this->input('slug') ?: \Str::slug($this->input('title'))
+            'slug'=> $this->input('slug') ?: \Str::slug($this->input('titleArt'))
         ]);
     }
 }

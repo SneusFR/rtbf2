@@ -1,4 +1,4 @@
-@extends('base')
+@extends('template.base')
 
 @section('content')
 
@@ -12,12 +12,6 @@
                     <input id="file-upload-button" type="file" name="image">
                     @error("image")
                         {{$message}}
-                    @enderror
-                </div>
-                <div>
-                    <input class="crea-titre" type="text" name="title" value={{old('title',"Titre")}}>
-                    @error("title")
-                    {{$message}}
                     @enderror
                 </div>
                 <div class="crea-cate">

@@ -23,24 +23,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
-//    $menu = new menu();
-//    $menu->title = "à PROPOS";
-//    $menu->firstNav = true;
-//    $menu->save();
-//
-    return menu::all();
-
-    return Post::all();
-        view('welcome');
-});
 
 
 
 
-#RouteRacine
-Route::prefix('/blog')->name('blog.')->controller(FavController::class)->group(function() {
+
+
+
+
+Route::prefix('/')->name('blog.')->controller(FavController::class)->group(function() {
     Route::post('/', 'toggleFavorite');
     Route::post('/{slug}-{post}', 'toggleFavorite')->where([
         'post' => '[0-9]+',
@@ -50,14 +41,13 @@ Route::prefix('/blog')->name('blog.')->controller(FavController::class)->group(f
 });
 
 
-Route::prefix('/blog')->name('blog.')->controller(SearchController::class)->group(function() {
+Route::prefix('/')->name('blog.')->controller(SearchController::class)->group(function() {
     Route::get('/search','search')->name('search');
     Route::post('/search','doSearch');
     Route::post('/dosearch','doSearch');
 });
 
-Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(function() {
-
+Route::prefix('/')->name('auth.')->controller(AuthController::class)->group(function() {
     Route::get('/login', 'login')->name('login');
     Route::delete('/logout', 'logout')->name('logout');
     Route::post('/login', 'doLogin');
@@ -66,8 +56,7 @@ Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group(
 });
 
 
-Route::prefix('/blog')->name('profile.')->controller(ProfileController::class)->group(function() {
-
+Route::prefix('/')->name('profile.')->controller(ProfileController::class)->group(function() {
     Route::get('/profile', 'mainProfile')->name('profile');
     Route::get('/edit', 'editProfile')->name('edit');
     Route::post('/edit', 'updateProfile');
@@ -78,8 +67,7 @@ Route::prefix('/blog')->name('profile.')->controller(ProfileController::class)->
 });
 
 
- Route::prefix('/blog')->name('edit.')->controller(EditController::class)->group(function() {
-
+ Route::prefix('/')->name('edit.')->controller(EditController::class)->group(function() {
      Route::get('/edit', 'editProfile')->name('edit');
      Route::post('/edit', 'updateProfile');
      Route::get('/password', 'editPassword')->name('password');
@@ -88,22 +76,18 @@ Route::prefix('/blog')->name('profile.')->controller(ProfileController::class)->
  });
 
 
-Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function() {
-
+Route::prefix('/')->name('blog.')->controller(BlogController::class)->group(function() {
 
     Route::get('/about', 'about')->name('about');
     Route::get('/', 'index')->name('index');
     Route::post('/cookie/create/update', 'createAndUpdate')->name('create-update');
     Route::get('/new', 'create')->name('create');
     Route::post('/new', 'store');
-
-    Route::get('/{slug}-{post}', 'show')
+    Route::get('/article/{slug}-{post}', 'show')
         ->where([
             'post' => '[0-9]+',
             'slug' => '[a-z0-9\-]+'
         ])->name('show');
-
-
     Route::get('/{post}/{edit}', 'edit')->name('edit');
     Route::post('/{post}/{update}', 'edit')->name('edit');
 });
