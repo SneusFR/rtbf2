@@ -9,7 +9,7 @@ window.onload = () => {
     // On boucle sur les étoiles pour leur ajouter des écouteurs d'événéments
 
     for(star of stars) {
-        // on écoute le survol
+        // on écoute le survole
 
         star.addEventListener("mouseover", function() {
             resetStars();
