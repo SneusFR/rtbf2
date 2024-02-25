@@ -65,7 +65,7 @@
 
             <p>Pour modifier son profil utilisateur il faut se rendre sur le bonhomme en haut à droite de la navbar et cliquer sur "modifier mes info perso"</p>
 
-            <p>Pour créer un article il faut être connecté et cliquer sur le bouton "publier" se trouvant sur la navbar</p>
+            <p>Pour créer un article il faut être connecté en tant qu'admin et cliquer sur le bouton "publier" se trouvant sur la navbar</p>
 
             <p>Pour effectuer une recherche il faut se rendre sur l'icone loupe se trouvant en haut à droite de la navbar</p>
 

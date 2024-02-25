@@ -31,8 +31,9 @@
                         @endif
                     @endauth
                     @guest
-                        <img src="/img/star-empty.png" alt="favorite" class="star">
-                    @endguest
+                        <button type="submit" class="bouton-circulaire-nofav">
+                            <img src="/img/star-empty.png" alt="favorite" class="star">
+                        </button>                    @endguest
                 </form>
 
                 <img class="w-100" id={{$post->slug}} src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt={{$post->title}}>
