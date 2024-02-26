@@ -27,14 +27,14 @@ class EditController extends Controller
         // Update les données du User
         $user = Auth::user();
 
-        $user->name = $updateInfo['nom'];
-        $user->firstname = $updateInfo['prénom'];
-        $user->adresse = $updateInfo['adresse'];
-        $user->cp = $updateInfo['cp'];
-        $user->ville = $updateInfo['ville'];
-        $user->tel = $updateInfo['tel'];
-        $user->pref = $updateInfo['pref'];
-        $user->genre = $updateInfo['genre'];
+        $user->name_user = $updateInfo['nom'];
+        $user->firstname_user = $updateInfo['prénom'];
+        $user->adresse_user = $updateInfo['adresse'];
+        $user->cp_user = $updateInfo['cp'];
+        $user->ville_user = $updateInfo['ville'];
+        $user->tel_user = $updateInfo['tel'];
+        $user->pref_user = $updateInfo['pref'];
+        $user->genre_user = $updateInfo['genre'];
 
         $user->save();
 

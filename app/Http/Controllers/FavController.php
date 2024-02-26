@@ -43,7 +43,7 @@ class FavController extends Controller
             $user = auth()->user();
             $post = Post::findOrFail($postId);
 
-            if ($user->favoritePosts()->where('post_id', $postId)->exists()) {
+            if ($user->favoritePosts()->where('post_id_fav', $postId)->exists()) {
                 $user->favoritePosts()->detach($postId);
                 return redirect()->route('blog.index')->with('fail', "L'article a bien été retiré des favoris");
             }

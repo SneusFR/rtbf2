@@ -58,12 +58,18 @@ class BlogController extends Controller
 
         $auteur = Auth::user();
 
-        $alias = $auteur->name.' '.$auteur->firstname;
+        $alias = $auteur->name_user.' '.$auteur->firstname_user;
 
-        $post = Post::create($request->validated());
+        $post = Post::create([
+            'title_pos' => $request['title_pos'],
+            'hook_pos' => $request['hook_pos'],
+            'slug_pos' => $request['slug_pos'],
+            'content_pos' => $request['content_pos'],
+            'cate_pos' => $request['cate_pos'],
+            ]);
 
-        // Stocker l'ateur dans le modèle Post
-        $post->auteur = $alias;
+            // Stocker l'ateur dans le modèle Post
+        $post->aut_pos = $alias;
 
 // Vérifier si un fichier image a été téléchargé
         if ($request->hasFile('image')) {
@@ -71,7 +77,7 @@ class BlogController extends Controller
             $image = $request->file('image');
 
             // Construire le nom de fichier en utilisant le slug et l'id du post
-            $filename = $post->slug . '' . $post->id . '.' . $image->getClientOriginalExtension();
+            $filename = $post->slug_pos . '' . $post->id_pos . '.' . $image->getClientOriginalExtension();
 
             // Stocker l'image avec le nom de fichier spécifié
             $path = $image->storeAs('', $filename, 'custom');
@@ -79,14 +85,14 @@ class BlogController extends Controller
             $extension = $image->getClientOriginalExtension();
 
             // Stocker l'extension dans le modèle Post
-            $post->extension = $extension;
+            $post->ext_pos = $extension;
 
             // Sauvegarder le modèle Post avec l'extension mise à jour
             $post->save();
 
         }
 
-            return redirect()->route('blog.show', ['slug' => $post->slug, 'post' => $post->id])->with('success',
+            return redirect()->route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos])->with('success',
         "l'article a bien été sauvegardé");
     }
 

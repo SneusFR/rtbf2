@@ -66,7 +66,7 @@
                         Prénom <span class="etoile">*</span>
                     </label>
                     <br>
-                    <input value="{{Auth::user()->firstname}}" id="prénom" name="prénom" type="text">
+                    <input value="{{Auth::user()->firstname_user}}" id="prénom" name="prénom" type="text">
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -74,7 +74,7 @@
                         Nom <span class="etoile">*</span>
                     </label>
                     <br>
-                    <input value="{{Auth::user()->name}}" id="nom" name="nom" type="text">
+                    <input value="{{Auth::user()->name_user}}" id="nom" name="nom" type="text">
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -82,7 +82,7 @@
                         Adresse
                     </label>
                     <br>
-                    <input value="{{Auth::user()->adresse}}" id="adresse" name="adresse" type="text">
+                    <input value="{{Auth::user()->adresse_user}}" id="adresse" name="adresse" type="text">
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -90,7 +90,7 @@
                         Code Postal
                     </label>
                     <br>
-                    <input value="{{Auth::user()->cp}}" id="cp" name="cp" type="number" min="1000">
+                    <input value="{{Auth::user()->cp_user}}" id="cp" name="cp" type="number" min="1000">
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -98,7 +98,7 @@
                         Ville
                     </label>
                     <br>
-                    <input value="{{Auth::user()->ville}}" id="ville" name="ville" type="text">
+                    <input value="{{Auth::user()->ville_user}}" id="ville" name="ville" type="text">
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -106,7 +106,7 @@
                         rôle
                     </label>
                     <br>
-                    <input value="{{Auth::user()->role}}" readonly id="edit-role" name="rôle" type="rôle">
+                    <input value="{{Auth::user()->role_user}}" readonly id="edit-role" name="rôle" type="rôle">
                 </div>
 
 
@@ -164,7 +164,7 @@
                     <section class="p-0 col-9">
                         <label for="tel">Téléphone <span class="etoile">*</span></label>
                         <br>
-                        <input value="{{Auth::user()->tel}}" id="tel" name="tel" type="tel">
+                        <input value="{{Auth::user()->tel_user}}" id="tel" name="tel" type="tel">
                     </section>
 
                 </div>
@@ -174,7 +174,7 @@
                     <br>
                     <div class="d-flex align-items-center m-0">
 
-                        @if(Auth::user()->genre == "homme")
+                        @if(Auth::user()->genre_user == "homme")
                             <input class="genre" name="genre" value="homme" type="radio" checked>
                             <label class=" m-0" id="homme" for="homme"> Homme </label>
 

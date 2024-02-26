@@ -45,12 +45,12 @@
                 <div class=" nav-top-left d-flex justify-content-center col-lg-8 col-12 flex-wrap">
                     <a href={{route('blog.index')}}><img class="logo" src="/img/RTBF.svg" alt="Logo"></a>
                     @foreach($menus as $menu)
-                        @if($menu->firstNav)
-                            <a class="nav-title" href="{{route($menu->routes)}}">{{$menu->title}}</a>
+                        @if($menu->firstNav_menu)
+                            <a class="nav-title" href="{{route($menu->routes_menu)}}">{{$menu->title_menu}}</a>
                         @endif
                     @endforeach
                     @Auth
-                    @if (Auth::user()->role == "Admin")
+                    @if (Auth::user()->role_user == "Admin")
                         <a class="nav-title" href="{{route('blog.create')}}">Publier</a>
                     @endif
                     @endauth
@@ -64,7 +64,7 @@
                     @endguest
                     @auth()
                         <a href={{route('profile.profile')}}><img src="/img/user.svg" alt="user"></a>
-                        <div class="id-user"> {{Auth::user()->name.' '.Auth::user()->firstname}}</div>
+                        <div class="id-user"> {{Auth::user()->name_user.' '.Auth::user()->firstname_user}}</div>
                     @endauth
 
                 </div>
@@ -73,8 +73,8 @@
             <section class="nav-bot">
                 <a class="menu" href="#">menu</a>
                 @foreach($menus as $menu)
-                    @if($menu->secondNav)
-                        <a class="nav-title" href="{{route($menu->routes)}}">{{$menu->title}}</a>
+                    @if($menu->secondNav_menu)
+                        <a class="nav-title" href="{{route($menu->routes_menu)}}">{{$menu->title_menu}}</a>
                     @endif
                 @endforeach
             </section>
@@ -93,8 +93,8 @@
 
             <h1>Info</h1>
             @foreach($menus as $menu)
-                @if($menu->thirdNav)
-                    <a class="nav-title" href="#">{{$menu->title}}</a>
+                @if($menu->thirdNav_menu)
+                    <a class="nav-title" href="#">{{$menu->title_menu}}</a>
                 @endif
             @endforeach
 
@@ -108,10 +108,10 @@
 
             <h2>EN CE MOMENT</h2>
             @foreach($menus as $menu)
-                @if($menu->fourthNav && $menu->red==null)
-                    <a href="#">{{$menu->title}}</a>
-                @elseif($menu->red)
-                    <a href="#">🔴{{$menu->title}}</a>
+                @if($menu->fourthNav_menu && $menu->red_menu==null)
+                    <a href="#">{{$menu->title_menu}}</a>
+                @elseif($menu->red_menu)
+                    <a href="#">🔴{{$menu->title_menu}}</a>
                 @endif
             @endforeach
 
@@ -152,48 +152,48 @@
             <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Thématiques</h5>
                 @foreach($footers as $footer)
-                    @if($footer->col == 1)
-                        <a href="#">{{$footer->title}}</a>
+                    @if($footer->col_foot == 1)
+                        <a href="#">{{$footer->title_foot}}</a>
                     @endif
                 @endforeach
             </div>
             <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Services</h5>
                 @foreach($footers as $footer)
-                    @if($footer->col == 2)
-                        <a href="#">{{$footer->title}}</a>
+                    @if($footer->col_foot == 2)
+                        <a href="#">{{$footer->title_foot}}</a>
                     @endif
                 @endforeach
             </div>
             <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>L'Actu décryptée</h5>
                 @foreach($footers as $footer)
-                    @if($footer->col == 3)
-                        <a href="#">{{$footer->title}}</a>
+                    @if($footer->col_foot == 3)
+                        <a href="#">{{$footer->title_foot}}</a>
                     @endif
                 @endforeach
             </div>
             <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Radios</h5>
                 @foreach($footers as $footer)
-                    @if($footer->col == 4)
-                        <a href="#">{{$footer->title}}</a>
+                    @if($footer->col_foot == 4)
+                        <a href="#">{{$footer->title_foot}}</a>
                     @endif
                 @endforeach
             </div>
             <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Émissions</h5>
                 @foreach($footers as $footer)
-                    @if($footer->col == 5)
-                        <a href="#">{{$footer->title}}</a>
+                    @if($footer->col_foot == 5)
+                        <a href="#">{{$footer->title_foot}}</a>
                     @endif
                 @endforeach
             </div>
             <div class="{{$theme == 'Dark' ? 'dark-footer-list' : 'footer-list'}}">
                 <h5>Nous contacter</h5>
                 @foreach($footers as $footer)
-                    @if($footer->col == 6)
-                        <a href="#">{{$footer->title}}</a>
+                    @if($footer->col_foot == 6)
+                        <a href="#">{{$footer->title_foot}}</a>
                     @endif
                 @endforeach
             </div>
@@ -203,8 +203,8 @@
 
         <div class="{{$theme == 'Dark' ? 'dark-mentions' : 'mentions'}}">
             @foreach($footers as $footer)
-                @if($footer->col == 7)
-                    <a href="#">{{$footer->title}}</a>
+                @if($footer->col_foot == 7)
+                    <a href="#">{{$footer->title_foot}}</a>
                     <span class="point"> . </span>
                 @endif
             @endforeach

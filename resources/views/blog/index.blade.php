@@ -32,7 +32,7 @@
                     <h3>À LA UNE</h3>
                     <form id="favoriteForm" action="" method="POST">
                         @csrf
-                        <input type="hidden" name="post_id" value="{{$featuredPost->id}}">
+                        <input type="hidden" name="post_id" value="{{$featuredPost->id_pos}}">
                             @auth
                                 @if($featuredPost->isFavoritedByUser(Auth::id()))
                                     <button type="submit" class="bouton-circulaire-fav">
@@ -45,23 +45,22 @@
                                 @endif
                             @endauth
                             @guest
-                            <button type="submit" class="bouton-circulaire-nofav">
-                                    <img src="/img/star-empty.png" alt="favorite" class="star">
-                            </button>
-
+                                <button type="submit" class="bouton-circulaire-nofav">
+                                        <img src="/img/star-empty.png" alt="favorite" class="star">
+                                </button>
                             @endguest
 
                     </form>
 
-                    <a href="{{route('blog.show', ['slug' => $featuredPost->slug, 'post' => $featuredPost->id]) }}"><img
-                            src="/img/{{$featuredPost->slug}}{{$featuredPost->id}}.{{$featuredPost->extension}}"
-                            width="100%" alt={{$featuredPost->title}}></a>
+                    <a href="{{route('blog.show', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}"><img
+                            src="/img/{{$featuredPost->slug_pos}}{{$featuredPost->id_pos}}.{{$featuredPost->ext_pos}}"
+                            width="100%" alt={{$featuredPost->title_pos}}></a>
 
                     <footer class="under-une container">
                         <!-- ajoute la légère marge à gauche pour ressembler au site officiel-->
-                        <h5>{{$featuredPost->categorie}}</h5>
+                        <h5>{{$featuredPost->cate_pos}}</h5>
                         <h4>
-                            <a href="{{route('blog.show', ['slug' => $featuredPost->slug, 'post' => $featuredPost->id]) }}">{{$featuredPost->titleArt}}</a>
+                            <a href="{{route('blog.show', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}">{{$featuredPost->title_pos}}</a>
                         </h4>
                         <span class="time">il y a 1 heure<span class="point"> . </span>5 min</span>
                     </footer>
@@ -75,7 +74,7 @@
 
                             <form id="favoriteForm" action="" method="POST">
                                 @csrf
-                                <input type="hidden" name="post_id" value="{{$post->id}}">
+                                <input type="hidden" name="post_id" value="{{$post->id_pos}}">
                                 @auth
                                     @if($post->isFavoritedByUser(Auth::id()))
                                         <button type="submit" class="bouton-circulaire-fav">
@@ -96,11 +95,11 @@
 
                             <a class="text-lg-start text-center d-flex flex-column align-items-center align-items-lg-start"
                                href="#">
-                                <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}"><img
-                                        src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" width="100%"
-                                        alt={{$post->title}}></a>
-                                <h5>{{$post->categorie}}</h5>
-                                <h4>{{$post->titleArt}}</h4>
+                                <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}"><img
+                                        src="/img/{{$post->slug_pos}}{{$post->id_pos}}.{{$post->ext_pos}}" width="100%"
+                                        alt={{$post->title_pos}}></a>
+                                <h5>{{$post->cate_pos}}</h5>
+                                <h4>{{$post->title_pos}}</h4>
                                 <span class="time">il y a 60 minutes<span class="point"> . </span>2 min</span>
                             </a>
                         </article>
@@ -138,10 +137,10 @@
                             @endguest
                         </form>
 
-                        <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}">
-                            <img src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt="{{$post->title}}">
-                            <h5>{{$post->categorie}}</h5>
-                            <h4>{{$post->titleArt}}</h4>
+                        <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}">
+                            <img src="/img/{{$post->slug_pos}}{{$post->id_pos}}.{{$post->ext_pos}}" alt="{{$post->title_pos}}">
+                            <h5>{{$post->cate_pos}}</h5>
+                            <h4>{{$post->title_pos}}</h4>
                             <span class="time">il y a 2 heures<span class="point"> . </span>3 min</span>
                         </a>
                     </article>

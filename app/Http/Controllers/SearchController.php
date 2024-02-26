@@ -24,9 +24,9 @@ class SearchController extends Controller
         $theme = $request->cookie('theme', 'light');
 
         // Effectuer la recherche dans les titres et le contenu des articles
-        $posts = Post::where('titleArt', 'like', '%' . $query . '%')
-            ->orWhere('content', 'like', '%' . $query . '%')
-            ->orWhere('categorie', 'like', '%' . $query . '%')
+        $posts = Post::where('title_pos', 'like', '%' . $query . '%')
+            ->orWhere('content_pos', 'like', '%' . $query . '%')
+            ->orWhere('cate_pos', 'like', '%' . $query . '%')
             ->get();
 
         // Passer les résultats de recherche à la vue

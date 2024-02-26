@@ -26,18 +26,18 @@ class CreatePostRequest extends FormRequest
     {
         return [
             'image' => ['image', 'required'],
-            'titleArt' => ['required'],
-            'hook' => ['required'],
-            'slug' => ['required', 'min:8', 'regex:/^[0-9a-z\-,:]+$/', Rule::unique('posts')->ignore($this->post)],
-            'content' => ['required'],
-            'categorie'=>['required']
+            'title_pos' => ['required'],
+            'hook_pos' => ['required'],
+            'slug_pos' => ['required', 'min:8', 'regex:/^[0-9a-z\-,:]+$/', Rule::unique('t_posts')->ignore($this->post)],
+            'content_pos' => ['string'],
+            'cate_pos'=>['required']
         ];
     }
 
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug'=> $this->input('slug') ?: \Str::slug($this->input('titleArt'))
+            'slug_pos'=> $this->input('slug') ?: \Str::slug($this->input('title_pos'))
         ]);
     }
 }

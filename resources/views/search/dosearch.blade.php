@@ -22,12 +22,12 @@
             <div class="py-5">
                 @foreach($posts as $post)
 
-                    <a href="{{route('blog.show', ['slug' => $post->slug, 'post' => $post->id]) }}">
+                    <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}">
 
                         <article class="{{$theme == 'Dark' ? 'dark-article-search' : 'article-search'}}">
 
-                        <h5>{{$post->categorie}}</h5>
-                        <h4>{{$post->titleArt}}</h4>
+                        <h5>{{$post->cate_pos}}</h5>
+                        <h4>{{$post->title_pos}}</h4>
                         <span class="time">il y a 2 heures<span class="point"> . </span>3 min</span>
 
                         </article>

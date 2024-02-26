@@ -23,8 +23,8 @@
 
         <div class="wrapper">
             @auth()
-                <h1 class="h1prof">Vous êtes connecté en tant que {{ Auth::user()->firstname }} {{ Auth::user()->name }}
-                    comme {{ Auth::user()->role }}</h1>
+                <h1 class="h1prof">Vous êtes connecté en tant que {{ Auth::user()->firstname_user }} {{ Auth::user()->name_user }}
+                    comme {{ Auth::user()->role_user }}</h1>
 
                 <form class="nav-item" action="{{route('auth.logout')}}" method="post">
                     @method('delete')
@@ -33,7 +33,7 @@
                 </form>
 
                 <div class="mt-3">
-                    <h2 class="h2prof">Panel {{Auth::user()->role}}</h2>
+                    <h2 class="h2prof">Panel {{Auth::user()->role_user}}</h2>
                     <ul class="list-group">
 
                         <li class="list-group-item li-prof"><a href="{{route('edit.edit')}}">Changer vos informations
@@ -43,7 +43,7 @@
                         <li class="list-group-item li-prof"><a href="{{route('blog.search')}}"> Effectuer une recherche
                                 à l'aide de la barre de recherche sur l'icône <img src="/img/search_black.svg"> </a>
                         </li>
-                        @if (Auth::user()->role == "Admin")
+                        @if (Auth::user()->role_user == "Admin")
                             <li class="list-group-item li-prof"><a href="{{route('profile.profile')}}"> Vous balader sur
                                     votre profil administrateur <img src="/img/user_black.svg"> </a></li>
                             <li class="list-group-item li-prof"><a href="{{route('blog.create')}}"> Créer de nouveaux

@@ -1,7 +1,7 @@
 @extends('template.base')
 
 @section('title')
-    {{$post->titleArt}}
+    {{$post->title_pos}}
 @endsection
 
 @section('content')
@@ -11,14 +11,14 @@
         <div class="{{$theme == 'Dark' ? 'dark-wrapper-art' : 'wrapper-art'}}">
 
             <div class="titre-art text-center">
-                <h5>{{$post->categorie}}</h5>
-                <h4><a href="article.html">{{$post->titleArt}}</a></h4>
+                <h5>{{$post->cate_pos}}</h5>
+                <h4><a href="article.html">{{$post->title_pos}}</a></h4>
             </div>
 
             <section class="">
                 <form id="favoriteForm" action="" method="POST">
                     @csrf
-                    <input type="hidden" name="post_id" value="{{$post->id}}">
+                    <input type="hidden" name="post_id" value="{{$post->id_pos}}">
                     @auth
                         @if($post->isFavoritedByUser(Auth::id()))
                             <button type="submit" class="bouton-circulaire-fav">
@@ -33,10 +33,11 @@
                     @guest
                         <button type="submit" class="bouton-circulaire-nofav">
                             <img src="/img/star-empty.png" alt="favorite" class="star">
-                        </button>                    @endguest
+                        </button>
+                    @endguest
                 </form>
 
-                <img class="w-100" id={{$post->slug}} src="/img/{{$post->slug}}{{$post->id}}.{{$post->extension}}" alt={{$post->title}}>
+                <img class="w-100" id={{$post->slug_pos}} src="/img/{{$post->slug_pos}}{{$post->id_pos}}.{{$post->ext_pos}}" alt={{$post->title_pos}}>
             </section>
 
 
@@ -47,7 +48,7 @@
                     <span class="time">aujourd’hui à 02:00 - mise à jour il y a 11 minutes<span class="point"> . </span>5 min</span>
                 </section>
                 <section class="auteur">
-                    <p>Par {{$post->auteur}}</p>
+                    <p>Par {{$post->auteur_pos}}</p>
                 </section>
             </div>
 
@@ -71,9 +72,9 @@
 
             <div class="texte">
 
-                <p class="para-1 mt-0">{{$post->hook}}</p>
+                <p class="para-1 mt-0">{{$post->hook_pos}}</p>
 
-                <p>{{$post->content}}</p>
+                <p>{{$post->content_pos}}</p>
 
             </div>
 

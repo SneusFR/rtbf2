@@ -15,7 +15,7 @@
                     @enderror
                 </div>
                 <div class="crea-cate">
-                    <select name="categorie" class="crea-cate">
+                    <select name="cate_pos" class="crea-cate">
                         <option>MONDE</option>
                         <option>POLITIQUE</option>
                         <option>SPORT</option>
@@ -28,27 +28,27 @@
                     </select>
                 </div>
                 <div>
-                    <input class="crea-titre" type="text" name="titleArt" value={{old('titleArt',"titreArt")}}>
+                    <input class="crea-titre" type="text" name="title_pos" value={{old('titleArt',"titreArt")}}>
                     @error("titleArt")
                     {{$message}}
                     @enderror
                 </div>
 
                 <div class="crea-hook">
-                    <textarea  class="crea-hook" name="hook"> {{old('hook',"hook")}}</textarea>
+                    <textarea  class="crea-hook" name="hook_pos"> {{old('hook',"hook")}}</textarea>
                     @error("hook")
                     {{$message}}
                     @enderror
                 </div>
 
                 <div class="crea-content">
-                    <textarea class="crea-content" name="content"> {{old('content', 'mon contenue')}}</textarea>
+                    <textarea class="crea-content" name="content_pos"> {{old('content', 'mon contenue')}}</textarea>
                     @error("content")
                     {{$message}}
                     @enderror
                 </div>
                 <div>
-                    {{Auth::user()->name.' '.Auth::user()->firstname}}
+                    {{Auth::user()->name_pos.' '.Auth::user()->firstname_pos}}
                 </div>
                 <button class="btn btn-reg">Publier article</button>
             </form>

@@ -30,7 +30,7 @@ class AuthController extends Controller
         $loginInfo = $request->validated();
         if(Auth::attempt($loginInfo)) {
             $user = Auth::user(); // Obtenir l'utilisateur authentifié
-            $userName = $user->name.' '.$user->firstname; // Récupérer le nom de l'utilisateur
+            $userName = $user->name_user.' '.$user->firstname_user; // Récupérer le nom de l'utilisateur
             $request->session()->regenerate();
             return redirect()->route('blog.index')->with('success', "Vous êtes connecté en tant que $userName");
         }
@@ -54,15 +54,15 @@ class AuthController extends Controller
         $user = User::create([
             'email' => $registerInfo['email'],
             'password' => Hash::make($registerInfo['password']), // Assurez-vous de hasher le mot de passe
-            'name' => $registerInfo['nom'],
-            'firstname' =>$registerInfo['prénom'],
-            'adresse' => $registerInfo['adresse'],
-            'cp' => $registerInfo['cp'],
-            'role' => $registerInfo['rôle'] ?? 'Guest',
-            'ville' => $registerInfo['ville'],
-            'tel' => $registerInfo['tel'],
-            'pref' => $registerInfo['pref'],
-            'genre' => $registerInfo['genre'],
+            'name_user' => $registerInfo['nom'],
+            'firstname_user' =>$registerInfo['prénom'],
+            'adresse_user' => $registerInfo['adresse'],
+            'cp_user' => $registerInfo['cp'],
+            'role_user' => $registerInfo['rôle'] ?? 'Guest',
+            'ville_user' => $registerInfo['ville'],
+            'tel_user' => $registerInfo['tel'],
+            'pref_user' => $registerInfo['pref'],
+            'genre_user' => $registerInfo['genre'],
 
             // Ajoutez les autres champs de votre modèle User ici
         ]);

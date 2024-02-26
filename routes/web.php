@@ -33,7 +33,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->name('blog.')->controller(FavController::class)->group(function() {
     Route::post('/', 'toggleFavorite');
-    Route::post('/{slug}-{post}', 'toggleFavorite')->where([
+    Route::post('/article/{slug}-{post}', 'toggleFavorite')->where([
         'post' => '[0-9]+',
         'slug' => '[a-z0-9\-]+']
     );
@@ -88,8 +88,6 @@ Route::prefix('/')->name('blog.')->controller(BlogController::class)->group(func
             'post' => '[0-9]+',
             'slug' => '[a-z0-9\-]+'
         ])->name('show');
-    Route::get('/{post}/{edit}', 'edit')->name('edit');
-    Route::post('/{post}/{update}', 'edit')->name('edit');
 });
 
 

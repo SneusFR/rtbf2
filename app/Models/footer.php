@@ -9,6 +9,8 @@ class footer extends Model
 {
     use HasFactory;
 
+    protected $table='t_footers';
+
     protected $fillable = [
         'title',
         'col',
