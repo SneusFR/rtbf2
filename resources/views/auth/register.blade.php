@@ -30,7 +30,7 @@
                         Email <span class="etoile">*</span>
                     </label>
                     <br>
-                    <input placeholder="email" id="email" name="email" type="email">
+                    <input placeholder="email" id="email" name="email" type="email" required>
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -39,7 +39,7 @@
                     </label>
 
                     <section class="mdp col-12 m-0 d-flex align-items-center">
-                        <input placeholder="***********" id="password" name="password" type="password">
+                        <input placeholder="***********" id="password" name="password" type="password" required>
                     </section>
                 </div>
 
@@ -48,7 +48,7 @@
                         Prénom <span class="etoile">*</span>
                     </label>
                     <br>
-                    <input placeholder="prénom" id="prénom" name="prénom" type="text">
+                    <input placeholder="prénom" id="prénom" name="prénom" type="text" required>
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -56,7 +56,12 @@
                         Nom <span class="etoile">*</span>
                     </label>
                     <br>
-                    <input placeholder="nom" id="nom" name="nom" type="text">
+                    <input placeholder="nom" id="nom" name="nom" type="text" required>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <label for="date_naissance">Date de naissance<span class="etoile">*</span></label>
+                    <input type="date" id="date_naissance" name="date_naissance" required>
                 </div>
 
                 <div class="col-lg-6 col-12">
@@ -91,37 +96,6 @@
                     <input placeholder="rôle" id="rôle" name="rôle" type="rôle">
                 </div>
 
-
-                <div class="col-lg-6 col-12">
-                    <label for="jour">
-                        Date de naissance <span class="etoile">*</span>
-                    </label>
-                    <br>
-
-                    <div class="j-m-a row m-0 gap-2">
-
-                        <section class="col-auto p-0">
-                            <label class="" for="jour">jour</label>
-                            <br>
-                            <input placeholder="1" id="jour" type="number" min="1" max="31">
-                        </section>
-
-                        <section class="col-auto p-0">
-                            <label for="mois">mois</label>
-                            <br>
-                            <input placeholder="1" id="mois" type="number" min="1" max="12">
-                        </section>
-
-                        <section class="col-auto p-0">
-                            <label for="annee">année</label>
-                            <br>
-                            <input placeholder="1975" id="annee" type="number" min="1900" max="2023">
-                        </section>
-
-                    </div>
-
-                </div>
-
                 <div class="col-lg-6 col-12 row">
 
                     <section id="pref" class="p-0 pe-2 col-3">
@@ -146,7 +120,7 @@
                     <section class="p-0 col-9">
                         <label for="tel">Téléphone <span class="etoile">*</span></label>
                         <br>
-                        <input placeholder="téléphone" id="tel" name="tel" type="tel">
+                        <input placeholder="téléphone" id="tel" name="tel" type="tel" required>
                     </section>
 
                 </div>

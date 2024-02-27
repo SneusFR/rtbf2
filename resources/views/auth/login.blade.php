@@ -23,37 +23,39 @@
             @endif
         </div>
 
-        <div class="wrapper">
+        <div class="wrapper ">
 
            <h1 class="h1log">Se connecter</h1>
-            <div class="card-body">
-               <form action="" method="post" class="vstack gap-3">
 
-                   @csrf
+            <div class="d-flex justify-content-center pt-3">
+                <div class="col-6">
+                    <form action="" method="post" class="vstack gap-3 ">
 
-                   <div class="form-group">
-                       <label for="email">Email</label>
-                       <input type="email" class="form-control" id="email" name="email" value="{{ old('email')}}">
-                       @error("email")
-                       {{$message}}
-                       @enderror
-                   </div>
+                        @csrf
 
-                   <div class="form-group">
-                       <label for="password">Mot de passe</label>
-                       <input type="password" class="form-control" id="password" name="password">
-                       @error("password")
-                       {{$message}}
-                       @enderror
-                   </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email')}}">
+                            @error("email")
+                            {{$message}}
+                            @enderror
+                        </div>
 
-                   <button class="btn btn-primary mt-1" style="padding-bottom:27px"> Se connecter </button>
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                            @error("password")
+                            {{$message}}
+                            @enderror
+                        </div>
 
-                   <a class="btn-reg" href={{route('auth.register')}}>S'inscrire</a>
+                        <button class="btn btn-primary mt-1" style="padding-bottom:27px"> Se connecter </button>
 
-
-               </form>
+                        <a class="btn-reg" href={{route('auth.register')}}>S'inscrire</a>
+                    </form>
+                </div>
             </div>
+
         </div>
     </main>
 @endsection

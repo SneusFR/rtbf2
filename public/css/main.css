@@ -1092,6 +1092,12 @@ h3 {
     margin-right: 4px;
 }
 
+.dark-texte {
+    padding-top: 12px;
+    color: #FFFFFF;
+}
+
+
 /*PAGE DE PROFIL DARK MODE*/
 
 .btn-deco {
@@ -1287,9 +1293,7 @@ h3 {
 
 .about-text {
     color: #0057AA ;
-
 }
-
 
 /*PAGE EDIT*/
 

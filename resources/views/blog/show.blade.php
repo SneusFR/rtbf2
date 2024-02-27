@@ -48,7 +48,7 @@
                     <span class="time">aujourd’hui à 02:00 - mise à jour il y a 11 minutes<span class="point"> . </span>5 min</span>
                 </section>
                 <section class="auteur">
-                    <p>Par {{$post->auteur_pos}}</p>
+                    <p>Par {{$post->aut_pos}}</p>
                 </section>
             </div>
 
@@ -70,11 +70,11 @@
                 <a href="#"><img src="/img/mail bleu.svg" alt="mail"></a>
             </div>
 
-            <div class="texte">
+            <div class="{{$theme == 'Dark' ? 'dark-texte' : 'texte'}}">
 
                 <p class="para-1 mt-0">{{$post->hook_pos}}</p>
 
-                <p>{{$post->content_pos}}</p>
+                <p>{!! ($post->content_pos) !!}</p>
 
             </div>
 

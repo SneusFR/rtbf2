@@ -29,7 +29,7 @@
                 </div>
                 <div>
                     <input class="crea-titre" type="text" name="title_pos" value={{old('titleArt',"titreArt")}}>
-                    @error("titleArt")
+                    @error("title_pos")
                     {{$message}}
                     @enderror
                 </div>

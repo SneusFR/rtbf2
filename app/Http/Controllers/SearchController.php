@@ -7,14 +7,11 @@ use App\Models\footer;
 use App\Models\menu;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class SearchController extends Controller
 {
-    public function search(Request $request)
-    {
-        $theme = $request->cookie('theme', 'light');
-        return view('search.search', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
-    }
+
 
     public function doSearch(Request $request)
     {
@@ -27,9 +24,10 @@ class SearchController extends Controller
         $posts = Post::where('title_pos', 'like', '%' . $query . '%')
             ->orWhere('content_pos', 'like', '%' . $query . '%')
             ->orWhere('cate_pos', 'like', '%' . $query . '%')
-            ->get();
+            ->paginate(1);
 
         // Passer les résultats de recherche à la vue
-        return view('search.dosearch', ['posts' => $posts, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);    }
+        return view('search.search', ['posts' => $posts, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme, 'query' => $query]);
+    }
 
 }

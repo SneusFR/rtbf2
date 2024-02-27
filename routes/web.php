@@ -42,9 +42,8 @@ Route::prefix('/')->name('blog.')->controller(FavController::class)->group(funct
 
 
 Route::prefix('/')->name('blog.')->controller(SearchController::class)->group(function() {
-    Route::get('/search','search')->name('search');
+    Route::get('/search','doSearch')->name('search');
     Route::post('/search','doSearch');
-    Route::post('/dosearch','doSearch');
 });
 
 Route::prefix('/')->name('auth.')->controller(AuthController::class)->group(function() {
