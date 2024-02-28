@@ -8,7 +8,10 @@
 
     <main class="{{$theme == 'Dark' ? 'dark-home-index' : 'home-index'}} container">
 
+
+
         <div class="container">
+
             @if(session('success'))
                 <div class="alert alert-success">
                     {{session('success')}}
@@ -26,6 +29,29 @@
 
             <section class="articles-une row">
 
+                <a href="{{$publicite['banner_4IPDW']['link']}}" target="_blank">
+                    <div class="publicite d-flex mt-3 mb-2">
+                        <p class="p-2">{{$publicite['banner_4IPDW']['text']}}</p>
+                        <img src='{{$publicite['banner_4IPDW']['image']}}'>
+                    </div>
+                </a>
+
+                <style>
+                    /*PUBLICITE*/
+
+                    .publicite {
+                        border-style: groove;
+                        border-radius: 12px;
+                        border-color: #c9e7f9;
+                        overflow: hidden;
+                        background-image: url({{ $publicite['banner_4IPDW']['background_image'] }});
+                        color: {{ $publicite['banner_4IPDW']['color'] }};
+                    }
+
+                    .publicite:hover {
+                        transform: scale(1.05);
+                    }
+                </style>
 
                 <article class="article-1 col-lg-9 col-12">
 

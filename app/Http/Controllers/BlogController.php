@@ -8,11 +8,20 @@ use App\Models\Post;
 use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class BlogController extends Controller
 {
+    public function publicite()
+    {
+        $response = Http::get('http://playground.burotix.be/adv/banner_for_isfce.json');
+
+        return $response->json();
+    }
+
     public function index(Request $request) {
 
+        $publicite = $this->publicite();
         $menus = Menu::all();
         $footers = Footer::all();
         $posts = Post::query();
@@ -39,7 +48,8 @@ class BlogController extends Controller
             ->with('bottomPosts', $bottomPosts)
             ->with('footers', $footers)
             ->with('favorite', $favorite)
-            ->with('theme', $theme);
+            ->with('theme', $theme)
+            ->with('publicite', $publicite);
     }
 
 
