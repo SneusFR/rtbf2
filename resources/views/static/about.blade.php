@@ -71,15 +71,7 @@
 
             <p>Pour s'inscrire il faut se rendre sur le bonhomme en haut à droite de la navbar et cliquer sur "s'inscrire"</p>
 
-
-
-
-
-
-
-
-
-
+            
 
         </div>
 
