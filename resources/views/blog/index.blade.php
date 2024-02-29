@@ -8,8 +8,6 @@
 
     <main class="{{$theme == 'Dark' ? 'dark-home-index' : 'home-index'}} container">
 
-
-
         <div class="container">
 
             @if(session('success'))
@@ -50,6 +48,7 @@
 
                     .publicite:hover {
                         transform: scale(1.05);
+                        box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.3);
                     }
                 </style>
 
@@ -140,10 +139,9 @@
 
                     <article class="article-4">
 
-
                         <form id="favoriteForm" action="" method="POST">
                             @csrf
-                            <input type="hidden" name="post_id" value="{{$post->id}}">
+                            <input type="hidden" name="post_id" value="{{$post->id_pos}}">
                             @auth
                                 @if($post->isFavoritedByUser(Auth::id()))
                                     <button type="submit" class="bouton-circulaire-fav">
@@ -155,7 +153,6 @@
                                     </button>
                                 @endif
                             @endauth
-
                             @guest
                                 <button type="submit" class="bouton-circulaire-nofav">
                                     <img src="/img/star-empty.png" alt="favorite" class="star">
@@ -169,10 +166,9 @@
                             <h4>{{$post->title_pos}}</h4>
                             <span class="time">il y a 2 heures<span class="point"> . </span>3 min</span>
                         </a>
+
                     </article>
-
                 @endforeach
-
 
             </section>
         </div>

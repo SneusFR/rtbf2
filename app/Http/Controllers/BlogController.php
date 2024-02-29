@@ -21,6 +21,8 @@ class BlogController extends Controller
 
     public function index(Request $request) {
 
+
+        $meteo = $this->getMeteo();
         $publicite = $this->publicite();
         $menus = Menu::all();
         $footers = Footer::all();
@@ -49,18 +51,34 @@ class BlogController extends Controller
             ->with('footers', $footers)
             ->with('favorite', $favorite)
             ->with('theme', $theme)
-            ->with('publicite', $publicite);
+            ->with('publicite', $publicite)
+            ->with('meteo', $meteo);
     }
 
+    public function getMeteo()
+    {
+        $response = Http::withOptions(['verify' => false])->get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/brussels/2024-02-28/2024-03-06?unitGroup=metric&include=days&key=8J2PR2ABNQEAG3LPGHQ87XY3T&contentType=json');
+        return $response->json();
+    }
+
+    public function meteo(Request $request)
+    {
+        $meteo = $this->getMeteo();
+        $theme = $request->cookie('theme', 'light');
+        return view('blog.meteo', ['meteo'=> $meteo, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+    }
 
     public function show(String $slug, Post $post, Request $request) {
+
+        $meteo = $this->getMeteo();
         $theme = $request->cookie('theme', 'light');
-        return view('blog.show', ['post' =>$post, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+        return view('blog.show', ['meteo'=> $meteo, 'post' =>$post, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function create(Request $request) {
+
         $theme = $request->cookie('theme', 'light');
-        return view('blog.create', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+        return view('blog.create', ['meteo'=> $meteo, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function store(CreatePostRequest $request) {
@@ -109,7 +127,7 @@ class BlogController extends Controller
     public function about(Request $request)
     {
         $theme = $request->cookie('theme', 'light');
-        return view('static.about', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+        return view('static.about', ['meteo'=> $meteo, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function createAndUpdate(Request $request) {

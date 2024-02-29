@@ -57,7 +57,73 @@
                 </div>
                 <div class="nav-top-right d-flex justify-content-center col-lg-2 col-12">
                     <a href={{route('blog.search')}}><img src="/img/search.svg" alt="recherche"></a>
-                    <a href="#"><img src="/img/sun.svg" alt="météo"></a>
+                    <a href="{{route('blog.meteo')}}" class="tooltiped"><img  src="/img/sun.svg" alt="météo"></a>
+
+
+                    <div id="tooltip" class="row">
+
+                        <p class="d-none">
+                            @php
+                                $joursDeLaSemaine = [];
+                            @endphp
+                            @foreach(array_slice($meteo['days'], 0, 4) as $day)
+                                @php
+                                    $carbonDate = \Carbon\Carbon::parse($day['datetime']);
+                                    $jour = $carbonDate->dayName;
+
+                                    $joursDeLaSemaine[] = $jour;
+                                @endphp
+                            @endforeach
+                        </p>
+
+                        <p class="meteo-location" style="font-weight: bold">
+                            {{$meteo['resolvedAddress']}}
+                        </p>
+
+                        <section class="meteo-du-jour row mb-2">
+                            <div class="col-6">
+                                <p>Température : {{$meteo['days'][0]['temp']}} °C</p>
+                                <p>Précipitation : {{$meteo['days'][0]['precip']}} %</p>
+                            </div>
+                            <div class="col-6">
+                                <p>Humidité : {{$meteo['days'][0]['humidity']}}%</p>
+                                <p>Vent : {{$meteo['days'][0]['windspeed']}} km/h</p>
+                            </div>
+                        </section>
+
+
+
+                        <section class="meteo-semaine d-flex justify-content-center">
+
+                            <div>
+                                <p>{{$joursDeLaSemaine[0]}}</p>
+                                <img src="/img/sun.svg">
+                                <p> {{$meteo['days'][0]['tempmax']}} °C / {{$meteo['days'][0]['tempmin']}} °C</p>
+                            </div>
+
+                            <div>
+                                <p>{{$joursDeLaSemaine[1]}}</p>
+                                <img src="/img/sun.svg">
+                                <p>{{$meteo['days'][1]['tempmax']}} °C / {{$meteo['days'][1]['tempmin']}} °C</p>
+                            </div>
+
+                            <div>
+                                <p>{{$joursDeLaSemaine[2]}}</p>
+                                <img src="/img/sun.svg">
+                                <p>{{$meteo['days'][2]['tempmax']}} °C / {{$meteo['days'][2]['tempmin']}} °C</p>
+                            </div>
+
+                            <div>
+                                <p>{{$joursDeLaSemaine[3]}}</p>
+                                <img src="/img/sun.svg">
+                                <p>{{$meteo['days'][3]['tempmax']}} °C / {{$meteo['days'][3]['tempmin']}} °C</p>
+                            </div>
+
+                        </section>
+
+                    </div>
+
+                    <script src="/js/tooltip.js"></script>
 
                     @guest()
                         <a href={{route('auth.login')}}><img src="/img/user.svg" alt="user"></a>

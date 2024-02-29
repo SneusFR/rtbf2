@@ -1304,3 +1304,42 @@ h3 {
 #edit-role:hover {
     cursor:not-allowed;
 }
+
+/*PAGE METEO*/
+
+.meteo-semaine {
+}
+
+.meteo-semaine div {
+    margin-right: 20px;
+    text-align: center;
+}
+
+.meteo-semaine img {
+    width: 50px;
+    margin: 10px 0 ;
+}
+
+.meteo-semaine p {
+    margin: 0 15px;
+}
+
+.meteo-du-jour p {
+    padding-left: 20px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+/*TOOLTIP METEO*/
+
+#tooltip {
+    width: 650px;
+    max-height: 320px;
+    background: #1a202c;
+    color: #FFFFFF;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+
+    display: none;
+}

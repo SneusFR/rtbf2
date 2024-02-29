@@ -47,9 +47,9 @@
                     {{$message}}
                     @enderror
                 </div>
-                <div>
-                    {{Auth::user()->name_pos.' '.Auth::user()->firstname_pos}}
-                </div>
+
+                {{Auth::user()->name_pos.' '.Auth::user()->firstname_pos}}
+
                 <button class="btn btn-reg">Publier article</button>
             </form>
         </div>

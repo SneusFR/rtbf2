@@ -87,6 +87,7 @@ Route::prefix('/')->name('blog.')->controller(BlogController::class)->group(func
             'post' => '[0-9]+',
             'slug' => '[a-z0-9\-]+'
         ])->name('show');
+    Route::get('/meteo', 'meteo')->name('meteo');
 });
 
 
