@@ -77,6 +77,7 @@ class BlogController extends Controller
 
     public function create(Request $request) {
 
+        $meteo = $this->getMeteo();
         $theme = $request->cookie('theme', 'light');
         return view('blog.create', ['meteo'=> $meteo, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
@@ -126,6 +127,7 @@ class BlogController extends Controller
 
     public function about(Request $request)
     {
+        $meteo = $this->getMeteo();
         $theme = $request->cookie('theme', 'light');
         return view('static.about', ['meteo'=> $meteo, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }

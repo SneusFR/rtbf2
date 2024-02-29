@@ -10,13 +10,22 @@ use App\Models\menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class EditController extends Controller
 {
+
+    public function getMeteo()
+    {
+        $response = Http::withOptions(['verify' => false])->get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/brussels?unitGroup=metric&include=days&key=8J2PR2ABNQEAG3LPGHQ87XY3T&contentType=json');
+        return $response->json();
+    }
+
     public function editProfile(Request $request)
     {
+        $meteo = $this->getMeteo();
         $theme = $request->cookie('theme', 'light');
-        return view('edit.edit', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+        return view('edit.edit', ['meteo' => $meteo, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function updateProfile(UpdatingRequest $request)
@@ -44,8 +53,9 @@ class EditController extends Controller
 
     public function editPassword(Request $request)
     {
+        $meteo = $this->getMeteo();
         $theme = $request->cookie('theme', 'light');
-        return view('edit.password', ['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+        return view('edit.password', ['meteo' => $meteo, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function updatePassword(PasswordRequest $request)

@@ -11,13 +11,21 @@ use Illuminate\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
+    public function getMeteo()
+    {
+        $response = Http::withOptions(['verify' => false])->get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/brussels?unitGroup=metric&include=days&key=8J2PR2ABNQEAG3LPGHQ87XY3T&contentType=json');
+        return $response->json();
+    }
+
     public function login(Request $request) {
+        $meteo = $this->getMeteo();
         $theme = $request->cookie('theme', 'light');
 
-        return view('auth.login',['menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+        return view('auth.login',['meteo' => $meteo, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
     public function logout() {
@@ -41,9 +49,11 @@ class AuthController extends Controller
    }
 
    public function register (Request $request) {
+       $meteo = $this->getMeteo();
+
        $theme = $request->cookie('theme', 'light');
 
-        return view('auth.register', ['menus' => menu::all(), 'footers' => footer::all(),'theme' => $theme]);
+        return view('auth.register', ['meteo' => $meteo, 'menus' => menu::all(), 'footers' => footer::all(),'theme' => $theme]);
 }
 
     public function doRegister(RegisterRequest $request)

@@ -7,20 +7,26 @@ use App\Models\footer;
 use App\Models\menu;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class FavController extends Controller
 {
-
+    public function getMeteo()
+    {
+        $response = Http::withOptions(['verify' => false])->get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/brussels?unitGroup=metric&include=days&key=8J2PR2ABNQEAG3LPGHQ87XY3T&contentType=json');
+        return $response->json();
+    }
 
     public function main_favorite(Request $request) {
         $user = auth()->user();
 
+        $meteo =$this->getMeteo();
         $theme = $request->cookie('theme', 'light');
 
         if ($user) {
             $favoritePosts = $user->favoritePosts()->get();
             // Maintenant, $favoritePosts contient une collection de tous les articles favorisés par l'utilisateur
-            return view('fav.mainFavorite', ['favoritePosts' => $favoritePosts, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
+            return view('fav.mainFavorite', ['meteo' => $meteo, 'favoritePosts' => $favoritePosts, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
         }
 
         else {
