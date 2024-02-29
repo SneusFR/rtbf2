@@ -1308,6 +1308,8 @@ h3 {
 /*PAGE METEO*/
 
 .meteo-semaine {
+    justify-content: space-between;
+    text-align: center;
 }
 
 .meteo-semaine div {
@@ -1335,11 +1337,12 @@ h3 {
 #tooltip {
     width: 650px;
     max-height: 320px;
-    background: #1a202c;
+    border-radius: 10px;
+    background: #CADFEB;
     color: #FFFFFF;
     padding: 10px;
     position: fixed;
     z-index: 1;
 
-    display: none;
+    opacity: 0;
 }

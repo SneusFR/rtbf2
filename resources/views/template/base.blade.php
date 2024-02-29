@@ -55,12 +55,13 @@
                     @endif
                     @endauth
                 </div>
+
                 <div class="nav-top-right d-flex justify-content-center col-lg-2 col-12">
                     <a href={{route('blog.search')}}><img src="/img/search.svg" alt="recherche"></a>
                     <a href="{{route('blog.meteo')}}" class="tooltiped"><img  src="/img/sun.svg" alt="météo"></a>
 
 
-                    <div id="tooltip" class="row">
+                    <div id="tooltip" class="row {{$theme == 'Dark' ? 'bg-dark bg-gradient text-white' : ' bg-gradient text-dark'}}">
 
                         <p class="d-none">
                             @php
@@ -77,7 +78,7 @@
                         </p>
 
                         <p class="meteo-location" style="font-weight: bold">
-                            {{$meteo['resolvedAddress']}}
+                            {{$meteo['resolvedAddress']}} : {{$meteo['days'][0]['datetime']}}
                         </p>
 
                         <section class="meteo-du-jour row mb-2">
@@ -91,33 +92,15 @@
                             </div>
                         </section>
 
-
-
                         <section class="meteo-semaine d-flex justify-content-center">
 
-                            <div>
-                                <p>{{$joursDeLaSemaine[0]}}</p>
-                                <img src="/img/sun.svg">
-                                <p> {{$meteo['days'][0]['tempmax']}} °C / {{$meteo['days'][0]['tempmin']}} °C</p>
-                            </div>
-
-                            <div>
-                                <p>{{$joursDeLaSemaine[1]}}</p>
-                                <img src="/img/sun.svg">
-                                <p>{{$meteo['days'][1]['tempmax']}} °C / {{$meteo['days'][1]['tempmin']}} °C</p>
-                            </div>
-
-                            <div>
-                                <p>{{$joursDeLaSemaine[2]}}</p>
-                                <img src="/img/sun.svg">
-                                <p>{{$meteo['days'][2]['tempmax']}} °C / {{$meteo['days'][2]['tempmin']}} °C</p>
-                            </div>
-
-                            <div>
-                                <p>{{$joursDeLaSemaine[3]}}</p>
-                                <img src="/img/sun.svg">
-                                <p>{{$meteo['days'][3]['tempmax']}} °C / {{$meteo['days'][3]['tempmin']}} °C</p>
-                            </div>
+                            @for ($i = 0; $i < 4; $i++)
+                                <div>
+                                    <p>{{$joursDeLaSemaine[$i]}}</p>
+                                    <img src="/img/sun.svg">
+                                    <p>{{$meteo['days'][$i]['tempmax']}} °C / {{$meteo['days'][$i]['tempmin']}} °C</p>
+                                </div>
+                            @endfor
 
                         </section>
 

@@ -7,11 +7,12 @@ tooltipItems.forEach(item=>{
 })
 
 function showTooltip(event) {
-    tooltip.style.display = 'block';
+    tooltip.style.opacity = '1';
+    tooltip.style.transition = 'all 0.3s ease';
 }
 
 function hideTooltip() {
-    tooltip.style.display = 'none';
+    tooltip.style.opacity = '0';
 }
 
 document.body.addEventListener('mousemove', event => {
