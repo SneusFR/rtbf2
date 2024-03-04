@@ -13,7 +13,9 @@
             <div class="titre-art text-center">
                 <h5>{{$post->cate_pos}}</h5>
                 <h4><a href="article.html">{{$post->title_pos}}</a></h4>
+
             </div>
+
 
             <section class="">
                 <form id="favoriteForm" action="" method="POST">
@@ -37,6 +39,8 @@
                     @endguest
                 </form>
 
+
+
                 <img class="w-100" id={{$post->slug_pos}} src="/img/{{$post->slug_pos}}{{$post->id_pos}}.{{$post->ext_pos}}" alt={{$post->title_pos}}>
             </section>
 
@@ -50,6 +54,8 @@
                 <section class="auteur">
                     <p>Par {{$post->aut_pos}}</p>
                 </section>
+
+
             </div>
 
 
@@ -58,6 +64,13 @@
             </div>
             <input type="hidden" name="note" id="note" value="0">
             <script src="/js/main.js"></script>
+
+            <form action = "{{route('edit.editArt', ['slug' => $post->slug_pos, 'post' => $post->id_pos])}}" method="get" class="d-flex">
+                @csrf
+                <button type="submit" class="bouton-circulaire-nofav">
+                    <img src="/img/edit.png" alt="favorite" class="star">
+                </button>
+            </form>
 
 
             <div class="partager d-flex flex-wrap justify-content-center align-items-center gap-4">

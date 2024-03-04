@@ -75,6 +75,7 @@ class BlogController extends Controller
         return view('blog.show', ['meteo'=> $meteo, 'post' =>$post, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
     }
 
+
     public function create(Request $request) {
 
         $meteo = $this->getMeteo();

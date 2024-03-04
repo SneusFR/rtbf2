@@ -71,6 +71,16 @@ Route::prefix('/')->name('profile.')->controller(ProfileController::class)->grou
      Route::post('/edit', 'updateProfile');
      Route::get('/password', 'editPassword')->name('password');
      Route::post('/password', 'updatePassword');
+     Route::get('edit/article/{slug}-{post}', 'editArt')
+         ->where([
+             'post' => '[0-9]+',
+             'slug' => '[a-z0-9\-]+'
+         ])->name('editArt');
+     Route::post('edit/article/{slug}-{post}', 'doEditArt')
+         ->where([
+             'post' => '[0-9]+',
+             'slug' => '[a-z0-9\-]+'
+         ])->name('doEditArt');
 
  });
 
