@@ -30,7 +30,7 @@
 
             <p>L'onglet à propos se trouve lui aussi tout en haut de la navbar.</p>
 
-            <h2>DATE DU LIVRABLE 14/12/23</h2>
+            <h2>DATE DU LIVRABLE 14/12/23</h2><br>
 
             <h1>Livrable 2:</h1>
 
@@ -47,6 +47,9 @@
                 <li>Une page de modification d'identifiants <span class="about-text">(/edit)</span></li>
                 <li>Une page de modification de mot de passe <span class="about-text">(/password)</span></li>
                 <li>Une page de création d'article <span class="about-text">(/new)</span></li>
+                <li>Une page de météo lié à l'API d'un centre de météorologie <span class="about-text">(/meteo)</span></li>
+                <li>Une page d'édition d'article <span class="about-text">(edit/article/slug-id)</span></li>
+
             </ul>
 
             <p>Il est aussi composé d'un fichier de mise en page (css) et un dossier qui contient les images. Ainsi que d'une base de donnée mysql</p>
@@ -71,7 +74,13 @@
 
             <p>Pour s'inscrire il faut se rendre sur le bonhomme en haut à droite de la navbar et cliquer sur "s'inscrire"</p>
 
-            
+            <p>Pour éditer un article il faut être admin et aller sur la page de l'article et cliquer sur le petit bouton en haut à droite de l'image de l'article</p>
+
+            <p>Il y a la possibilité de passer en DarkMode en cliquant sur la lune en haut à gauche de la navbar (toutes les pages sont "DarkMode Friendly")</p>
+
+            <p>Il y a la possibilité de consulter les données météorologiques des 4 prochains jours en laissant son curseur sur le bouton météo en haut à droite de la navbar</p>
+
+            <h2>DATE DU LIVRABLE 11/03/2024</h2><br>
 
         </div>
 

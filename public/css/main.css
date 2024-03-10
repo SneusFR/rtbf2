@@ -1343,6 +1343,19 @@ h3 {
     padding: 10px;
     position: fixed;
     z-index: 1;
-
     opacity: 0;
 }
+
+/*PAGE EDIT*/
+
+.bouton-circulaire-edit {
+    margin: 5px 5px;
+    position: absolute;
+    width: 30px; /* Ajustez la taille du bouton circulaire */
+    height: 30px; /* Ajustez la taille du bouton circulaire */
+    border-radius: 50%; /* Forme le bouton en cercle */
+    border: none; /* Supprime les bordures */
+    background-color: #1b6da9; /* Couleur de fond du bouton */
+    cursor: pointer; /* Curseur indiquant l'interactivité */
+}
+

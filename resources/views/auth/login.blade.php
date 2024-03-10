@@ -27,6 +27,12 @@
 
            <h1 class="h1log">Se connecter</h1>
 
+            <p>Voicis les identifiants test : </p>
+            <ul class="text-danger">
+                <li>Guest : user@user.com (mot de passe : user)</li>
+                <li>Admin : admin@admin.com (mot de passe : admin)</li>
+            </ul>
+
             <div class="d-flex justify-content-center pt-3">
                 <div class="col-6">
                     <form action="" method="post" class="vstack gap-3 ">

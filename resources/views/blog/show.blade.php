@@ -18,28 +18,37 @@
 
 
             <section class="">
-                <form id="favoriteForm" action="" method="POST">
-                    @csrf
-                    <input type="hidden" name="post_id" value="{{$post->id_pos}}">
-                    @auth
-                        @if($post->isFavoritedByUser(Auth::id()))
-                            <button type="submit" class="bouton-circulaire-fav">
-                                <img src="/img/star-filled.svg" alt="favorite" class="star">
-                            </button>
-                        @else
+
+                <div class="d-flex justify-content-between">
+
+                    <form id="favoriteForm" action="" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{$post->id_pos}}">
+                        @auth
+                            @if($post->isFavoritedByUser(Auth::id()))
+                                <button type="submit" class="bouton-circulaire-fav">
+                                    <img src="/img/star-filled.svg" alt="favorite" class="star">
+                                </button>
+                            @else
+                                <button type="submit" class="bouton-circulaire-nofav">
+                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                                </button>
+                            @endif
+                        @endauth
+                        @guest
                             <button type="submit" class="bouton-circulaire-nofav">
                                 <img src="/img/star-empty.png" alt="favorite" class="star">
                             </button>
-                        @endif
-                    @endauth
-                    @guest
-                        <button type="submit" class="bouton-circulaire-nofav">
-                            <img src="/img/star-empty.png" alt="favorite" class="star">
+                        @endguest
+                    </form>
+
+                    <form action = "{{route('edit.editArt', ['slug' => $post->slug_pos, 'post' => $post->id_pos])}}" method="get" class="d-flex">
+                        @csrf
+                        <button type="submit" class="bouton-circulaire-edit">
+                            <img src="/img/edit.png" alt="favorite" class="star">
                         </button>
-                    @endguest
-                </form>
-
-
+                    </form>
+                </div>
 
                 <img class="w-100" id={{$post->slug_pos}} src="/img/{{$post->slug_pos}}{{$post->id_pos}}.{{$post->ext_pos}}" alt={{$post->title_pos}}>
             </section>
@@ -64,13 +73,6 @@
             </div>
             <input type="hidden" name="note" id="note" value="0">
             <script src="/js/main.js"></script>
-
-            <form action = "{{route('edit.editArt', ['slug' => $post->slug_pos, 'post' => $post->id_pos])}}" method="get" class="d-flex">
-                @csrf
-                <button type="submit" class="bouton-circulaire-nofav">
-                    <img src="/img/edit.png" alt="favorite" class="star">
-                </button>
-            </form>
 
 
             <div class="partager d-flex flex-wrap justify-content-center align-items-center gap-4">

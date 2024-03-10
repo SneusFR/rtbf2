@@ -48,7 +48,7 @@
                     @enderror
                 </div>
 
-                {{Auth::user()->name_pos.' '.Auth::user()->firstname_pos}}
+                {{Auth::User()->name_user.' '.Auth::user()->firstname_user}}</p>
 
                 <button class="btn btn-reg">Publier article</button>
             </form>
