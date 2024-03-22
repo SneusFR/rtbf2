@@ -47,6 +47,8 @@ Route::prefix('/')->name('blog.')->controller(SearchController::class)->group(fu
 });
 
 Route::prefix('/')->name('auth.')->controller(AuthController::class)->group(function() {
+    Route::get('/loginAPI', 'loginAPI')->name('loginAPI');
+    Route::post('/loginAPI', 'doLoginAPI');
     Route::get('/login', 'login')->name('login');
     Route::delete('/logout', 'logout')->name('logout');
     Route::post('/login', 'doLogin');

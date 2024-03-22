@@ -1359,3 +1359,22 @@ h3 {
     cursor: pointer; /* Curseur indiquant l'interactivité */
 }
 
+/*PAGE DE LOGIN VIA API*/
+
+.btn-API {
+    background-color: #EDCAA5;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 7px 0;
+    margin-bottom: 33px;
+    margin-top: 3px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-API:hover {
+    background-color: #eeb98f;
+}

@@ -25,13 +25,7 @@
 
         <div class="wrapper ">
 
-           <h1 class="h1log">Se connecter</h1>
-
-            <p>Voicis les identifiants test : </p>
-            <ul class="text-danger">
-                <li>Guest : user@user.com (mot de passe : user)</li>
-                <li>Admin : admin@admin.com (mot de passe : admin)</li>
-            </ul>
+            <h1 class="h1log">Se connecter via Burotix</h1>
 
             <div class="d-flex justify-content-center pt-3">
                 <div class="col-6">
@@ -41,25 +35,16 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email')}}">
-                            @error("email")
-                            {{$message}}
-                            @enderror
+                            <label for="login">Login</label>
+                            <input type="text" class="form-control" id="login" name="login">
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group mb-3" >
                             <label for="password">Mot de passe</label>
                             <input type="password" class="form-control" id="password" name="password">
-                            @error("password")
-                            {{$message}}
-                            @enderror
                         </div>
 
-                        <button class="btn btn-primary mt-1" style="padding-bottom:27px"> Se connecter </button>
-
-                        <a class="btn-reg" href={{route('auth.register')}}>S'inscrire</a>
-                        <a class="btn-API" href={{route('auth.loginAPI')}}>Se connecter via Burotix</a>
+                        <button class="btn-API" style="padding-bottom:27px"> Se connecter via Burotix </button>
 
                     </form>
                 </div>

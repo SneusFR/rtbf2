@@ -30,7 +30,7 @@ class SearchController extends Controller
         $posts = Post::where('title_pos', 'like', '%' . $query . '%')
             ->orWhere('content_pos', 'like', '%' . $query . '%')
             ->orWhere('cate_pos', 'like', '%' . $query . '%')
-            ->paginate(1);
+            ->paginate(10);
 
         // Passer les résultats de recherche à la vue
         return view('search.search', ['meteo' => $meteo, 'posts' => $posts, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme, 'query' => $query]);
