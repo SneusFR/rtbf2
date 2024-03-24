@@ -93,23 +93,24 @@ class AuthController extends Controller
 
     public function doLoginAPI(loginAPIRequest $request) {
 
+        // Validation de la requête et récupération des données de connexion validées
         $loginInfo = $request->validated();
 
+        // Appel à l'API de connexion avec les informations de connexion
         $response = Http::withOptions(['verify' => false])->get("http://playground.burotix.be/login/?login={$loginInfo['login']}&passwd={$loginInfo['password']}");
         $userData = $response->json();
 
-        //Si identified est à true
+        // Si l'utilisateur est identifié par l'API
         if ($userData['identified']) {
 
             $user = User::where('login', $loginInfo['login'])->first();
 
-            // Si le user n'existe pas, créer un nouvel utilisateur
+            // insertion de l'utilisateur s'il existe déjà dans la base de données locale
             if (!$user) {
 
                 $fullName = $userData['name'];
                 $nameParts = explode(' ', $fullName);
 
-                // Supposons que le premier élément est le prénom et le reste est le nom de famille
                 $firstName = $nameParts[0];
                 $lastName = implode(' ', array_slice($nameParts, 1));
 
@@ -122,7 +123,7 @@ class AuthController extends Controller
                 }else{
                     $newUser->role_user = "Guest";
                 }
-                
+
                 $newUser->login = $loginInfo['login'];
                 $newUser->password = Hash::make($loginInfo['password']);
                 $newUser->email = str_replace(' ', '', $userData['name']) . '@gmail.com';
@@ -131,7 +132,7 @@ class AuthController extends Controller
                 $user = $newUser;
             }
 
-            // Connecter l''utilisateur
+            // Connexion de l'utilisateur au système Laravel. Le système Laravel vérifie si l'objet user a une occurence dans la DB. Si oui il le connecte avec une session
             auth()->login($user);
 
             return redirect()->route('blog.index')->with('success', "Vous êtes connecté en tant que $user->name_user");

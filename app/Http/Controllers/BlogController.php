@@ -101,7 +101,7 @@ class BlogController extends Controller
             // Stocker l'ateur dans le modèle Post
         $post->aut_pos = $alias;
 
-// Vérifier si un fichier image a été téléchargé
+        // Vérifier si un fichier image a été téléchargé
         if ($request->hasFile('image')) {
             // Récupérer le fichier téléchargé
             $image = $request->file('image');

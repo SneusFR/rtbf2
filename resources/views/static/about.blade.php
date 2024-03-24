@@ -82,6 +82,50 @@
 
             <h2>DATE DU LIVRABLE 11/03/2024</h2><br>
 
+
+            <h1>Livrable 3:</h1>
+
+            <p>Ce site est une imitation du site de presse RTBF qui publie des news quotidiennes sur divers sujets. Le site est composé de fichiers dynamiques de 11 pages php :</p>
+            <ul>
+                <li>Une page d'accueil<span class="about-text">(/)</span></li>
+                <li>Une page d'un article <span class="about-text">(/article/slug-id)</span></li>
+                <li>Une page de login <span class="about-text">(/login)</span></li>
+                <li>Une page d'inscription <span class="about-text">(/register)</span></li>
+                <li>Une page de favoris <span class="about-text">(/favorite)</span></li>
+                <li>Une page de recherche <span class="about-text">(/search)</span></li>
+                <li>Une page à propos <span class="about-text">(/about)</span></li>
+                <li>Une page de profile <span class="about-text">(/profile)</span></li>
+                <li>Une page de modification d'identifiants <span class="about-text">(/edit)</span></li>
+                <li>Une page de modification de mot de passe <span class="about-text">(/password)</span></li>
+                <li>Une page de création d'article <span class="about-text">(/new)</span></li>
+                <li>Une page de météo lié à l'API d'un centre de météorologie <span class="about-text">(/meteo)</span></li>
+                <li>Une page d'édition d'article <span class="about-text">(edit/article/slug-id)</span></li>
+                <li>Une page de connexion pour se connecter via burotix <span class="about-text">(/loginAPI)</span></li>
+            </ul>
+
+           <h2>Justifications</h2>
+
+            <h4>Connexion via l'API</h4>
+
+            <p>Nous avons décidé de garder notre ancien moyen de connexion mais de rajouter la possibilité de se connecter via l'API</p>
+            <p> Pour se faire il faut se rendre dans la page de connexion et cliquer sur "se connecter via Burotix"</p>
+            <p>Nous avons dû aussi rajouter lors de la première connexion d'un utilisateur se trouvant sur l'API de l'insérer dans notre table USER</p>
+            <p>Car sans ça il n'aurait pas pu accéder à ses favoris et d'autres informations (adresse, téléphone, mail etc...) auraient manqué</p>
+            <p>L'insertion d'un utilisateur de l'API dans la DB ne se fait qu'une seule et unique fois (voir controller login pour + d'info) </p>
+
+            <h4>Recherche d'article</h4>
+            <p>Pour la recherche d'article nous avons décidé de mettre en place une pagination. 10 articles par page seront affichés</p>
+            <p>S'il y'en a plus il vous suffira d'aller en bas de la page et de cliquer sur un numéro pour afficher une autre page</p>
+            <p> On a décidé que l'ordre de pertinence serait de prendre l'article le plus récent de la DB au moins récent</p>
+            <p> Pour les articles sans image une image par défaut sera proposé</p>
+
+
+            <h2>Ajout par rapport au livrable 2</h2>
+
+            <p> Le seul ajout est la possibilité de se connecter via l'API. Tout le reste des consignes avaient déjà été réalisé
+            lors du livrable 2. Référez-vous donc principalement au livrable 2 pour naviguer sur le site</p>
+            <h2>DATE DU LIVRABLE 24/03/2024</h2><br>
+
         </div>
 
     </main>

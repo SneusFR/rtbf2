@@ -64,30 +64,16 @@ class EditController extends Controller
 
         $updateInfo = $request->validated();
 
+        $image = $request->file('image');
+        $filename = $post->slug_pos . '' . $post->id_pos . '.' . $image->getClientOriginalExtension();
+        $path = $image->storeAs('', $filename, 'custom');
+
         $post->title_pos = $updateInfo['title_pos'];
         $post->hook_pos = $updateInfo['hook_pos'];
         $post->slug_pos = $updateInfo['slug_pos'];
         $post->content_pos = $updateInfo['content_pos'];
         $post->cate_pos = $updateInfo['cate_pos'];
-
-        if ($request->hasFile('image')) {
-            // Récupérer le fichier téléchargé
-            $image = $request->file('image');
-
-            // Construire le nom de fichier en utilisant le slug et l'id du post
-            $filename = $post->slug_pos . '' . $post->id_pos . '.' . $image->getClientOriginalExtension();
-
-            // Stocker l'image avec le nom de fichier spécifié
-            $path = $image->storeAs('', $filename, 'custom');
-
-            $extension = $image->getClientOriginalExtension();
-
-            // Stocker l'extension dans le modèle Post
-            $post->ext_pos = $extension;
-
-            // Sauvegarder le modèle Post avec l'extension mise à jour
-
-        }
+        $post->ext_pos = $filename;
 
 
         $post->save();
