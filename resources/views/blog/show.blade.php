@@ -50,7 +50,7 @@
                     </form>
                 </div>
 
-                <img class="w-100" id={{$post->slug_pos}} src="/img/{{$post->slug_pos}}{{$post->id_pos}}.{{$post->ext_pos}}" alt={{$post->title_pos}}>
+                <img class="w-100" id={{$post->slug_pos}} src="/img/{{$post->ext_pos}}" alt={{$post->title_pos}}>
             </section>
 
 

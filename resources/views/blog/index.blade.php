@@ -78,7 +78,7 @@
                     </form>
 
                     <a href="{{route('blog.show', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}"><img
-                            src="/img/{{$featuredPost->slug_pos}}{{$featuredPost->id_pos}}.{{$featuredPost->ext_pos}}"
+                            src="/img/{{$featuredPost->ext_pos}}"
                             width="100%" alt={{$featuredPost->title_pos}}></a>
 
                     <footer class="under-une container">
@@ -121,7 +121,7 @@
                             <a class="text-lg-start text-center d-flex flex-column align-items-center align-items-lg-start"
                                href="#">
                                 <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}"><img
-                                        src="/img/{{$post->slug_pos}}{{$post->id_pos}}.{{$post->ext_pos}}" width="100%"
+                                        src="/img/{{$post->ext_pos}}" width="100%"
                                         alt={{$post->title_pos}}></a>
                                 <h5>{{$post->cate_pos}}</h5>
                                 <h4>{{$post->title_pos}}</h4>
@@ -161,7 +161,7 @@
                         </form>
 
                         <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}">
-                            <img src="/img/{{$post->slug_pos}}{{$post->id_pos}}.{{$post->ext_pos}}" alt="{{$post->title_pos}}">
+                            <img src="/img/{{$post->ext_pos}}" alt="{{$post->title_pos}}">
                             <h5>{{$post->cate_pos}}</h5>
                             <h4>{{$post->title_pos}}</h4>
                             <span class="time">il y a 2 heures<span class="point"> . </span>3 min</span>
