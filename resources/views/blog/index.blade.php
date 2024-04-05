@@ -93,30 +93,29 @@
 
                 <div class="article-2-3 col-lg-3 col-12">
 
+                    <script src="/js/favoris.js"></script>
+
+
                     @foreach($rightSidePosts as $post)
-
                         <article class="article-2">
-
-                            <form id="favoriteForm" action="" method="POST">
-                                @csrf
-                                <input type="hidden" name="post_id" value="{{$post->id_pos}}">
-                                @auth
-                                    @if($post->isFavoritedByUser(Auth::id()))
-                                        <button type="submit" class="bouton-circulaire-fav">
-                                            <img src="/img/star-filled.svg" alt="favorite" class="star">
-                                        </button>
-                                    @else
-                                        <button type="submit" class="bouton-circulaire-nofav">
-                                            <img src="/img/star-empty.png" alt="favorite" class="star">
-                                        </button>
-                                    @endif
-                                @endauth
-                                @guest
-                                    <button type="submit" class="bouton-circulaire-nofav">
+                            <input type="hidden" name="post_id" value="{{$post->id_pos}}">
+                            @auth
+                                @if($post->isFavoritedByUser(Auth::id()))
+                                    <button type="submit" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
+                                        <img src="/img/star-filled.svg" alt="favorite" class="star">
+                                    </button>
+                                @else
+                                    <button type="submit" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
                                         <img src="/img/star-empty.png" alt="favorite" class="star">
                                     </button>
-                                @endguest
-                            </form>
+                                @endif
+                            @endauth
+                            @guest
+                                <button type="submit" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
+                                    <img src="/img/star-empty.png" alt="favorite" class="star">
+                                </button>
+                            @endguest
+
 
                             <a class="text-lg-start text-center d-flex flex-column align-items-center align-items-lg-start"
                                href="#">

@@ -36,7 +36,7 @@ Route::prefix('/')->name('blog.')->controller(FavController::class)->group(funct
     Route::post('/article/{slug}-{post}', 'toggleFavorite')->where([
         'post' => '[0-9]+',
         'slug' => '[a-z0-9\-]+']
-    );
+    )->name('ajouter.fav');;
     Route::get('/favorite', 'main_favorite')->name('fav');
 });
 
