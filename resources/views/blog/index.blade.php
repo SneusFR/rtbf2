@@ -55,16 +55,14 @@
                 <article class="article-1 col-lg-9 col-12">
 
                     <h3>À LA UNE</h3>
-                    <form id="favoriteForm" action="" method="POST">
-                        @csrf
                         <input type="hidden" name="post_id" value="{{$featuredPost->id_pos}}">
                             @auth
                                 @if($featuredPost->isFavoritedByUser(Auth::id()))
-                                    <button type="submit" class="bouton-circulaire-fav">
+                                    <button type="submit" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}" data-post-id="{{ $featuredPost->id_pos }}">
                                         <img src="/img/star-filled.svg" alt="favorite" class="star">
                                     </button>
                                 @else
-                                <button type="submit" class="bouton-circulaire-nofav">
+                                <button type="submit" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}" data-post-id="{{ $featuredPost->id_pos }}">
                                     <img src="/img/star-empty.png" alt="favorite" class="star">
                                 </button>
                                 @endif
@@ -74,8 +72,6 @@
                                         <img src="/img/star-empty.png" alt="favorite" class="star">
                                 </button>
                             @endguest
-
-                    </form>
 
                     <a href="{{route('blog.show', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}"><img
                             src="/img/{{$featuredPost->ext_pos}}"
@@ -137,27 +133,23 @@
                 @foreach($bottomPosts as $post)
 
                     <article class="article-4">
-
-                        <form id="favoriteForm" action="" method="POST">
-                            @csrf
                             <input type="hidden" name="post_id" value="{{$post->id_pos}}">
                             @auth
                                 @if($post->isFavoritedByUser(Auth::id()))
-                                    <button type="submit" class="bouton-circulaire-fav">
+                                    <button type="submit" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
                                         <img src="/img/star-filled.svg" alt="favorite" class="star">
                                     </button>
                                 @else
-                                    <button type="submit" class="bouton-circulaire-nofav">
+                                    <button type="submit" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
                                         <img src="/img/star-empty.png" alt="favorite" class="star">
                                     </button>
                                 @endif
                             @endauth
                             @guest
-                                <button type="submit" class="bouton-circulaire-nofav">
+                                <button type="submit" class="bouton-circulaire-nofav"data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
                                     <img src="/img/star-empty.png" alt="favorite" class="star">
                                 </button>
                             @endguest
-                        </form>
 
                         <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}">
                             <img src="/img/{{$post->ext_pos}}" alt="{{$post->title_pos}}">

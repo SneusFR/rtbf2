@@ -7,6 +7,7 @@ $(document).ready(function(){
         var postId = $(this).data('post-id');
         var button = $(this);
         var img = button.find('.star'); // Sélectionner l'élément img à l'intérieur du bouton
+        var notif = $("#notification"); // Sélectionner la div avec l'ID notification
 
 
         if (button.hasClass('bouton-circulaire-nofav')) {
@@ -17,6 +18,11 @@ $(document).ready(function(){
         else {
             button.removeClass('bouton-circulaire-fav').addClass('bouton-circulaire-nofav');
             img.attr('src', '/img/star-empty.png');
+            notif.removeClass('alert alert-success').addClass('alert alert-danger').html('Article a bien été retiré des favoris');
+            notif.css('display', 'block');
+            setTimeout(function(){
+                notif.css('display', 'none');
+            }, 3000); // 3000 millisecondes = 3 secondes
         }
 
         // Effectuer la requête AJAX
