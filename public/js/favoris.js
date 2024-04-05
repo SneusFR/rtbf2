@@ -13,6 +13,11 @@ $(document).ready(function(){
         if (button.hasClass('bouton-circulaire-nofav')) {
             button.removeClass('bouton-circulaire-nofav').addClass('bouton-circulaire-fav');
             img.attr('src', '/img/star-filled.svg');
+            notif.removeClass('alert alert-danger').addClass('alert alert-success').html('Article ajouté aux favoris avec succès');
+            notif.css('display', 'block');
+            setTimeout(function(){
+                notif.css('display', 'none');
+            }, 3000); // 3000 millisecondes = 3 secondes
         }
 
         else {

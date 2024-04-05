@@ -1378,3 +1378,21 @@ h3 {
 .btn-API:hover {
     background-color: #eeb98f;
 }
+
+/*Notification*/
+
+#notification{
+    display: none;
+}
+
+#details {
+    width: 650px;
+    max-height: 320px;
+    border-radius: 10px;
+    background: #CADFEB;
+    color: #FFFFFF;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    opacity: 0;
+}
