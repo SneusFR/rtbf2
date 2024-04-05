@@ -90,9 +90,11 @@
                 <div class="article-2-3 col-lg-3 col-12">
 
                     <script src="/js/favoris.js"></script>
+                    <script src="/js/details.js"></script>
 
 
-                    @foreach($rightSidePosts as $post)
+
+                @foreach($rightSidePosts as $post)
                         <article class="article-2">
                             <input type="hidden" name="post_id" value="{{$post->id_pos}}">
                             @auth
@@ -117,9 +119,11 @@
                                href="#">
                                 <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}"><img
                                         src="/img/{{$post->ext_pos}}" width="100%"
-                                        alt={{$post->title_pos}}></a>
-                                <h5>{{$post->cate_pos}}</h5>
-                                <h4>{{$post->title_pos}}</h4>
+                                        alt={{$post->title_pos}}>
+                                        <h5>{{$post->cate_pos}}</h5>
+                                        <h4 class="title">{{$post->title_pos}}</h4>
+                                </a>
+
                                 <span class="time">il y a 60 minutes<span class="point"> . </span>2 min</span>
                             </a>
                         </article>
