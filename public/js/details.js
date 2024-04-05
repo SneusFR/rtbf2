@@ -6,8 +6,10 @@ $(document).ready(function(){
         $('.title').on('mouseleave', hideTooltip);
 
         function showTooltip(event) {
+            var postId = $(this).data('details');
             details.css('opacity', '1');
             details.css('transition', 'all 0.3s ease');
+            details.html(postId)
         }
 
         function hideTooltip() {

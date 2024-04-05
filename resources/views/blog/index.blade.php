@@ -129,7 +129,7 @@
                                         src="/img/{{$post->ext_pos}}" width="100%"
                                         alt={{$post->title_pos}}>
                                         <h5>{{$post->cate_pos}}</h5>
-                                        <h4 class="title">{{$post->title_pos}}</h4>
+                                        <h4 class="title" data-details="{{ $post->id_pos }}">{{$post->title_pos}}</h4>
                                 </a>
 
                                 <span class="time">il y a 60 minutes<span class="point"> . </span>2 min</span>
