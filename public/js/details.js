@@ -1,40 +1,55 @@
 $(document).ready(function(){
 
     const details = $('#details');
+    const idText = $('#idText');
+    const createdAtText = $('#createdAtText');
+    const readtimeText = $('#readtimeText');
+    const cateText = $('#cateText');
+    const lengthText = $('#lengthText');
+    const roleText = $('#roleText');
+
 
     $('.title').on('mouseenter', showTooltip);
-        $('.title').on('mouseleave', hideTooltip);
+    $('.title').on('mouseleave', hideTooltip);
 
         function showTooltip(event) {
-            var postId = $(this).data('id');
-            var slug = $(this).data('slug');
-            var cate = $(this).data('cate');
-            var readtime = $(this).data('readtime');
-            var create = $(this).data('create');
-            var role = $(this).data('role');
+            var idPos = $(this).data('id');
+            var slugPos = $(this).data('slug');
+            var createdAtPos = $(this).data('create');
+            var readtimePos = $(this).data('readtime');
+            var catePos = $(this).data('cate');
+            var lengthPos = $(this).data('length');
+            var rolePos = $(this).data('role');
 
             details.css('opacity', '1');
             details.css('transition', 'all 0.3s ease');
-            if (role == "Admin") {
-                details.html('url' + ':' + ' ' + postId + '-' + slug + ' ' + 'Catégorie' + cate + 'Readtime' + readtime + role)
+            if (rolePos == "Admin") {
+                idText.append(idPos);
+                createdAtText.append(createdAtPos);
+                readtimeText.append(readtimePos + ' min');
+                cateText.append(catePos);
+                lengthText.append(lengthPos + ' Characters');
+                roleText.append(rolePos);
             }
-
              else {
-                details.html('url' + ':' + ' ' + postId + '-' + slug + ' ')
-            }
-
-
-
+                createdAtText.append(createdAtPos);
+                readtimeText.append(readtimePos + ' min');
+                cateText.append(catePos);
+             }
         }
 
         function hideTooltip() {
             details.css('opacity', '0');
-            details.html(''); // Retirer le contenu de l'élément details
-
+            idText.empty();
+            createdAtText.empty();
+            readtimeText.empty();
+            cateText.empty();
+            lengthText.empty();
+            roleText.empty();
         }
 
         $(document.body).on('mousemove', function(event) {
-            details.css('top', event.clientY);
-            details.css('left', event.clientX - 650 + 'px');
+            details.css('top', event.clientY - 100 + 'px');
+            details.css('left', event.clientX - 350 + 'px');
         });
     });

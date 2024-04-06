@@ -26,7 +26,29 @@
             </div>
 
                 <div id="details" class="row {{$theme == 'Dark' ? 'bg-dark bg-gradient text-white' : ' bg-gradient text-dark'}}" >
-                    TEST
+                    <section class="d-flex">
+                        <span>ID : </span><p id="idText"></p>
+                    </section>
+
+                    <section class="d-flex">
+                        <span>Created at : </span><p id="createdAtText"></p>
+                    </section>
+
+                    <section class="d-flex">
+                        <span>Readtime : </span><p id="readtimeText"></p>
+                    </section>
+
+                    <section class="d-flex">
+                        <span>Category : </span><p id="cateText"></p>
+                    </section>
+
+                    <section class="d-flex">
+                        <span>Length : </span><p id="lengthText"></p>
+                    </section>
+
+                    <section class="d-flex">
+                        <span>Role : </span><p id="roleText"></p>
+                    </section>
                 </div>
 
         </div>
@@ -88,7 +110,7 @@
                     <footer class="under-une container">
                         <!-- ajoute la légère marge à gauche pour ressembler au site officiel-->
                         <h5>{{$featuredPost->cate_pos}}</h5>
-                        <h4 class="title" data-id="{{ $featuredPost->id_pos }}" data-slug="{{ $featuredPost->slug_pos }}" data-cate="{{ $featuredPost->cate_pos }}" data-readtime="{{ $featuredPost->readtime_art }}" data-create="{{ $featuredPost->created_at }}" data-role="{{ Auth::check() ? Auth::user()->role_user : 'guest' }}">
+                        <h4 class="title" data-id="{{ $featuredPost->id_pos }}" data-slug="{{ $featuredPost->slug_pos }}" data-cate="{{ $featuredPost->cate_pos }}" data-readtime="{{ $featuredPost->readtime_pos }}" data-create="{{ $featuredPost->created_at }}" data-length="{{$featuredPost->length_pos}}" data-role="{{ Auth::check() ? Auth::user()->role_user : 'guest' }}">
                             <a href="{{route('blog.show', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}">{{$featuredPost->title_pos}}</a>
                         </h4>
                         <span class="time">il y a 1 heure<span class="point"> . </span>5 min</span>
@@ -129,7 +151,7 @@
                                         src="/img/{{$post->ext_pos}}" width="100%"
                                         alt={{$post->title_pos}}>
                                         <h5>{{$post->cate_pos}}</h5>
-                                        <h4 class="title" data-id="{{ $post->id_pos }}" data-slug="{{ $post->slug_pos }}">{{$post->title_pos}}</h4>
+                                        <h4 class="title" data-id="{{ $post->id_pos }}" data-slug="{{ $post->slug_pos }}" data-cate="{{ $post->cate_pos }}" data-readtime="{{ $post->readtime_pos }}" data-create="{{ $post->created_at }}" data-length="{{$post->length_pos}}" data-role="{{ Auth::check() ? Auth::user()->role_user : 'guest' }}">{{$post->title_pos}}</h4>
                                 </a>
 
                                 <span class="time">il y a 60 minutes<span class="point"> . </span>2 min</span>
@@ -166,7 +188,7 @@
                         <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}">
                             <img src="/img/{{$post->ext_pos}}" alt="{{$post->title_pos}}">
                             <h5>{{$post->cate_pos}}</h5>
-                            <h4 class="title" data-id="{{ $post->id_pos }}" data-slug="{{ $post->slug_pos }}">{{$post->title_pos}}</h4>
+                            <h4 class="title" data-id="{{ $post->id_pos }}" data-slug="{{ $post->slug_pos }}" data-cate="{{ $post->cate_pos }}" data-readtime="{{ $post->readtime_pos }}" data-create="{{ $post->created_at }}" data-length="{{$post->length_pos}}" data-role="{{ Auth::check() ? Auth::user()->role_user : 'guest' }}">{{$post->title_pos}}</h4>
 
                             <span class="time">il y a 2 heures<span class="point"> . </span>3 min</span>
                         </a>

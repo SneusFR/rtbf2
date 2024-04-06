@@ -1386,7 +1386,7 @@ h3 {
 }
 
 #details {
-    width: 650px;
+    width: 300px;
     max-height: 320px;
     border-radius: 10px;
     background: #CADFEB;
@@ -1395,4 +1395,11 @@ h3 {
     position: fixed;
     z-index: 1;
     opacity: 0;
+}
+
+#details span {
+    font-weight: bold;
+    margin-right: 5px;
+    white-space: nowrap;
+    height: 40px;
 }
