@@ -17,19 +17,18 @@ class FavController extends Controller
         return $response->json();
     }
 
-    public function main_favorite(Request $request) {
+    public function main_favorite(Request $request)
+    {
         $user = auth()->user();
 
-        $meteo =$this->getMeteo();
+        $meteo = $this->getMeteo();
         $theme = $request->cookie('theme', 'light');
 
         if ($user) {
             $favoritePosts = $user->favoritePosts()->get();
             // Maintenant, $favoritePosts contient une collection de tous les articles favorisés par l'utilisateur
             return view('fav.mainFavorite', ['meteo' => $meteo, 'favoritePosts' => $favoritePosts, 'menus' => menu::all(), 'footers' => footer::all(), 'theme' => $theme]);
-        }
-
-        else {
+        } else {
 
             return redirect(route('auth.login'));
 
@@ -47,25 +46,32 @@ class FavController extends Controller
 
             $postId = $request->post_id;
             $user = auth()->user();
-            $post = Post::findOrFail($postId);
 
             if ($user->favoritePosts()->where('post_id_fav', $postId)->exists()) {
                 $user->favoritePosts()->detach($postId);
                 return redirect()->route('blog.index')->with('fail', "L'article a bien été retiré des favoris");
-            }
-
-            else {
+            } else {
                 $user->favoritePosts()->attach($postId);
                 return redirect()->route('blog.index')->with('success', "L'article a bien été mis en favoris");
 
-
             }
 
-        }
-
-        else {
+        } else {
             return redirect(route('auth.login'));
         }
     }
+
+    public function getFavorite()
+    {
+        $user = auth()->user();
+
+        if ($user) {
+            $favoritePosts = $user->favoritePosts()->get();
+            return response()->json($favoritePosts);
+        } else {
+            return redirect()->route('auth.login');
+        }
+    }
+
 
 }
