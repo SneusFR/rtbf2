@@ -56,7 +56,9 @@
         <div class="wrapper "> <!-- wrapper -->
 
             <div id="favWindow">
+                <div id="favWindowWrapper">
 
+                </div>
             </div>
 
             <section class="articles-une row">

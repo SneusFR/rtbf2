@@ -43,17 +43,19 @@ class FavController extends Controller
 
         if ($user) {
 
-
             $postId = $request->post_id;
             $user = auth()->user();
+            $removeAll = $request->removeAll;
 
-            if ($user->favoritePosts()->where('post_id_fav', $postId)->exists()) {
+            if ($removeAll == "true"){
+                $user->favoritePosts()->detach();
+            }
+            else if ($user->favoritePosts()->where('post_id_fav', $postId)->exists()) {
                 $user->favoritePosts()->detach($postId);
                 return redirect()->route('blog.index')->with('fail', "L'article a bien été retiré des favoris");
             } else {
                 $user->favoritePosts()->attach($postId);
                 return redirect()->route('blog.index')->with('success', "L'article a bien été mis en favoris");
-
             }
 
         } else {
