@@ -1,5 +1,20 @@
 $(document).ready(function(){
+    gestionnaireClicBoutons();
 
+    $('input[type=radio][name=choice]').change(function() {
+        if (this.value === 'form') {
+            // Changer le comportement pour utiliser un formulaire
+            $('.bouton-circulaire-fav').prop('type', 'submit');
+            $('.bouton-circulaire-nofav').prop('type', 'submit');
+            $('.bouton-circulaire-fav').off();
+            $('.bouton-circulaire-nofav').off();
+        } else if (this.value === 'jquery') {
+            // Revenir au comportement jQuery/Ajax
+            $('.bouton-circulaire-fav').prop('type', 'button');
+            $('.bouton-circulaire-nofav').prop('type', 'button');
+            gestionnaireClicBoutons();
+        }
+    });
     // Fonction pour gérer l'ajout ou le retrait d'un favori
     function toggleFavorite(ajouterFavUrl,removeAll, postId) {
         $.ajax({
@@ -100,37 +115,39 @@ $(document).ready(function(){
     }
 
     // Gérer l'événement de clic sur les boutons
-    $('[class^="bouton-circulaire"]').on('click', function(){
-        var ajouterFavUrl = $(this).data('ajouter-fav-url');
-        var postId = $(this).data('post-id');
-        var button = $(this);
-        var img = button.find('.star');
-        var notif = $("#notification");
+    // Définir une fonction pour gérer l'événement de clic sur les boutons
+    function gestionnaireClicBoutons() {
+        $('[class^="bouton-circulaire"]').on('click', function () {
+            var ajouterFavUrl = $(this).data('ajouter-fav-url');
+            var postId = $(this).data('post-id');
+            var button = $(this);
+            var img = button.find('.star');
+            var notif = $("#notification");
 
-        if (button.hasClass('bouton-circulaire-nofav')) {
-            button.removeClass('bouton-circulaire-nofav').addClass('bouton-circulaire-fav');
-            img.attr('src', '/img/star-filled.svg');
-            notif.removeClass('alert alert-danger').addClass('alert alert-success').html('Article ajouté aux favoris avec succès');
-            notif.css('display', 'block');
-            setTimeout(function(){
-                notif.css('display', 'none');
-            }, 3000);
-        }
-        else if (button.hasClass('bouton-circulaire-fav')) {
-            button.removeClass('bouton-circulaire-fav').addClass('bouton-circulaire-nofav');
-            img.attr('src', '/img/star-empty.png');
-            notif.removeClass('alert alert-success').addClass('alert alert-danger').html('Article a bien été retiré des favoris');
-            notif.css('display', 'block');
-            setTimeout(function(){
-                notif.css('display', 'none');
-            }, 3000); // 3000 millisecondes = 3 secondes
-        }
+            if (button.hasClass('bouton-circulaire-nofav')) {
+                button.removeClass('bouton-circulaire-nofav').addClass('bouton-circulaire-fav');
+                img.attr('src', '/img/star-filled.svg');
+                notif.removeClass('alert alert-danger').addClass('alert alert-success').html('Article ajouté aux favoris avec succès');
+                notif.css('display', 'block');
+                setTimeout(function () {
+                    notif.css('display', 'none');
+                }, 3000);
+            } else if (button.hasClass('bouton-circulaire-fav')) {
+                button.removeClass('bouton-circulaire-fav').addClass('bouton-circulaire-nofav');
+                img.attr('src', '/img/star-empty.png');
+                notif.removeClass('alert alert-success').addClass('alert alert-danger').html('Article a bien été retiré des favoris');
+                notif.css('display', 'block');
+                setTimeout(function () {
+                    notif.css('display', 'none');
+                }, 3000); // 3000 millisecondes = 3 secondes
+            }
 
-        // Effectuer l'ajout ou le retrait du favori
-        toggleFavorite(ajouterFavUrl, false, postId);
+            // Effectuer l'ajout ou le retrait du favori
+            toggleFavorite(ajouterFavUrl, false, postId);
 
-        // Afficher les favoris après l'ajout ou le retrait
-        displayFavorites();
-    });
+            // Afficher les favoris après l'ajout ou le retrait
+            displayFavorites();
+        });
+    };
 
 });

@@ -6,6 +6,9 @@
 
 @section('content')
 
+    <script src="/js/favoris.js"></script>
+    <script src="/js/details.js"></script>
+
     <main class="{{$theme == 'Dark' ? 'dark-home-index' : 'home-index'}} container">
 
         <div class="container">
@@ -70,6 +73,13 @@
                     </div>
                 </a>
 
+                <div>
+                    <input type="radio" id="jqueryChoice" name="choice" value="jquery" checked>
+                    <label for="jqueryChoice">jQuery</label>
+                    <input type="radio" id="formChoice" name="choice" value="form">
+                    <label for="formChoice">Form</label>
+                </div>
+
                 <style>
                     /*PUBLICITE*/
 
@@ -91,23 +101,27 @@
                 <article class="article-1 col-lg-9 col-12">
 
                     <h3>À LA UNE</h3>
-                        <input type="hidden" name="post_id" value="{{$featuredPost->id_pos}}">
+                    <form id="favoriteForm" action="" method="POST">
+
+                    <input type="hidden" name="post_id" value="{{$featuredPost->id_pos}}">
+                        @csrf
                             @auth
                                 @if($featuredPost->isFavoritedByUser(Auth::id()))
-                                    <button id="{{$featuredPost->id_pos}}" type="submit" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}" data-post-id="{{ $featuredPost->id_pos }}">
+                                    <button id="{{$featuredPost->id_pos}}" type="button" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}" data-post-id="{{ $featuredPost->id_pos }}">
                                         <img src="/img/star-filled.svg" alt="favorite" class="star">
                                     </button>
                                 @else
-                                <button id="{{$featuredPost->id_pos}}" type="submit" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}" data-post-id="{{ $featuredPost->id_pos }}">
+                                <button id="{{$featuredPost->id_pos}}" type="button" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}" data-post-id="{{ $featuredPost->id_pos }}">
                                     <img src="/img/star-empty.png" alt="favorite" class="star">
                                 </button>
                                 @endif
                             @endauth
                             @guest
-                                <button type="submit" class="bouton-circulaire-nofav">
+                                <button type="button" class="bouton-circulaire-nofav">
                                         <img src="/img/star-empty.png" alt="favorite" class="star">
                                 </button>
                             @endguest
+                    </form>
 
                     <a href="{{route('blog.show', ['slug' => $featuredPost->slug_pos, 'post' => $featuredPost->id_pos]) }}"><img
                             src="/img/{{$featuredPost->ext_pos}}"
@@ -125,30 +139,34 @@
 
                 <div class="article-2-3 col-lg-3 col-12">
 
-                    <script src="/js/favoris.js"></script>
-                    <script src="/js/details.js"></script>
-
-
 
                 @foreach($rightSidePosts as $post)
+
                         <article class="article-2">
-                            <input type="hidden" name="post_id" value="{{$post->id_pos}}">
-                            @auth
-                                @if($post->isFavoritedByUser(Auth::id()))
-                                    <button id="{{$post->id_pos}}" type="submit" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
-                                        <img src="/img/star-filled.svg" alt="favorite" class="star">
-                                    </button>
-                                @else
-                                    <button id="{{$post->id_pos}}" type="submit" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
-                                        <img src="/img/star-empty.png" alt="favorite" class="star">
-                                    </button>
-                                @endif
-                            @endauth
-                            @guest
-                                <button type="submit" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
-                                    <img src="/img/star-empty.png" alt="favorite" class="star">
-                                </button>
-                            @endguest
+
+                            <div id="formContainer">
+
+                                <form id="favoriteForm" action="" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="post_id" value="{{$post->id_pos}}">
+                                    @auth
+                                        @if($post->isFavoritedByUser(Auth::id()))
+                                            <button id="{{$post->id_pos}}" type="button" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
+                                                <img src="/img/star-filled.svg" alt="favorite" class="star">
+                                            </button>
+                                        @else
+                                            <button id="{{$post->id_pos}}" type="button" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
+                                                <img src="/img/star-empty.png" alt="favorite" class="star">
+                                            </button>
+                                        @endif
+                                    @endauth
+                                    @guest
+                                        <button type="button" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
+                                            <img src="/img/star-empty.png" alt="favorite" class="star">
+                                        </button>
+                                    @endguest
+                                </form>
+                            </div>
 
 
                             <a class="text-lg-start text-center d-flex flex-column align-items-center align-items-lg-start"
@@ -173,23 +191,27 @@
                 @foreach($bottomPosts as $post)
 
                     <article class="article-4">
+                        <form id="favoriteForm" action="" method="POST">
+                            @csrf
                             <input type="hidden" name="post_id" value="{{$post->id_pos}}">
                             @auth
                                 @if($post->isFavoritedByUser(Auth::id()))
-                                    <button id="{{$post->id_pos}}" type="submit" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
+                                    <button id="{{$post->id_pos}}" type="button" class="bouton-circulaire-fav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
                                         <img src="/img/star-filled.svg" alt="favorite" class="star">
                                     </button>
                                 @else
-                                    <button id="{{$post->id_pos}}" type="submit" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
+                                    <button id="{{$post->id_pos}}" type="button" class="bouton-circulaire-nofav" data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
                                         <img src="/img/star-empty.png" alt="favorite" class="star">
                                     </button>
                                 @endif
                             @endauth
                             @guest
-                                <button id="{{$post->id_pos}}" type="submit" class="bouton-circulaire-nofav"data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
+                                <button id="{{$post->id_pos}}" type="button" class="bouton-circulaire-nofav"data-ajouter-fav-url="{{ route('blog.ajouter.fav', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}" data-post-id="{{ $post->id_pos }}">
                                     <img src="/img/star-empty.png" alt="favorite" class="star">
                                 </button>
                             @endguest
+
+                        </form>
 
                         <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}">
                             <img src="/img/{{$post->ext_pos}}" alt="{{$post->title_pos}}">
