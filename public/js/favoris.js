@@ -1,8 +1,7 @@
 $(document).ready(function(){
 
     gestionnaireClicBoutons();
-
-
+    
     // Gérer l'événement de clic sur les boutons
     // Définir une méthode pour gérer l'événement de clic sur les boutons
     function gestionnaireClicBoutons() {
@@ -10,13 +9,12 @@ $(document).ready(function(){
             var ajouterFavUrl = $(this).data('ajouter-fav-url');
             var postId = $(this).data('post-id');
             var button = $(this);
+
             var img = button.find('.star');
             var notif = $("#notification");
 
             // Intervertir class des boutons lors d'un clic sur ceux-ci
             if (button.hasClass('bouton-circulaire-nofav')) {
-                button.removeClass('bouton-circulaire-nofav').addClass('bouton-circulaire-fav');
-                img.attr('src', '/img/star-filled.svg');
                 notif.removeClass('alert alert-danger').addClass('alert alert-success').html('Article ajouté aux favoris avec succès');
                 notif.css('display', 'block');
                 setTimeout(function () {
@@ -26,8 +24,6 @@ $(document).ready(function(){
             }
 
             else if (button.hasClass('bouton-circulaire-fav')) {
-                button.removeClass('bouton-circulaire-fav').addClass('bouton-circulaire-nofav');
-                img.attr('src', '/img/star-empty.png');
                 notif.removeClass('alert alert-success').addClass('alert alert-danger').html('Article a bien été retiré des favoris');
                 notif.css('display', 'block');
                 setTimeout(function () {
@@ -36,7 +32,7 @@ $(document).ready(function(){
             }
 
             // Effectuer l'ajout ou le retrait du favori
-            toggleFavorite(ajouterFavUrl, false, postId);
+            toggleFavorite(button);
 
             // Afficher les favoris après l'ajout ou le retrait
             displayFavorites();
@@ -59,15 +55,23 @@ $(document).ready(function(){
     });
 
     // Fonction pour gérer l'ajout ou le retrait d'un favori
-    function toggleFavorite(ajouterFavUrl,removeAll, postId) {
+    function toggleFavorite(button) {
+
+        var removeAll = button.attr('data-removeAll');
+        var retirerFavUrl = button.data('ajouter-fav-url');
+        var postId = button.data('post-id');
+        var button = $('#' + postId);
+        var img = button.find('.star');
+
         $.ajax({
             type: 'POST',
-            url: ajouterFavUrl,
+            url: retirerFavUrl,
             data: {
                 _token: $('meta[name="csrf-token"]').attr('content'),
                 post_id: postId,
                 removeAll : removeAll
             },
+
             success: function (response){
 
                 if (removeAll === "true"){
@@ -78,45 +82,17 @@ $(document).ready(function(){
                         notif.css('display', 'none');
                     }, 5000);
 
-                    $.each($('.bouton-circulaire-fav'), function(index, button) {
-                        var buttonElement = $(button);
-                        var img = buttonElement.find('.star');
-
-                        buttonElement.removeClass('bouton-circulaire-fav').addClass('bouton-circulaire-nofav');
-                        img.attr('src', '/img/star-empty.png');
-                    });
                 }
             },
+
             error: function(xhr, status, error) {
                 alert('La requête AJAX a échoué : ' + error);
             }
         });
-    }
 
-    // Fonction pour retirer un favori
-    function removeFavorite(button) {
-        var removeAll = button.attr('data-removeAll');
-        var retirerFavUrl = button.data('ajouter-fav-url');
-        var postId = button.data('post-id');
-        // Appel AJAX pour retirer le favori
-        toggleFavorite(retirerFavUrl, removeAll, postId);
-        // Actualiser les favoris affichés
         displayFavorites();
-
-        var button = $('#' + postId);
-        var img = button.find('.star');
-
-        if (button.hasClass('bouton-circulaire-nofav')) {
-            button.removeClass('bouton-circulaire-nofav').addClass('bouton-circulaire-fav');
-            img.attr('src', '/img/star-filled.svg');
-        }
-        else if (button.hasClass('bouton-circulaire-fav')) {
-            button.removeClass('bouton-circulaire-fav').addClass('bouton-circulaire-nofav');
-            img.attr('src', '/img/star-empty.png');
-        }
     }
 
-    // Fonction pour récupérer les favoris et les afficher
     function displayFavorites() {
         $.ajax({
             type: 'GET',
@@ -135,6 +111,25 @@ $(document).ready(function(){
                     $('#favWindowPost'+ postId).append(buttonHtml);
                 });
 
+                var testbouton = $('.bouton-circulaire-fav');
+
+                testbouton.removeClass('bouton-circulaire-fav').addClass('bouton-circulaire-nofav');
+
+                var imgStars = testbouton.find('.star');
+
+                imgStars.each(function (index, star) {
+                    star.src = '/img/star-empty.png';
+                });
+
+
+                $.each(favoritePosts, function(index, favoritePost) {
+                    var postId = favoritePost.id_pos;
+                    button = $('#'+postId)
+                    var img = button.find('.star');
+                    img.attr('src', '/img/star-filled.svg');
+                    button.removeClass('bouton-circulaire-nofav').addClass('bouton-circulaire-fav');
+                });
+
                 // Afficher le nombre de favoris
                 $('#favWindowWrapper').append('<p class="m-0" style="font-weight: bold"> Vous avez ' + favoritePosts.length + ' article(s) en favoris<p/>');
 
@@ -144,7 +139,7 @@ $(document).ready(function(){
 
                 // Attacher l'événement de clic aux nouveaux boutons ajoutés
                 $('#favWindowWrapper .bouton').on('click', function() {
-                    removeFavorite($(this));
+                    toggleFavorite($(this));
                 });
 
                 if (favoritePosts.length !== 0) {
