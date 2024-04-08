@@ -1,20 +1,35 @@
 $(document).ready(function(){
 
     gestionnaireClicBoutons();
-    
+
     // Gérer l'événement de clic sur les boutons
     // Définir une méthode pour gérer l'événement de clic sur les boutons
+
+    var roleValue = $('main').data('role');
+
     function gestionnaireClicBoutons() {
         $('[class^="bouton-circulaire"]').on('click', function () {
             var ajouterFavUrl = $(this).data('ajouter-fav-url');
             var postId = $(this).data('post-id');
             var button = $(this);
-
             var img = button.find('.star');
             var notif = $("#notification");
+            var roleValue = $('main').data('role');
 
-            // Intervertir class des boutons lors d'un clic sur ceux-ci
-            if (button.hasClass('bouton-circulaire-nofav')) {
+
+            if (roleValue ==='invite') {
+                notif.removeClass('alert alert-success').addClass('alert alert-danger').html('Vous devez vous connecter');
+                notif.css('display', 'block');
+                setTimeout(function () {
+                    notif.css('display', 'none');
+                }, 3000); // 3000 millisecondes = 3 secondes
+
+                return;
+            }
+
+
+                // Intervertir class des boutons lors d'un clic sur ceux-ci
+            else if (button.hasClass('bouton-circulaire-nofav')) {
                 notif.removeClass('alert alert-danger').addClass('alert alert-success').html('Article ajouté aux favoris avec succès');
                 notif.css('display', 'block');
                 setTimeout(function () {
@@ -46,11 +61,14 @@ $(document).ready(function(){
             $('.bouton-circulaire-nofav').prop('type', 'submit');
             $('.bouton-circulaire-fav').off();
             $('.bouton-circulaire-nofav').off();
+
+            console.log('en mode form')
         } else if (this.value === 'jquery') {
             // Revenir au comportement jQuery/Ajax
             $('.bouton-circulaire-fav').prop('type', 'button');
             $('.bouton-circulaire-nofav').prop('type', 'button');
             gestionnaireClicBoutons();
+            console.log('en mode jquery ma poule')
         }
     });
 

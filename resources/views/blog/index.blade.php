@@ -9,7 +9,7 @@
     <script src="/js/favoris.js"></script>
     <script src="/js/details.js"></script>
 
-    <main class="{{$theme == 'Dark' ? 'dark-home-index' : 'home-index'}} container">
+    <main class="{{$theme == 'Dark' ? 'dark-home-index' : 'home-index'}} container" data-role="{{ Auth::check() ? Auth::user()->role_user : 'invite' }}">
 
         <div class="container">
 
@@ -74,7 +74,7 @@
                 </a>
 
                 <div>
-                    <input type="radio" id="jqueryChoice" name="choice" value="jquery" checked>
+                    <input type="radio" id="jqueryChoice" name="choice" value="jquery" checked data-role="{{ Auth::check() ? Auth::user()->role_user : 'invite' }}">
                     <label for="jqueryChoice">jQuery</label>
                     <input type="radio" id="formChoice" name="choice" value="form">
                     <label for="formChoice">Form</label>
@@ -216,7 +216,7 @@
                         <a href="{{route('blog.show', ['slug' => $post->slug_pos, 'post' => $post->id_pos]) }}">
                             <img src="/img/{{$post->ext_pos}}" alt="{{$post->title_pos}}">
                             <h5>{{$post->cate_pos}}</h5>
-                            <h4 class="title" data-id="{{ $post->id_pos }}" data-slug="{{ $post->slug_pos }}" data-cate="{{ $post->cate_pos }}" data-readtime="{{ $post->readtime_pos }}" data-create="{{ $post->created_at }}" data-length="{{$post->length_pos}}" data-role="{{ Auth::check() ? Auth::user()->role_user : 'guest' }}">{{$post->title_pos}}</h4>
+                            <h4 class="title" data-id="{{ $post->id_pos }}" data-slug="{{ $post->slug_pos }}" data-cate="{{ $post->cate_pos }}" data-readtime="{{ $post->readtime_pos }}" data-create="{{ $post->created_at }}" data-length="{{$post->length_pos}}">{{$post->title_pos}}</h4>
 
                             <span class="time">il y a 2 heures<span class="point"> . </span>3 min</span>
                         </a>
